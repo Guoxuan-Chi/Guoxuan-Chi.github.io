@@ -112,7 +112,7 @@
 <meta property="og:description" content="验证$SO(3)$、$SE(3)$和$Sim(3)$关于乘法成群  群由是一种集合和一种运算组成的代数结构。我们把集合记作$A$，把运算记作$\cdot$，那么群可以记作$G = (A\ , \ \cdot)$。群要求运算$\cdot$在集合$A$上满足四个条件：封闭性，结合律，幺元存在，逆元存在。  特殊正交群$SO(3)$ 已知特殊正交群可以被表示如下 SO(3) = \lbrace R \i">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-03-02T12:44:33.323Z">
+<meta property="og:updated_time" content="2019-03-02T16:00:30.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="视觉SLAM十四讲-第四章习题解答">
 <meta name="twitter:description" content="验证$SO(3)$、$SE(3)$和$Sim(3)$关于乘法成群  群由是一种集合和一种运算组成的代数结构。我们把集合记作$A$，把运算记作$\cdot$，那么群可以记作$G = (A\ , \ \cdot)$。群要求运算$\cdot$在集合$A$上满足四个条件：封闭性，结合律，幺元存在，逆元存在。  特殊正交群$SO(3)$ 已知特殊正交群可以被表示如下 SO(3) = \lbrace R \i">
@@ -443,7 +443,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg" rel="gallery_cjsrenwtu001prc8wsc26dptm" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg" rel="gallery_cjsrp4b9e002ooo8wm6pt7vuj" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg" itemprop="contentUrl">
               </a>
             
@@ -658,8 +658,8 @@
 <p>  设$\forall a, b \in \mathbb{R^{3}}$，令$c = a \times b = a^{\wedge}b$，可知</p>
 <script type="math/tex; mode=display">Rc = R(a \times b) = (Ra) \times (Rb) = (Ra)^{\wedge}Rb \tag{37}</script><p>  需要注意的是，第二个等号对于$R \in \mathbb{SO(3)}$成立，并不代表对任意矩阵成立。我们可以这样理解：向量左乘旋转矩阵代表线性坐标变换，或者说是“以另一个坐标系的视角去观察”。那么$a, b$先作外积后再进行线性坐标变换（以另一个视角观察），或是分别进行相同的线性坐标变换后再求外积（先以另外一个同样的视角观察，再作外积），并不会有任何区别。“先变换或是后变换，$Rc$都在那里，不来不去。”</p>
 <p>  进一步地，对$(37)$两侧同时左乘$R^{T}$，有</p>
-<script type="math/tex; mode=display">c = R^{T}(Ra^{\wedge})Rb \tag{38}</script><p>  考虑$c = a^{\wedge}b$的关系，对应$(38)$，得到</p>
-<script type="math/tex; mode=display">a^{\wedge} = R^{T}(Ra^{\wedge})R \tag{39}</script><p>  对$(39)$两侧稍加整理即可得到有</p>
+<script type="math/tex; mode=display">c = R^{T}(Ra)^{\wedge}Rb \tag{38}</script><p>  考虑$c = a^{\wedge}b$的关系，对应$(38)$，得到</p>
+<script type="math/tex; mode=display">a^{\wedge} = R^{T}(Ra)^{\wedge}R \tag{39}</script><p>  对$(39)$两侧稍加整理即可得到有</p>
 <script type="math/tex; mode=display">Ra^{\wedge}R^{T} = (Ra)^{\wedge} \ \Leftrightarrow \ Rp^{\wedge}R^{T} = (Rp)^{\wedge} \tag{40}</script><p>  命题得证。</p>
 <hr>
 <h4 id="证明-R-exp-p-wedge-R-T-exp-Rp-wedge"><a href="#证明-R-exp-p-wedge-R-T-exp-Rp-wedge" class="headerlink" title="证明$R\exp{(p^{\wedge})}R^{T} = \exp{((Rp)^{\wedge})}$"></a>证明$R\exp{(p^{\wedge})}R^{T} = \exp{((Rp)^{\wedge})}$</h4><p>  对$p^{\wedge}$取指数，并作泰勒展开，得到</p>
@@ -667,7 +667,41 @@
 <script type="math/tex; mode=display">\exp{((Rp)^{\wedge})} = \sum_{n = 0}^{+\infty} \frac{((Rp)^{\wedge})^{n}}{n!} \tag{42}</script><p>  由$(40)$可知，$(Rp)^{\wedge} = Rp^{\wedge}R^{T}$，将其代入$(42)$，进一步得到</p>
 <script type="math/tex; mode=display">\exp{((Rp)^{\wedge})} = \sum_{n = 0}^{+\infty} \frac{((Rp)^{\wedge})^{n}}{n!} = \sum_{n = 0}^{+\infty} \overbrace{\frac{Rp^{\wedge}R^{T} \cdots Rp^{\wedge}R^{T}}{n!}}^{\text{共n组相乘}} \tag{43}</script><p>  可以观察到每一组$Rp^{\wedge}R^{T}$右侧的$R^{T}$最终会和下一个左侧的$R$相乘得到$I$，可消去。最终仅剩下最左侧的$R$和最右侧的$R^{T}$，得到简化后形式如下。</p>
 <script type="math/tex; mode=display">\exp{((Rp)^{\wedge})} = \sum_{n = 0}^{+\infty} \frac{R(p^{\wedge})^{n}R^{T}}{n!} = \sum_{n = 0}^{+\infty} R \frac{(p^{\wedge})^{n}}{n!} R^{T}  = R \exp{(p^{\wedge})} R^{T} \tag{44}</script><p>  至此，命题得证。</p>
-<script type="math/tex; mode=display"> </script><hr>
+<hr>
+<h4 id="仿照左扰动模型，推导-SO-3-和-SE-3-在右扰动下的导数"><a href="#仿照左扰动模型，推导-SO-3-和-SE-3-在右扰动下的导数" class="headerlink" title="仿照左扰动模型，推导$SO(3)$和$SE(3)$在右扰动下的导数"></a>仿照左扰动模型，推导$SO(3)$和$SE(3)$在右扰动下的导数</h4><p>  将旋转对应的$\mathfrak{so}(3)$李代数记作$\phi$，将原位姿变换对应的$\mathfrak{se}(3)$李代数记作$\xi$，二者对应的扰动则分别记作$\Delta \phi \in \mathfrak{so}(3)$以及$\Delta \xi \in \mathfrak{se}(3)$。</p>
+<ol>
+<li><p>$SO(3)$的右扰动模型推导</p>
+<script type="math/tex; mode=display">\begin{aligned}
+  \frac{\partial{(Rp)}}{\partial{(\Delta \phi)}} 
+  &=  \underset{\Delta \phi \ \rightarrow \ 0}{\lim} (\frac{\exp(\phi^{\wedge})\exp({\Delta \phi}^{\wedge})p - \exp(\phi^{\wedge})p}{\Delta \phi}) \\
+  &\approx \underset{\Delta \phi \ \rightarrow \ 0}{\lim} (\frac{\exp(\phi^{\wedge})(I + {\Delta \phi}^{\wedge})p - \exp(\phi^{\wedge})p}{\Delta \phi}) \\
+  &= \underset{\Delta \phi \ \rightarrow \ 0}{\lim} (\frac{\exp(\phi^{\wedge}){\Delta \phi}^{\wedge}p}{\Delta \phi}) \\
+  &= \underset{\Delta \phi \ \rightarrow \ 0}{\lim} (-\frac{\exp(\phi^{\wedge})p^{\wedge}{\Delta \phi}}{\Delta \phi}) \\
+  &= -Rp^{\wedge} = -(Rp)^{\wedge}R
+\end{aligned} \tag{45}</script></li>
+<li><p>$SE(3)$的右扰动模型推导</p>
+<script type="math/tex; mode=display">\begin{aligned}
+  \frac{\partial{(Tp)}}{\partial{(\Delta \xi)}} 
+  &=  \underset{\Delta \xi \ \rightarrow \ 0}{\lim} (\frac{\exp(\xi^{\wedge})\exp({\Delta \xi}^{\wedge})p - \exp(\xi^{\wedge})p}{\Delta \xi}) \\
+  &\approx \underset{\Delta \xi \ \rightarrow \ 0}{\lim} (\frac{\exp(\xi^{\wedge})(I + {\Delta \xi}^{\wedge})p - \exp(\xi^{\wedge})p}{\Delta \xi}) \\
+  &= \underset{\Delta \xi \ \rightarrow \ 0}{\lim} (\frac{\exp(\xi^{\wedge}){\Delta \xi}^{\wedge}p}{\Delta \xi}) \\
+  &= \underset{\Delta \xi \ \rightarrow \ 0}{\lim} (\frac{\begin{bmatrix}
+    R & t \\
+    0^{T} & 1\\
+  \end{bmatrix}
+  \begin{bmatrix}
+    \Delta \phi^{\wedge}p + \Delta \rho \\
+    0 \\
+  \end{bmatrix}}{\Delta \xi}) \\
+  &= \underset{\Delta \xi \ \rightarrow \ 0}{\lim} (-\frac{
+  \begin{bmatrix}
+    R(\Delta \phi^{\wedge}p + \Delta \rho) \\
+    0 \\
+  \end{bmatrix}}{\Delta \xi}) \\
+  &= 
+\end{aligned} \tag{46}</script></li>
+</ol>
+<hr>
 <blockquote>
 <p>部分开放性问题难以直接给出展示结果，故略去。<br>文章旨在分享本人对书中部分习题的思考与理解。尽管每篇文章均已多次校审，但限于个人水平和精力，并不能保证文中全部内容均正确无误。希望各位专家大神多多指正，不吝赐教。</p>
 </blockquote>
@@ -906,7 +940,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#验证-SO-3-、-SE-3-和-Sim-3-关于乘法成群"><span class="nav-number">1.</span> <span class="nav-text">验证$SO(3)$、$SE(3)$和$Sim(3)$关于乘法成群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证-mathbb-R-3-times-3-R-times-构成李代数"><span class="nav-number">2.</span> <span class="nav-text">验证$(\mathbb{R^{3 \times 3}, R, \times})$构成李代数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证-mathfrak-so-3-和-mathfrak-se-3-满足李代数要求的性质"><span class="nav-number">3.</span> <span class="nav-text">验证$\mathfrak{so}(3)$和$\mathfrak{se}(3)$满足李代数要求的性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证性质-4-20-和-4-21"><span class="nav-number">4.</span> <span class="nav-text">验证性质$(4.20)$和$(4.21)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#证明-Rp-wedge-R-T-Rp-wedge"><span class="nav-number">5.</span> <span class="nav-text">证明$Rp^{\wedge}R^{T} = (Rp)^{\wedge}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#证明-R-exp-p-wedge-R-T-exp-Rp-wedge"><span class="nav-number">6.</span> <span class="nav-text">证明$R\exp{(p^{\wedge})}R^{T} = \exp{((Rp)^{\wedge})}$</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#验证-SO-3-、-SE-3-和-Sim-3-关于乘法成群"><span class="nav-number">1.</span> <span class="nav-text">验证$SO(3)$、$SE(3)$和$Sim(3)$关于乘法成群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证-mathbb-R-3-times-3-R-times-构成李代数"><span class="nav-number">2.</span> <span class="nav-text">验证$(\mathbb{R^{3 \times 3}, R, \times})$构成李代数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证-mathfrak-so-3-和-mathfrak-se-3-满足李代数要求的性质"><span class="nav-number">3.</span> <span class="nav-text">验证$\mathfrak{so}(3)$和$\mathfrak{se}(3)$满足李代数要求的性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证性质-4-20-和-4-21"><span class="nav-number">4.</span> <span class="nav-text">验证性质$(4.20)$和$(4.21)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#证明-Rp-wedge-R-T-Rp-wedge"><span class="nav-number">5.</span> <span class="nav-text">证明$Rp^{\wedge}R^{T} = (Rp)^{\wedge}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#证明-R-exp-p-wedge-R-T-exp-Rp-wedge"><span class="nav-number">6.</span> <span class="nav-text">证明$R\exp{(p^{\wedge})}R^{T} = \exp{((Rp)^{\wedge})}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仿照左扰动模型，推导-SO-3-和-SE-3-在右扰动下的导数"><span class="nav-number">7.</span> <span class="nav-text">仿照左扰动模型，推导$SO(3)$和$SE(3)$在右扰动下的导数</span></a></li></ol></div>
             
 
           </div>
