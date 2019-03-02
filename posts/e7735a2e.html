@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SLAM,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="阅读文献[1]和[14]，你能看懂文献内容吗？ 基于单目视觉的同时定位与地图构建方法综述 同时定位与地图构建（simultaneous localization and mapping，SLAM）技术最早起源于机器人领域，其目标是在一个未知的环境中实时重建环境的三维结构，并同时对机器人自身进行定位。特别的，基于视觉的同时定位与地图构建技术是利用机器视觉信号完成定位与环境重建的功能，其在室内定位场景">
+<meta name="keywords" content="SLAM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="视觉SLAM十四讲-第二章习题解答">
+<meta property="og:url" content="https://guoxuan-chi.github.io/posts/e7735a2e.html">
+<meta property="og:site_name" content="迟国轩的博客">
+<meta property="og:description" content="阅读文献[1]和[14]，你能看懂文献内容吗？ 基于单目视觉的同时定位与地图构建方法综述 同时定位与地图构建（simultaneous localization and mapping，SLAM）技术最早起源于机器人领域，其目标是在一个未知的环境中实时重建环境的三维结构，并同时对机器人自身进行定位。特别的，基于视觉的同时定位与地图构建技术是利用机器视觉信号完成定位与环境重建的功能，其在室内定位场景">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg">
+<meta property="og:updated_time" content="2019-02-17T13:58:50.662Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="视觉SLAM十四讲-第二章习题解答">
+<meta name="twitter:description" content="阅读文献[1]和[14]，你能看懂文献内容吗？ 基于单目视觉的同时定位与地图构建方法综述 同时定位与地图构建（simultaneous localization and mapping，SLAM）技术最早起源于机器人领域，其目标是在一个未知的环境中实时重建环境的三维结构，并同时对机器人自身进行定位。特别的，基于视觉的同时定位与地图构建技术是利用机器视觉信号完成定位与环境重建的功能，其在室内定位场景">
+<meta name="twitter:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://guoxuan-chi.github.io/posts/e7735a2e.html">
+
+
+
+
+
+  <title>视觉SLAM十四讲-第二章习题解答 | 迟国轩的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">迟国轩的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Guoxuan's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guoxuan-chi.github.io/posts/e7735a2e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="迟国轩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="迟国轩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">视觉SLAM十四讲-第二章习题解答</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-17T16:08:03+08:00">
+                2019-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg" rel="gallery_cjsrenwts001krc8wkj3ds0cl" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h4 id="阅读文献-1-和-14-，你能看懂文献内容吗？"><a href="#阅读文献-1-和-14-，你能看懂文献内容吗？" class="headerlink" title="阅读文献[1]和[14]，你能看懂文献内容吗？"></a>阅读文献[1]和[14]，你能看懂文献内容吗？</h4><ol>
+<li><p><a href="http://www.jcad.cn/jcadcms/document/attach_manager!download.action?id=4ad554245421f2cd0155238aa7500120" target="_blank" rel="noopener">基于单目视觉的同时定位与地图构建方法综述</a></p>
+<p>同时定位与地图构建（simultaneous localization and mapping，SLAM）技术最早起源于机器人领域，其目标是在一个未知的环境中实时重建环境的三维结构，并同时对机器人自身进行定位。特别的，基于视觉的同时定位与地图构建技术是利用机器视觉信号完成定位与环境重建的功能，其在室内定位场景下的应用潜力十分巨大。</p>
+<p>Visual SLAM相比其它定位技术有如下优势：</p>
+<ul>
+<li>可以在无GPS（弱GPS）信号的环境下使用</li>
+<li>无需预先布设无线定位设施</li>
+<li>定位精度相对较高</li>
+<li>设备成本相对低廉</li>
+</ul>
+<p>Visual SLAM可以根据拍摄的视频信息推断出摄像头在位置环境中的方位，并同时构建环境，其基本原理为多视图几何。摄像头是不断运动的，在第$i$个关键帧对应的时刻，其自身在三位环境中的相对位置与朝向可以由旋转矩阵和位移向量$R_i, t_i$表征。</p>
+<p>同样的，三维空间中的每一个特征点（或者称作路标）均可以由一个三位向量进行描述，特别地，第$j$个路标的绝对位置可以记作</p>
+<script type="math/tex; mode=display">(X_{j}, Y_{j}, Z_{j})^T</script><p>设该路标在摄像机坐标系下有相对坐标</p>
+<script type="math/tex; mode=display">(X_{ij}, Y_{ij}, Z_{ij})^T</script><p>则必然存在以下变换关系</p>
+<script type="math/tex; mode=display">(X_{ij}, Y_{ij}, Z_{ij})^{T} = R_{i}[(X_{j}, Y_{j}, Z_{j})^{T} - t_{i}] \tag{1}</script><p>设相机于$i$位姿处得到$j$路标的平面图像坐标为$h_{ij}$。由针孔相机模型，必然有如下3D-2D变换关系成立</p>
+<script type="math/tex; mode=display">h_{ij} = (f_{x}X_{ij}/Z_{ij} + c_{x},\ f_{y}Y_{ij}/Z_{ij} + c_{y}) \tag{2}</script><p>因此，我们通过估计得到的位姿$R_i, t_i$得到了各个路标点的相对位置，进行3D-2D的投影，评估2D投影坐标与2D真实坐标之间的误差并完成位姿优化即可。</p>
+<script type="math/tex; mode=display">\underset{R_{i}, p_{i}} {\mathrm{arg \min}} \sum_{i = 1}^m \sum_{j = 1}^n \lVert h_{ij} - u_{ij} \rVert \tag{3}</script><p>我们也可以引入其他传感器数据，如GPS以及惯导传感器的数据，并在公式$(3)$的基础上添加一个新的误差项即可。</p>
+<p>国际上主流的Visual SLAM大致分为以下几类：基于滤波器的SLAM，基于关键帧BA的SLAM以及基于直接跟踪的SLAM。</p>
+<ul>
+<li>基于滤波器的SLAM：基于最大后验概率以及最大似然准则，推算位姿以及路标最有可能的真实坐标位置。SLAM中最常用的滤波器大概就是扩展卡尔曼滤波器（EKF）了。EKF存在几个问题：如果预测函数和更新函数是非线性的，则使用EKF并不能保证得到全局最优的估计，因此仍然可能存在“累积误差”的问题；若将三维点引入状态变量，则每一时刻的计算复杂度为$O(n^3)$，因此仅能够处理小场景。</li>
+<li>基于关键帧BA的SLAM：将相机跟踪（Tracking）和地图构建（Mapping）作为2个独立的任务在2个线程并行执行。地图构建线程仅维护原视频流中稀疏抽取的关键帧及关键帧中可见的三维点, 这样就可以非常高效地求解目标函数$(3)$。有了BA恢复的精确三维结构，相机跟踪线程作为前台线程，仅需优化当前帧运动参数，足以达到实时的计算效率。</li>
+<li>基于直接跟踪的SLAM：不需要从原始视频帧中提取并匹配特征点，因此对于图像质量的要求并不是很高。该类方法往往是通过优化颜色误差或者最小化光度误差求解并更新位姿。</li>
+</ul>
+<p>随着技术的发展和越来越多开源系统的出现，Visual SLAM技术正在逐渐趋于成熟。然而，时至今日仍然有很多实际问题亟待进一步研究。</p>
+<ul>
+<li>缓解特征依赖：对于特征缺失、质量低下的视频帧，常常难以使用特征点法完成特征提取，而只能使用直接法进行跟踪，进而带来了计算能力的不足与SLAM系统性能的降低。相比于局部特征（点特征），有效地利用边缘、平面等更高层的图像信息也能够显著缓解特征依赖。</li>
+<li>稠密的三维重建：使用单目SLAM进行稠密的场景重建往往需要耗费大量的算力，而使用RGB-D相机的SLAM可以较为高效地完成此类任务。</li>
+<li>多传感器融合：使用单一传感器的SLAM不可避免地有各自的局限性。多传感器融合的SLAM往往将各个传感器数据作为优化目标函数中的一项，然而求解完整的优化问题并不现实，使用“滑动窗口法”或是“迭代优化法”能够较好地解决该类问题。</li>
+</ul>
+<p>对于移动端设备来说，采用的硬件往往受限于价格、功耗等因素，这对SLAM的鲁棒性和计算效率提出了更高的要求。通过软件算法节约硬件成本，同时提升SLAM系统在实际应用中处理各类情况的能力，才能够更好地满足实际的需求。</p>
+</li>
+<li><p><a href="http://robot.sia.cn/CN/Y2013/V35/I4/500#" target="_blank" rel="noopener">基于图优化的同时定位与地图创建综述</a></p>
+<p>目前，SLAM系统后端的优化方法主要可以分为两类：基于非线性滤波器（如EKF，EIF，PF等）的优化方法，以及采用图结构描述的，基于图优化求解的方法。其中，前者的线性化与更新操做是相对耗时的，后者相比于前者考虑了更多全局状态，因此更容易应用于大型场景中。</p>
+<p>基于图优化的SLAM系统的基本框架包括：顺序配准，闭环检测以及图优化三大部分。</p>
+<p>顺序配准包括空间点配准与图像配准两种方式：</p>
+<ul>
+<li><p>空间点配准：通常使用迭代最近点（ICP）的方法，通过最近邻匹配（NN）以及最小化欧氏距离两步骤完成。假设有一对已匹配完成的，不同相机坐标系下的三维空间点，均以三维列向量的形式表示。有迭代的位姿变换矩阵$T_{k}$表示两坐标之间的变换关系，则优化目标如下。该问题通常可以通过SVD的方法求得解析解，同时也可以使用集束调整（Bundle Adjustment，BA）的方法求得数值解，后者能够使得3D-3D的ICP问题和3D-2D的问题使用同一套方法，在形式上具有兼容性。</p>
+<script type="math/tex; mode=display">\underset{T_{k}} {\mathrm{arg \min }} \  \lVert p_{i}' - T_{k} p_{i} \rVert \tag{4}</script></li>
+<li><p>图像配准：通过帧内特征检测，帧间特征匹配等方式，使得相邻两帧（或是主帧）之间的特征点建立起一一对应的联系，同时再利用相机模型也即公式$(2)$得到3D-2D的联系进行运动估计，最终求解公式$(3)$的优化问题，得到最优位姿解。</p>
+</li>
+</ul>
+<p>在SLAM 中，环形闭合检测是指根据传感器信息判断机器人当前是否处在之前已经访问过的某个区域，或者说，机器人当前所处的位置在创建的地图中是否已有相应的描述。</p>
+<p>闭环检测的场景表示方法主要包括：直接特征表示，词袋表示，创建度量地图三种方法。其中，基于直接特征表示的方法计算效率较高，但在大规模场景下，词袋方法在表示效率上更胜一筹。判断是否闭环则有判断空间位置相似性以及判断外观相似性两种方法，目前常用后者。</p>
+<p>在图优化模型中，摄像头的位姿会以时序顺序被表示为一条相连的位姿节点，节点间的边代表位姿的转移概率，可以由随机变量表示。通过最大似然检测，图优化问题最终也可以被转换为最小二乘问题。</p>
+<p>图优化问题的求解方法大致可以分为以下四种：</p>
+<ul>
+<li>基于松弛的方法</li>
+<li>基于随机梯度下降的方法</li>
+<li>基于非线性优化（结合Hessian矩阵稀疏结构）的方法</li>
+<li>基于流形优化的方法</li>
+</ul>
+<p>鲁棒性问题是SLAM系统需要解决的重要问题之一，这个问题是多层面的，包括</p>
+<ul>
+<li>系统对于初始值的鲁棒性</li>
+<li>系统对于错误闭环信息的鲁棒性</li>
+<li>系统扩展的鲁棒性</li>
+</ul>
+<p>基于图优化的SLAM方法的研究已取得了很大的进展，尤其体现在基于视觉的环形闭合检测以及图优化方法上。纵观近些年该领域的文献资料，基于图优化的SLAM 技术有以下发展趋势：</p>
+<ul>
+<li>深化SLAM问题非线性结构的研究</li>
+<li>提升SLAM系统鲁棒性</li>
+<li>终生地图（Life-long Map）的研究</li>
+<li>语义地图（Semantic Map）的研究</li>
+</ul>
+</li>
+</ol>
+<h4 id="g-命令有哪些参数？怎么填写参数可以更改生成的程序文件名？"><a href="#g-命令有哪些参数？怎么填写参数可以更改生成的程序文件名？" class="headerlink" title="g++命令有哪些参数？怎么填写参数可以更改生成的程序文件名？"></a>g++命令有哪些参数？怎么填写参数可以更改生成的程序文件名？</h4><p>  由于g++命令参数较多，因此仅列举最常用的一些选项。</p>
+<ol>
+<li><p>总体选项</p>
+<ul>
+<li><p><code>-E</code> 激活预处理（负责宏定义替换、注释清除等工作），可以输出到指定文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ -E Test.cpp &gt; Test.i</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>-S</code> 激活预处理和编译，输出汇编语言代码，自动存储到.s文件中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ -S Test.cpp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>-c</code>激活预处理，编译以及汇编，生成.o文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ -c Test.cpp</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>目录选项</p>
+<ul>
+<li><p><code>-include</code> 相当于源文件中的<code># include</code>在编译阶段引入指定头文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ Test.cpp -include /root/Test.h</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>-library</code> 指定编译过程中使用的库，以下例子为使用名为Test的库（实际库文件名为libTest.o）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ -lTest Test.cpp</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>调试选项</p>
+<ul>
+<li><code>-g</code> 只是编译器，在编译的时候产生调试信息。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ -g Test.cpp</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>链接方式选项</p>
+<ul>
+<li><code>-static</code> 禁止使用动态库，优点是程序运行不依赖其他的库，缺点是文件较大。</li>
+<li><code>-shared</code> 此选项将默认使用动态库，为默认选项，优点是生成的文件较小，缺点是运行时需要系统提供动态库。</li>
+</ul>
+</li>
+<li>错误与告警选项<ul>
+<li><code>-Wall</code> 允许发出编译器所能提供的所有有用警告。</li>
+<li><code>w</code> 关闭所有警告，建议不适用此项。</li>
+</ul>
+</li>
+<li><p>其他选项</p>
+<ul>
+<li><p><code>-o</code> 指定生成目标的名称。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ -o Test.out Test.cpp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>-O0 -O1 -O2 -O3</code> 指定编译器的优化级别，其中<code>-O0</code>没有优化，<code>-O3</code>优化级别最高。</p>
+</li>
+<li><code>-x language filename</code> 设定文件所使用的语言，使后缀名无效，对以后的多个文件有效。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ -x cpp Test.cpp</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>因此，使用<code>g++ -o &lt;filename&gt; HelloSLAM.cpp</code>命令即可指定输出文件的名称。</p>
+</li>
+</ol>
+<hr>
+<h4 id="如果忘了把库链接到可执行程序上，编译会报错吗？什么样的错？"><a href="#如果忘了把库链接到可执行程序上，编译会报错吗？什么样的错？" class="headerlink" title="如果忘了把库链接到可执行程序上，编译会报错吗？什么样的错？"></a>如果忘了把库链接到可执行程序上，编译会报错吗？什么样的错？</h4><p>会报错。由于没有使用<code>target_link_libraries()</code>，源程序无法获取到库文件中对函数的定义，从而会提示由<code>未定义的引用</code>引发的编译错误。</p>
+<pre><code>对函数&#39;printHello()&#39;未定义的引用.
+</code></pre><hr>
+<blockquote>
+<p>部分开放性问题难以直接给出展示结果，故略去。<br>文章旨在分享本人对书中部分习题的思考与理解。尽管每篇文章均已多次校审，但限于个人水平和精力，并不能保证文中全部内容均正确无误。希望各位专家大神多多指正，不吝赐教。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="迟国轩 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="迟国轩 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SLAM/" rel="tag"># SLAM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/824ac3d0.html" rel="next" title="视觉SLAM十四讲-第一章习题解答">
+                <i class="fa fa-chevron-left"></i> 视觉SLAM十四讲-第一章习题解答
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/491617ff.html" rel="prev" title="视觉SLAM十四讲-第三章习题解答">
+                视觉SLAM十四讲-第三章习题解答 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="迟国轩">
+            
+              <p class="site-author-name" itemprop="name">迟国轩</p>
+              <p class="site-description motion-element" itemprop="description">分享代码心得 共同进步成长</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Guoxuan-Chi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chiguoxuan@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/114381458294712652997" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.linkedin.com/in/%E5%9B%BD%E8%BD%A9-%E8%BF%9F-119841139" target="_blank" title="Linkedin">
+                      
+                        <i class="fa fa-fw fa-linkedin"></i>Linkedin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/chigx/answers" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-book"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#阅读文献-1-和-14-，你能看懂文献内容吗？"><span class="nav-number">1.</span> <span class="nav-text">阅读文献[1]和[14]，你能看懂文献内容吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#g-命令有哪些参数？怎么填写参数可以更改生成的程序文件名？"><span class="nav-number">2.</span> <span class="nav-text">g++命令有哪些参数？怎么填写参数可以更改生成的程序文件名？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果忘了把库链接到可执行程序上，编译会报错吗？什么样的错？"><span class="nav-number">3.</span> <span class="nav-text">如果忘了把库链接到可执行程序上，编译会报错吗？什么样的错？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">迟国轩</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

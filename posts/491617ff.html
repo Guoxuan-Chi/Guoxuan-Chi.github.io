@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SLAM,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="验证旋转矩阵是正交矩阵。  考虑旋转矩阵的空间意义，设某三维空间中存在坐标系A，通过线性空间变换可以转换为坐标系B，且二者维度均满足 dim(A) = dim(B) = 3 \tag{1}  则可得分别得到A，B坐标系的两组单位正交基向量 e_{A} = [e_{A}^1, e_{A}^2, e_{A}^3] \tag{2}e_{B} = [e_{B}^1, e_{B}^2, e_{B}^3] \">
+<meta name="keywords" content="SLAM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="视觉SLAM十四讲-第三章习题解答">
+<meta property="og:url" content="https://guoxuan-chi.github.io/posts/491617ff.html">
+<meta property="og:site_name" content="迟国轩的博客">
+<meta property="og:description" content="验证旋转矩阵是正交矩阵。  考虑旋转矩阵的空间意义，设某三维空间中存在坐标系A，通过线性空间变换可以转换为坐标系B，且二者维度均满足 dim(A) = dim(B) = 3 \tag{1}  则可得分别得到A，B坐标系的两组单位正交基向量 e_{A} = [e_{A}^1, e_{A}^2, e_{A}^3] \tag{2}e_{B} = [e_{B}^1, e_{B}^2, e_{B}^3] \">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg">
+<meta property="og:updated_time" content="2019-03-02T05:39:48.970Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="视觉SLAM十四讲-第三章习题解答">
+<meta name="twitter:description" content="验证旋转矩阵是正交矩阵。  考虑旋转矩阵的空间意义，设某三维空间中存在坐标系A，通过线性空间变换可以转换为坐标系B，且二者维度均满足 dim(A) = dim(B) = 3 \tag{1}  则可得分别得到A，B坐标系的两组单位正交基向量 e_{A} = [e_{A}^1, e_{A}^2, e_{A}^3] \tag{2}e_{B} = [e_{B}^1, e_{B}^2, e_{B}^3] \">
+<meta name="twitter:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://guoxuan-chi.github.io/posts/491617ff.html">
+
+
+
+
+
+  <title>视觉SLAM十四讲-第三章习题解答 | 迟国轩的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">迟国轩的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Guoxuan's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guoxuan-chi.github.io/posts/491617ff.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="迟国轩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="迟国轩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">视觉SLAM十四讲-第三章习题解答</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-19T08:36:46+08:00">
+                2019-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg" rel="gallery_cjsrenwtq001hrc8wkxv6ao73" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h4 id="验证旋转矩阵是正交矩阵。"><a href="#验证旋转矩阵是正交矩阵。" class="headerlink" title="验证旋转矩阵是正交矩阵。"></a>验证旋转矩阵是正交矩阵。</h4><p>  考虑旋转矩阵的空间意义，设某三维空间中存在坐标系A，通过线性空间变换可以转换为坐标系B，且二者维度均满足</p>
+<script type="math/tex; mode=display">dim(A) = dim(B) = 3 \tag{1}</script><p>  则可得分别得到A，B坐标系的两组单位正交基向量</p>
+<script type="math/tex; mode=display">e_{A} = [e_{A}^1, e_{A}^2, e_{A}^3] \tag{2}</script><script type="math/tex; mode=display">e_{B} = [e_{B}^1, e_{B}^2, e_{B}^3] \tag{3}</script><p>  设某点$p$存在于该三维空间中，则必定有如下关系成立</p>
+<script type="math/tex; mode=display">e_{A}p_{A} = e_{B}p_{B} \tag{4}</script><p>  进一步地将$(4)$两侧同时左乘$e_{A}^{T}$，得到有</p>
+<script type="math/tex; mode=display">p_{A} = e_{A}^{T}e_{B}p_{B} = R_{AB}p_{B} \tag{5}</script><p>  其中$R_{AB}$即为B系坐标点到A系坐标点的变换关系。</p>
+<p>  根据旋转矩阵的空间意义，必然存在有下列关系表征从B到A的逆变换（即为从A到B的变换）。</p>
+<script type="math/tex; mode=display">R_{BA} = R_{AB}^{-1} \tag{6}</script><p>  对式$(4)$两侧左乘$e_{B}^{T}$，得到有</p>
+<script type="math/tex; mode=display">p_{B} = e_{B}^{T}e_{A}p_{A} = R_{AB}^{-1}p_{A} \tag{7}</script><p>  根据矩阵转置运算的性质，有</p>
+<script type="math/tex; mode=display">R_{AB}^{T} = (e_{A}^{T}e_{B})^{T} = e_{B}^{T}e_{A} = R_{AB}^{-1} \tag{8}</script><p>  由于A，B选取的任意性，此结论可推广为</p>
+<script type="math/tex; mode=display">R^{T} = R^{-1} \quad \Leftrightarrow \quad RR^{T} = I \tag{9}</script><p>  因此旋转矩阵是正交矩阵，题目得证。</p>
+<hr>
+<h4 id="验证四元数旋转某个点后，结果是一个虚四元数（实部为零），所以仍然对应一个三维空间点。"><a href="#验证四元数旋转某个点后，结果是一个虚四元数（实部为零），所以仍然对应一个三维空间点。" class="headerlink" title="验证四元数旋转某个点后，结果是一个虚四元数（实部为零），所以仍然对应一个三维空间点。"></a>验证四元数旋转某个点后，结果是一个虚四元数（实部为零），所以仍然对应一个三维空间点。</h4><p>  考虑任意一个虚四元数表示一个三维向量（也即空间点），四元数表示旋转，则旋转后的向量为</p>
+<script type="math/tex; mode=display">p' = qpq^{-1} \tag{10}</script><p>  不妨以向量形式分别表示$p, q$如下</p>
+<script type="math/tex; mode=display">p = [0, x, y, z] \tag{11}</script><script type="math/tex; mode=display">q = [q_{0}, q_{1}, q_{2}, q_{3}] \tag{12}</script><p>  根据四元数的求逆运算，得到$q^{-1}$如下</p>
+<script type="math/tex; mode=display">q^{-1} = \frac {q^{*}} {\lVert q \rVert} =  \frac {[q_{0}, -q_{1}, -q_{2}, -q_{3}]} {\lVert q \rVert} \tag{13}</script><p>  其中${\lVert q \rVert}$代表四元数的模长，是一个实数。我们要证明的实部为零，因此将公式$(9)$中$q^{-1}$替换为$q^{*}$可以简化证明过程，且不会对证明产生影响，也即作命题的等价转换</p>
+<script type="math/tex; mode=display">Re(qpq^{-1}) = 0 \quad \Leftrightarrow \quad Re(qpq^{*}) = 0 \tag{14}</script><p>  考虑$qpq^{*}$中的实部，有且仅有以下几种的组成部分：</p>
+<ul>
+<li>取$q$的实部，$pq^{*}$中对应的虚部项相乘得到实数，最后结果产生实数项。 <script type="math/tex; mode=display">q_{0}(-q_{1}x - q_{2}y - q_{3}z) \tag{15a}</script></li>
+<li>取$q^{*}$的实部，$qp$中对应的虚部项相乘得到实数，最后结果产生实数项。<script type="math/tex; mode=display">q_{0}(q_{1}x + q_{2}y + q_{3}z) \tag{15b}</script></li>
+<li>$qpq^{*}$三项分别取对应为$i, j, k$的虚部（共$A_{3}^{3} = 6$项），最终相乘产生实数项。<script type="math/tex; mode=display">q_{1}yq_{3} - q_{1}zq_{2} - q_{2}xq_{3} + q_{2}zq_{1} + q_{3}xq_{2} - q_{3}yq_{1}  = 0 \tag{15c}</script></li>
+</ul>
+<p>  综上所述，最终可知</p>
+<script type="math/tex; mode=display">Re(qpq^{*}) = (15a) + (15b) + (15c) = 0 \tag{16}</script><p>  结合式$(14)$的等价推论，原命题得证。</p>
+<hr>
+<h4 id="总结旋转矩阵，旋转向量，欧拉角，四元数之间的关系。"><a href="#总结旋转矩阵，旋转向量，欧拉角，四元数之间的关系。" class="headerlink" title="总结旋转矩阵，旋转向量，欧拉角，四元数之间的关系。"></a>总结旋转矩阵，旋转向量，欧拉角，四元数之间的关系。</h4><p>  考虑到旋转矩阵与旋转向量是最常用的表示方式，且总结$C_{4}^{2} = 6$对关系占据过多篇幅，以下仅列举部分变换。</p>
+<ul>
+<li>旋转矩阵-旋转向量<script type="math/tex; mode=display">R = \cos{\theta}I + (1-\cos{\theta})nn^{T} + \sin{\theta}n^{\wedge} \tag{17}</script><script type="math/tex; mode=display">\begin{cases}
+     \theta = \arccos{(\frac{tr(R)-1}{2})} \\
+     Rn = n  \\
+   \end{cases} \tag{18}</script></li>
+<li>旋转矩阵-欧拉角<script type="math/tex; mode=display">\begin{cases}
+ R_{X} = \begin{bmatrix}
+ 1 & 0 & 0 \\
+ 0 & \cos{\theta_{x}} & -\sin{\theta_{x}} \\
+ 0 & \sin{\theta_{x}} & \cos{\theta_{x}}  \\
+ \end{bmatrix}      \\
+ R_{Y} = \begin{bmatrix}
+ \cos{\theta_{y}} & 0 & \sin{\theta_{y}}  \\
+ 0 & 1 & 0 \\
+ -\sin{\theta_{x}} & 0 & \cos{\theta_{x}}  \\
+ \end{bmatrix}     \\
+ R_{Z} = \begin{bmatrix}
+ \cos{\theta_{z}} & -\sin{\theta_{z}} & 0 \\
+ \sin{\theta_{z}} & \cos{\theta_{z}} & 0 \\
+ 0 & 0 & 1  \\
+ \end{bmatrix}  \\
+ R \ \ = \ R_{Z}R_{Y}R_{X}\\
+\end{cases}  \tag{19}</script><script type="math/tex; mode=display">\begin{cases}
+ \theta_{x} = \arctan{(\frac{r_{33}}{r_{32}})} \\
+ \theta_{y} = \arctan{(-\frac{\sqrt{r_{33}^2 + r_{32}^2}}{r_{31}})} \\
+ \theta_{z} = \arctan{(\frac{r_{11}}{r_{21}})} \\
+\end{cases} \tag{20}</script></li>
+<li>旋转向量-四元数<script type="math/tex; mode=display">\begin{cases}
+ \theta = \arccos{Re(q)} \\
+ n = Im(q) / \sin{\frac{\theta}{2}} \\
+\end{cases} \tag{21}</script><script type="math/tex; mode=display">q = [\cos{\frac{\theta}{2}}, \sin{\frac{\theta}{2}}n] \tag{22}</script></li>
+</ul>
+<hr>
+<h4 id="假设有一个大的Eigen矩阵，想把它左上角-3-times-3-的块取出来，然后赋值为-I-3-times-3-。请编程实现此事。"><a href="#假设有一个大的Eigen矩阵，想把它左上角-3-times-3-的块取出来，然后赋值为-I-3-times-3-。请编程实现此事。" class="headerlink" title="假设有一个大的Eigen矩阵，想把它左上角$3 \times 3$的块取出来，然后赋值为$I_{3 \times 3}$。请编程实现此事。"></a>假设有一个大的Eigen矩阵，想把它左上角$3 \times 3$的块取出来，然后赋值为$I_{3 \times 3}$。请编程实现此事。</h4><p>  实现方法主要分为两类：直接使用<code>for</code>循环替换和使用<code>Mat.block()</code>方法进行块替换。</p>
+<p>  两种方法的耗时不尽相同，根据作者的实验，在小规模场景下，二者效率相近，在大规模替换的情况下，使用Eigen库中的<code>Mat.block()</code>方法能够提高效率。</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen/Core&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> MAT_SIZE 100      <span class="comment">//设置矩阵的规模</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> BLOCK_SIZE 3      <span class="comment">//设置被替换的块的规模</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ForLoopMethod</span><span class="params">(Eigen::Matrix&lt;<span class="keyword">double</span>, MAT_SIZE, MAT_SIZE&gt;&amp; Matrix_NN, Eigen::Matrix&lt;<span class="keyword">double</span>, BLOCK_SIZE, BLOCK_SIZE&gt;&amp; Matrix_Identity)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; BLOCK_SIZE; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; BLOCK_SIZE; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            Matrix_NN(i, j) =  Matrix_Identity(i, j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BlockMethod</span><span class="params">(Eigen::Matrix&lt;<span class="keyword">double</span>, MAT_SIZE, MAT_SIZE&gt;&amp; Matrix_NN, Eigen::Matrix&lt;<span class="keyword">double</span>, BLOCK_SIZE, BLOCK_SIZE&gt;&amp; Matrix_Identity)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Matrix_NN.block(<span class="number">0</span>, <span class="number">0</span>, BLOCK_SIZE, BLOCK_SIZE) = Matrix_Identity;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//定义并随机初始化一个指定规模的矩阵</span></span><br><span class="line">    Eigen::Matrix&lt;<span class="keyword">double</span>, MAT_SIZE, MAT_SIZE&gt; Matrix_NN;</span><br><span class="line">    Matrix_NN = Eigen::Matrix&lt;<span class="keyword">double</span>, MAT_SIZE, MAT_SIZE&gt;::Random(MAT_SIZE, MAT_SIZE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义并初始化一个单位矩阵</span></span><br><span class="line">    Eigen::Matrix&lt;<span class="keyword">double</span>, BLOCK_SIZE, BLOCK_SIZE&gt; Matrix_Identity;</span><br><span class="line">    Matrix_Identity = Eigen::Matrix&lt;<span class="keyword">double</span>, BLOCK_SIZE, BLOCK_SIZE&gt;::Identity(BLOCK_SIZE, BLOCK_SIZE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设定计时器并调用方法</span></span><br><span class="line">    <span class="keyword">clock_t</span> begin = clock();</span><br><span class="line">    ForLoopMethod(Matrix_NN, Matrix_Identity);</span><br><span class="line">    <span class="keyword">clock_t</span> end = clock();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"经过"</span>&lt;&lt;<span class="number">1000</span> * (end - begin)/(<span class="keyword">double</span>)CLOCKS_PER_SEC&lt;&lt;<span class="string">"ms的计算，得到替换后的矩阵如下所示"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;Matrix_NN.block(<span class="number">0</span>, <span class="number">0</span>, BLOCK_SIZE, BLOCK_SIZE)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">    <span class="comment">//重新初始化矩阵</span></span><br><span class="line">    Matrix_NN = Eigen::Matrix&lt;<span class="keyword">double</span>, MAT_SIZE, MAT_SIZE&gt;::Random(MAT_SIZE, MAT_SIZE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//重新设定计时器并调用方法</span></span><br><span class="line">    begin = clock();</span><br><span class="line">    BlockMethod(Matrix_NN, Matrix_Identity);</span><br><span class="line">    end = clock();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"经过"</span>&lt;&lt;<span class="number">1000</span> * (end - begin)/(<span class="keyword">double</span>)CLOCKS_PER_SEC&lt;&lt;<span class="string">"ms的计算，得到替换后的矩阵块如下所示"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;Matrix_NN.block(<span class="number">0</span>, <span class="number">0</span>, BLOCK_SIZE, BLOCK_SIZE)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="一般线性方程组-Ax-b-有哪几种做法？你能在Eigen中实现吗？"><a href="#一般线性方程组-Ax-b-有哪几种做法？你能在Eigen中实现吗？" class="headerlink" title="一般线性方程组$Ax = b$有哪几种做法？你能在Eigen中实现吗？"></a>一般线性方程组$Ax = b$有哪几种做法？你能在Eigen中实现吗？</h4><p>  线性方程组的快速解法主要是基于矩阵分解的原理。</p>
+<ol>
+<li>LU分解：<ul>
+<li>分解形式：$A = LU$ </li>
+<li>基本原理：将原矩阵分解为一个下三角矩阵$L$和一个上三角矩阵$U$的乘积。因此原方程组的求解被转换为依次求解$Ly = b$以及$Ux = y$的问题。三角矩阵的特殊形式使得求解能够以较低时间复杂度完成。</li>
+<li>内置方法：<code>Partial Piv LU</code>以及<code>Full Piv LU</code>。</li>
+</ul>
+</li>
+<li>QR分解：<ul>
+<li>分解形式：$A = QR$</li>
+<li>基本原理：将原矩阵分解为一个正交矩阵$Q$和上三角矩阵$R$的乘积。因此原方程组的求解被转换为求解$Rx = Q^{T}b$的问题。借助上三角矩阵的特殊形式，简化运算复杂度。</li>
+<li>内置方法：<code>Householder QR</code>，<code>Col Piv Householder QR</code>以及<code>Full Piv Householder QR</code>。</li>
+</ul>
+</li>
+<li>SVD分解：<ul>
+<li>分解形式：$A = U \Sigma V^{T}$</li>
+<li>基本原理：将原矩阵分解为正交矩阵$U, V$与对角矩阵$\Sigma$乘积的形式。因此原方程组的求解被转换为求解$\Sigma x = U^{T}bV$的问题。对角矩阵的特殊形式使得求解的复杂度降低。</li>
+<li>内置方法：<code>Jacobi SVD</code>以及<code>BDC SVD</code>。</li>
+</ul>
+</li>
+<li>Cholesky分解：<ul>
+<li>分解形式：$A = LL^{T}$</li>
+<li>基本原理：将原矩阵分解为一个下三角矩阵$L$及其转置$L^{T}$的乘积。因此原方程组的求解被转换为依次求解$Ly = b$以及$L^{T}x = y$的问题。三角矩阵的特殊形式使得求解的复杂度降低。</li>
+<li>内置方法：<code>LLT</code>以及<code>LDLT</code>。</li>
+</ul>
+</li>
+</ol>
+<p>  各类方法的使用条件，时间开销以及精度等信息可参考下表。</p>
+  <div align="center">
+      <img src="/posts/491617ff/Eigen内置方法.jpg" title="Eigen内置方法">
+  </div>
+
+
+<p>  演示代码如下所示。</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen/Core&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Eigen;</span><br><span class="line"></span><br><span class="line">Matrix&lt;<span class="keyword">double</span>, <span class="number">10</span>, <span class="number">1</span>&gt; solution(MatrixXd&amp; A, MatrixXd&amp; b, <span class="keyword">int</span> method)</span><br><span class="line">&#123;</span><br><span class="line">    Matrix&lt;<span class="keyword">double</span>, <span class="number">10</span>, <span class="number">1</span>&gt; x;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//选择某种方法进行求解</span></span><br><span class="line">    <span class="keyword">switch</span> (method) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            x = A.partialPivLu().solve(b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            x = A.fullPivLu().solve(b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            x = A.householderQr().solve(b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            x = A.colPivHouseholderQr().solve(b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">            x = A.fullPivHouseholderQr().solve(b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">            x = A.llt().solve(b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">            x = A.ldlt().solve(b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">            x = A.jacobiSvd(ComputeThinU | ComputeThinV).solve(b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            x = Matrix&lt;<span class="keyword">double</span>, <span class="number">10</span>, <span class="number">1</span>&gt;::Zero();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//随机生成矩阵A和b</span></span><br><span class="line">    MatrixXd A = MatrixXd::Random(<span class="number">10</span>, <span class="number">10</span>); </span><br><span class="line">    MatrixXd b = MatrixXd::Random(<span class="number">10</span>, <span class="number">1</span>); </span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义解向量x</span></span><br><span class="line">    Matrix&lt;<span class="keyword">double</span>, <span class="number">10</span>, <span class="number">1</span>&gt; x; </span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义方法列表</span></span><br><span class="line">    <span class="built_in">string</span> methods[<span class="number">8</span>] = &#123;<span class="string">"PartialPivLU"</span>, <span class="string">"FullPivLu"</span>, <span class="string">"HouseholderQR"</span>, <span class="string">"ColPivHouseholderQR"</span>, <span class="string">"FullPivHouseholderQR"</span>, <span class="string">"llt"</span>, <span class="string">"ldlt"</span>, <span class="string">"JacobiSVD"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义计时变量</span></span><br><span class="line">    <span class="keyword">clock_t</span> begin, end;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"解方程组 Ax = b "</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"已知矩阵A为\n"</span>&lt;&lt;A&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"已知矩阵b为\n"</span>&lt;&lt;b.transpose()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        begin = clock();    <span class="comment">//开始计时</span></span><br><span class="line">        x = solution(A, b, i);</span><br><span class="line">        end = clock();      <span class="comment">//结束计时</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"-------------------------------------------"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"使用方法"</span>&lt;&lt;methods[i]&lt;&lt;<span class="string">"，得到解向量为\n"</span>&lt;&lt;x.transpose()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"耗时为"</span>&lt;&lt;<span class="number">1000</span> * (end - begin)/(<span class="keyword">double</span>)CLOCKS_PER_SEC&lt;&lt;<span class="string">"毫秒。"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="设有小萝卜一号和二号位于世界坐标系中。"><a href="#设有小萝卜一号和二号位于世界坐标系中。" class="headerlink" title="设有小萝卜一号和二号位于世界坐标系中。"></a>设有小萝卜一号和二号位于世界坐标系中。</h4><p>  已知二者的在世界坐标系下的位姿分别为</p>
+<script type="math/tex; mode=display">\begin{cases}
+    q_{1} = [0.35, 0.3, 0.2, 0.1] \\
+    q_{2} = [-0.5, 0.4, -0.1, 0.2] \\
+    t_{1} = [0.3, 0.1, 0.1]^{T} \\
+    t_{2} = [-0.1, 0.5, 0.3]^{T} \\
+  \end{cases} \tag{23}</script><p>  现在小萝卜一号观测到某点在自身坐标系下的坐标为</p>
+<script type="math/tex; mode=display">p_{1} = [0.5, 0, 0.2]^T \tag{24}</script><p>  求该点在小萝卜二号坐标系下的坐标。注意：位姿表达的是世界坐标系到相机坐标系的变换关系，即$T_{cw}$。</p>
+<p>  设该点世界坐标为$p$，则有以下表达式成立</p>
+<script type="math/tex; mode=display">\begin{cases}
+    p_{1} = R_{1}p + t_{1} \\
+    p_{2} = R_{2}p + t_{2} \\
+  \end{cases}  \tag{25}</script><p>  因此可以直接得到有</p>
+<script type="math/tex; mode=display">p_{2} = R_{2}R_{1}^{-1}(p_{1} - t_{1}) + t_{2} \tag{26}</script><p>  考虑到题目中提供的数据为四元数，将四元数转化为旋转矩阵需要小号额外的算力，因此不妨直接使用四元数表示旋转，得到以下式子（以下表达式均默认四元数已进行归一化操作）</p>
+<script type="math/tex; mode=display">p_{2} = q_{2}[q_{1}^{-1}(p_{1} - t_{1})q_{1}]q_{2}^{-1} + t_{2}\tag{27}</script><p>  使用Eigen库编程实现如下所示，预期的输出结果应为$p_{2} = [-0.0309731, 0.73499, 0.296108]$。</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen/Core&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">Eigen::<span class="function">Vector3d <span class="title">solution</span><span class="params">(Eigen::Quaterniond q1, Eigen::Quaterniond q2, Eigen::Vector3d t1, Eigen::Vector3d t2, Eigen::Vector3d p1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//Eigen中，四元数与向量的乘法已被重载过</span></span><br><span class="line">    <span class="comment">//使用q*v可直接得到旋转后的向量</span></span><br><span class="line">    <span class="keyword">return</span> q2 * q1.inverse() * (p1 - t1)  + t2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Eigen::<span class="function">Quaterniond <span class="title">q1</span><span class="params">(<span class="number">0.35</span>, <span class="number">0.2</span>, <span class="number">0.3</span>, <span class="number">0.1</span>)</span></span>; </span><br><span class="line">    Eigen::<span class="function">Quaterniond <span class="title">q2</span><span class="params">(<span class="number">-0.5</span>, <span class="number">0.4</span>, <span class="number">-0.1</span>, <span class="number">0.2</span>)</span></span>; </span><br><span class="line">    Eigen::<span class="function">Vector3d <span class="title">t1</span><span class="params">(<span class="number">0.3</span>, <span class="number">0.1</span>, <span class="number">0.1</span>)</span></span>;</span><br><span class="line">    Eigen::<span class="function">Vector3d <span class="title">t2</span><span class="params">(<span class="number">-0.1</span>, <span class="number">0.5</span>, <span class="number">0.3</span>)</span></span>;</span><br><span class="line">    Eigen::<span class="function">Vector3d <span class="title">p1</span><span class="params">(<span class="number">0.5</span>, <span class="number">0</span>, <span class="number">0.2</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    q1.normalize(); <span class="comment">//归一化操作</span></span><br><span class="line">    q2.normalize(); <span class="comment">//归一化操作</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;solution(q1, q2, t1, t2, p1).transpose()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>部分开放性问题难以直接给出展示结果，故略去。<br>文章旨在分享本人对书中部分习题的思考与理解。尽管每篇文章均已多次校审，但限于个人水平和精力，并不能保证文中全部内容均正确无误。希望各位专家大神多多指正，不吝赐教。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="迟国轩 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="迟国轩 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SLAM/" rel="tag"># SLAM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/e7735a2e.html" rel="next" title="视觉SLAM十四讲-第二章习题解答">
+                <i class="fa fa-chevron-left"></i> 视觉SLAM十四讲-第二章习题解答
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/cefa12a7.html" rel="prev" title="Leetcode题解13-罗马数字转整数">
+                Leetcode题解13-罗马数字转整数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="迟国轩">
+            
+              <p class="site-author-name" itemprop="name">迟国轩</p>
+              <p class="site-description motion-element" itemprop="description">分享代码心得 共同进步成长</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Guoxuan-Chi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chiguoxuan@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/114381458294712652997" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.linkedin.com/in/%E5%9B%BD%E8%BD%A9-%E8%BF%9F-119841139" target="_blank" title="Linkedin">
+                      
+                        <i class="fa fa-fw fa-linkedin"></i>Linkedin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/chigx/answers" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-book"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#验证旋转矩阵是正交矩阵。"><span class="nav-number">1.</span> <span class="nav-text">验证旋转矩阵是正交矩阵。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证四元数旋转某个点后，结果是一个虚四元数（实部为零），所以仍然对应一个三维空间点。"><span class="nav-number">2.</span> <span class="nav-text">验证四元数旋转某个点后，结果是一个虚四元数（实部为零），所以仍然对应一个三维空间点。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结旋转矩阵，旋转向量，欧拉角，四元数之间的关系。"><span class="nav-number">3.</span> <span class="nav-text">总结旋转矩阵，旋转向量，欧拉角，四元数之间的关系。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设有一个大的Eigen矩阵，想把它左上角-3-times-3-的块取出来，然后赋值为-I-3-times-3-。请编程实现此事。"><span class="nav-number">4.</span> <span class="nav-text">假设有一个大的Eigen矩阵，想把它左上角$3 \times 3$的块取出来，然后赋值为$I_{3 \times 3}$。请编程实现此事。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一般线性方程组-Ax-b-有哪几种做法？你能在Eigen中实现吗？"><span class="nav-number">5.</span> <span class="nav-text">一般线性方程组$Ax = b$有哪几种做法？你能在Eigen中实现吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设有小萝卜一号和二号位于世界坐标系中。"><span class="nav-number">6.</span> <span class="nav-text">设有小萝卜一号和二号位于世界坐标系中。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">迟国轩</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C++,Visual Studio Code,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="引言对于大多数编程入门者与研究人员来讲，使用一个专门化的IDE可能并不是一个非常好的选择。一方面，大多数高集成度的IDE（如Visual Studio）仅仅支持有限几种编程语言的开发；另一方面，这类IDE往往体量较大，相对臃肿，更适合用于大型项目的开发而非小型的Demo、仿真或者学习使用。  为何选择了Visual Studio Code + Mingw-w64   Visual Studio C">
+<meta name="keywords" content="C++,Visual Studio Code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Visual Studio Code与Mingw-w64搭建轻量级C++ IDE">
+<meta property="og:url" content="https://guoxuan-chi.github.io/posts/ce2b0cf7.html">
+<meta property="og:site_name" content="迟国轩的博客">
+<meta property="og:description" content="引言对于大多数编程入门者与研究人员来讲，使用一个专门化的IDE可能并不是一个非常好的选择。一方面，大多数高集成度的IDE（如Visual Studio）仅仅支持有限几种编程语言的开发；另一方面，这类IDE往往体量较大，相对臃肿，更适合用于大型项目的开发而非小型的Demo、仿真或者学习使用。  为何选择了Visual Studio Code + Mingw-w64   Visual Studio C">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548942428&di=2d67913875e3f3f571988bbce63f3a98&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.mukewang.com%2F5ba8b09e00012a7e03700298.jpg">
+<meta property="og:updated_time" content="2019-02-19T13:15:48.194Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Visual Studio Code与Mingw-w64搭建轻量级C++ IDE">
+<meta name="twitter:description" content="引言对于大多数编程入门者与研究人员来讲，使用一个专门化的IDE可能并不是一个非常好的选择。一方面，大多数高集成度的IDE（如Visual Studio）仅仅支持有限几种编程语言的开发；另一方面，这类IDE往往体量较大，相对臃肿，更适合用于大型项目的开发而非小型的Demo、仿真或者学习使用。  为何选择了Visual Studio Code + Mingw-w64   Visual Studio C">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548942428&di=2d67913875e3f3f571988bbce63f3a98&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.mukewang.com%2F5ba8b09e00012a7e03700298.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://guoxuan-chi.github.io/posts/ce2b0cf7.html">
+
+
+
+
+
+  <title>使用Visual Studio Code与Mingw-w64搭建轻量级C++ IDE | 迟国轩的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">迟国轩的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Guoxuan's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guoxuan-chi.github.io/posts/ce2b0cf7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="迟国轩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="迟国轩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用Visual Studio Code与Mingw-w64搭建轻量级C++ IDE</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T23:11:10+08:00">
+                2019-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tutorial/" itemprop="url" rel="index">
+                    <span itemprop="name">Tutorial</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548942428&di=2d67913875e3f3f571988bbce63f3a98&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.mukewang.com%2F5ba8b09e00012a7e03700298.jpg" rel="gallery_cjsrenwtm0019rc8w4khmrqnl" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548942428&di=2d67913875e3f3f571988bbce63f3a98&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.mukewang.com%2F5ba8b09e00012a7e03700298.jpg" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>对于大多数编程入门者与研究人员来讲，使用一个专门化的IDE可能并不是一个非常好的选择。一方面，大多数高集成度的IDE（如Visual Studio）仅仅支持有限几种编程语言的开发；另一方面，这类IDE往往体量较大，相对臃肿，更适合用于大型项目的开发而非小型的Demo、仿真或者学习使用。</p>
+<ol>
+<li><p>为何选择了Visual Studio Code + Mingw-w64 </p>
+<ul>
+<li><p>Visual Studio Code是微软公司开发的一款代码<strong>编辑器</strong>，支持包括语法高亮在内的各种功能，同时内含各类语言插件支持（包括但不限于C/C++，C#，Java，Python，Markdown），被认为是取代Vim、Sublime、Atom等的新一代编辑器。</p>
+</li>
+<li><p>相比于MinGW-w64，MinGW对于大多数人来说更加熟悉一些。MinGW是Minimalist GNU for Windows的缩写，它是一个可自由使用和自由发布的Windows特定头文件和使用GNU工具集导入库的集合，允许你在GNU/Linux和Windows平台生成本地的Windows程序而不需要第三方C运行时（C Runtime）库。然而，MinGW似乎很久没有更新了，而且从名字就能看出来，MinGW-w64对64位环境的支持更好，因此我们选择使用后者。</p>
+</li>
+</ul>
+</li>
+<li><p>Visual Studio Code与MinGW-w64之间的关系</p>
+<ul>
+<li><p>如上文所述，有别于Visual Studio这类集成开发环境，Visual Studio Code仅仅提供代码的编辑功能以及围绕编辑进行的辅助功能，但并不提供编译或者解释语言的能力。</p>
+</li>
+<li><p>MinGW-w64中包含几乎全部的C/C++库文件以及GCC、G++、GDB等编译调试器。可以将C/C++源码编译链接为可执行程序，并提供调试功能。MinGW-w64本身不提供编辑代码的功能：开发者们可以通过命令行的方式调用其中组件，但是这种风格显然不是大多数开发者能够接受的。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
+<li><p>环境说明：该方法在Window 8.1 Professional以及Windows 7 Professional操作系统上均进行了检验，相信能够支持全部Windows平台计算机。</p>
+</li>
+<li><p>首先需要安装<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a></p>
+<p>安装<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a>是进行以下步骤的基础，安装过程中按照自己的偏好进行设置即可。</p>
+</li>
+<li><p>接下来安装<a href="https://sourceforge.net/projects/mingw-w64/files/latest/download" target="_blank" rel="noopener">MinGW-w64</a></p>
+<p>点击超链接即可下载支持Windows 64位环境的MinGW-w64。下载完成后运行程序，配置Architecture为x86_64，Treads为posix，如下图所示。在默认路径运行即可，随后将进行相关内容的下载，考虑到内容较大，可能需要等待一定时间才可下载完成。</p>
+<div align="center">
+   <img src="/posts/ce2b0cf7/配置MinGW-w64.jpg" title="配置MinGW-w64">
+</div>
+
+<p>为了简化路径，方便进一步操作，在完成下载后，我们打开默认路径（如本机上的路径为C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0），将其中的mingw64文件夹剪切到C:\Program Files路径下即可，同时删除原有的安装文件夹。</p>
+</li>
+</ol>
+<h2 id="添加环境变量到Windows"><a href="#添加环境变量到Windows" class="headerlink" title="添加环境变量到Windows"></a>添加环境变量到Windows</h2><ol>
+<li><p>添加路径</p>
+<p>打开文件资源管理器（即“我的电脑”），于空白处单击鼠标右键-属性-高级系统设置-环境变量，于“系统变量”一栏找到并编辑修改Path的值。在尾部<strong>添加</strong>如下内容（即为mingw64文件夹下的bin目录）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\mingw64\bin</span><br></pre></td></tr></table></figure>
+ <div align="center">
+   <img src="/posts/ce2b0cf7/添加环境变量.jpg" title="添加路径">
+ </div>
+
+<p>注意Path中的值有很多条，每增加一条的时候需保证与前一条之间有半角分号间隔。</p>
+</li>
+<li><p>使用g++测试</p>
+<p>为保证环境变量添加正确，我们需要打开Winddows的命令行窗口输入以下命令，测试g++是否已经可以使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ --version</span><br></pre></td></tr></table></figure>
+<p>若命令行回显相关版本信息，则说明环境配置顺利完成了。</p>
+<div align="center">
+   <img src="/posts/ce2b0cf7/测试g++.jpg" title="测试g++">
+</div>
+
+</li>
+</ol>
+<h2 id="完成Visual-Studio-Code的插件配置"><a href="#完成Visual-Studio-Code的插件配置" class="headerlink" title="完成Visual Studio Code的插件配置"></a>完成Visual Studio Code的插件配置</h2><ol>
+<li><p>安装中文支持插件（可选）</p>
+<p> 鉴于本文大部分受众的母语为中文，将开发环境的语言设置为中文应当能够在很大程度上提高用户的使用与开发效率。对于已进行过此步骤或英文水平较高的用户，可以跳过本步骤。</p>
+<p> 如上图所示，单击左侧栏最下方图标，即可进入扩展插件栏。在上方搜索框中输入关键字“Chinese”，选择中文简体扩展包安装即可。安装后，在locale.json中添加”locale”: “zh-cn”，即可载入中文（简体）语言包。要修改 locale.json，你可以同时按下Ctrl+Shift+P打开命令面板，之后输入 “config” 筛选可用命令列表，最后选择配置语言命令。完成修改后可能需要手动重新启动Visual Studio Code方可生效。</p>
+ <div align="center">
+   <img src="/posts/ce2b0cf7/扩展插件选项.jpg" title="扩展插件选项">
+ </div>
+</li>
+<li><p>安装C++语言支持插件</p>
+<p> 单击左侧栏最下方图标，即可进入扩展插件栏。在上方搜索框中输入关键字“C++”，选择星标的C/C++扩展包安装即可。</p>
+ <div align="center">
+   <img src="/posts/ce2b0cf7/C++扩展包.jpg" title="C++扩展包">
+ </div>
+</li>
+<li><p>安装Code Runner插件支持</p>
+<p> 在扩展插件栏搜索框搜索关键字“Code Runner”，找到扩展包并完成安装即可。全部扩展包安装完成后，可能需要重新启动Visual Studio Code方可生效。</p>
+</li>
+</ol>
+<h2 id="配置测试"><a href="#配置测试" class="headerlink" title="配置测试"></a>配置测试</h2><ol>
+<li><p>添加测试C++文件</p>
+<p> 在Visual Studio Code界面的左侧资源管理器界面中，手动新建文件夹如C++Code作为存放cpp代码的一个工作空间，并在其中新建cpp文件，可以命名为“test.cpp”。注意后缀不可省略，需让编辑器能够辨别出其为cpp文件。在该文件中输入以下C++语句进行测试。用户也可以自定义进行更加简便或复杂的测试。</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt; </span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line"></span><br><span class="line">    srand((<span class="keyword">unsigned</span>)time(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; <span class="number">100000</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        vec.push_back(rand());</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">clock_t</span> start = clock();</span><br><span class="line">    sort(vec.begin(), vec.end());</span><br><span class="line">    <span class="keyword">clock_t</span> end = clock(); </span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Sorting 100000 random nums takes:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="number">1000</span> * (end - start)/(<span class="keyword">double</span>)CLOCKS_PER_SEC&lt;&lt;<span class="string">"ms"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置json脚本</p>
+<p> 完成“test.cpp”文件编写后，按“Ctrl+F5”即可触发“在不调试的情况下执行”的操作。Visual Studio Code上方此时应当会跳出窗口，提示选择环境操作。我们选择“C++(GDB/LLDB)”后，系统自动创建.vscode文件夹并在其中创建launch.json文件。</p>
+ <div align="center">
+   <img src="/posts/ce2b0cf7/选择环境.jpg" title="选择环境">
+ </div>
+
+<p> 将以下内容复制进launch.json，覆盖原有内容并保存即可。请注意”miDebuggerPath”项路径是否与你的配置路径一致。</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>, </span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>, </span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            //创建的exe位于cpp文件目录下，命名与cpp文件一致 </span><br><span class="line">            "program": "$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe",</span><br><span class="line">            "args": [], </span><br><span class="line">            "stopAtEntry": false, </span><br><span class="line">            "cwd": "$&#123;workspaceFolder&#125;", </span><br><span class="line">            "environment": [], </span><br><span class="line">            "externalConsole": true, </span><br><span class="line">            "internalConsoleOptions": "neverOpen", </span><br><span class="line">            "MIMode": "gdb", </span><br><span class="line">            //调试器所在路径</span><br><span class="line">            "miDebuggerPath": "C:\\Program Files\\mingw64\\bin\\gdb.exe",</span><br><span class="line">            "setupCommands": [ </span><br><span class="line">                &#123;</span><br><span class="line">                <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                <span class="attr">"ignoreFailures"</span>: <span class="literal">false</span></span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            "preLaunchTask": "Compile"</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 再次回到cpp文件下，尝试“Ctrl+F5”，将会出现窗口报错“找不到任务”。点击“配置任务”选项，并在上方选择“使用模板创建task.json”，随便选择一种选项，即可新建一个默认的task.json文件。</p>
+ <div align="center">
+   <img src="/posts/ce2b0cf7/配置任务.jpg" title="配置任务">
+ </div>
+
+<p> 将该文件内容替换如下即可。</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            "label": "Compile", // 任务名称，与launch.json的preLaunchTask相对应</span><br><span class="line">            "command": "g++", // 要使用的编译器</span><br><span class="line">            "args": [</span><br><span class="line">                "$&#123;file&#125;",</span><br><span class="line">                "-o", </span><br><span class="line">                "$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe",</span><br><span class="line">                "-g", </span><br><span class="line">                "-Wall", // 开启额外警告</span><br><span class="line">                "-static-libgcc", // 静态链接</span><br><span class="line">                "-std=c++17" //c++17标准</span><br><span class="line">            ], // 编译命令参数</span><br><span class="line">            "type": "shell", // 可以为shell或process</span><br><span class="line">            "group": &#123;</span><br><span class="line">                "kind": "build",</span><br><span class="line">                "isDefault": true</span><br><span class="line">            &#125;,</span><br><span class="line">            "presentation": &#123;</span><br><span class="line">                "echo": true,</span><br><span class="line">                "reveal": "always", // 可以为always，silent，never。</span><br><span class="line">                "focus": false, // 对编译c和c++来说，设为true没有意义</span><br><span class="line">                "panel": "shared" // 不同的文件的编译信息共享一个终端面板</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 手动在.vscode文件夹下（也即launch.json和task.json所在目录）创建c_cpp_properties.json文件，并将文件内容修改如下。</p>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Win32"</span>,</span><br><span class="line">            <span class="attr">"includePath"</span>: [</span><br><span class="line">                <span class="string">"$&#123;workspaceRoot&#125;"</span>,</span><br><span class="line">                <span class="string">"C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"</span>,</span><br><span class="line">                <span class="string">"C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"</span>,</span><br><span class="line">                <span class="string">"C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"</span>,</span><br><span class="line">                <span class="string">"C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include"</span>,</span><br><span class="line">                <span class="string">"C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/tr1"</span>,</span><br><span class="line">                <span class="string">"C:/Program Files/mingw64/x86_64-w64-mingw32/include"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"defines"</span>: [</span><br><span class="line">                <span class="string">"_DEBUG"</span>,</span><br><span class="line">                <span class="string">"UNICODE"</span>,</span><br><span class="line">                <span class="string">"__GNUC__=6"</span>,</span><br><span class="line">                <span class="string">"__cdecl=__attribute__((__cdecl__))"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"intelliSenseMode"</span>: <span class="string">"msvc-x64"</span>,</span><br><span class="line">            <span class="attr">"browse"</span>: &#123;</span><br><span class="line">                <span class="attr">"path"</span>: [</span><br><span class="line">                    <span class="string">"$&#123;workspaceRoot&#125;"</span>,</span><br><span class="line">                    <span class="string">"C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"</span>,</span><br><span class="line">                    <span class="string">"C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"</span>,</span><br><span class="line">                    <span class="string">"C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"</span>,</span><br><span class="line">                    <span class="string">"C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include"</span>,</span><br><span class="line">                    <span class="string">"C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/tr1"</span>,</span><br><span class="line">                    <span class="string">"C:/Program Files/mingw64/x86_64-w64-mingw32/include"</span></span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"databaseFilename"</span>: <span class="string">""</span></span><br><span class="line">        &#125; </span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"version"</span>: <span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 请注意上述路径是否与你的配置路径一致，如不一致，一一对应修改为你的目录即可。</p>
+</li>
+<li><p>完成测试</p>
+<p> 在配置完上述三个json文件后，再次尝试在cpp文件界面下“Ctrl+F5”编译运行即可，若各类配置无误，应当能够成功运行程序，结果如下。</p>
+ <div align="center">
+   <img src="/posts/ce2b0cf7/测试结果.jpg" title="最终测试结果">
+ </div></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="迟国轩 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="迟国轩 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/tags/Visual-Studio-Code/" rel="tag"># Visual Studio Code</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/9f625537.html" rel="next" title="使用Visual Studio Code与CPython搭建轻量级Python IDE">
+                <i class="fa fa-chevron-left"></i> 使用Visual Studio Code与CPython搭建轻量级Python IDE
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/e94e08bf.html" rel="prev" title="使用Visual Studio Code与Github实现代码管理">
+                使用Visual Studio Code与Github实现代码管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="迟国轩">
+            
+              <p class="site-author-name" itemprop="name">迟国轩</p>
+              <p class="site-description motion-element" itemprop="description">分享代码心得 共同进步成长</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Guoxuan-Chi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chiguoxuan@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/114381458294712652997" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.linkedin.com/in/%E5%9B%BD%E8%BD%A9-%E8%BF%9F-119841139" target="_blank" title="Linkedin">
+                      
+                        <i class="fa fa-fw fa-linkedin"></i>Linkedin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/chigx/answers" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-book"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加环境变量到Windows"><span class="nav-number">3.</span> <span class="nav-text">添加环境变量到Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成Visual-Studio-Code的插件配置"><span class="nav-number">4.</span> <span class="nav-text">完成Visual Studio Code的插件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置测试"><span class="nav-number">5.</span> <span class="nav-text">配置测试</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">迟国轩</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
