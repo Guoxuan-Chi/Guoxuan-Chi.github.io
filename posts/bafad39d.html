@@ -112,7 +112,7 @@
 <meta property="og:description" content="验证$SO(3)$、$SE(3)$和$Sim(3)$关于乘法成群  群由是一种集合和一种运算组成的代数结构。我们把集合记作$A$，把运算记作$\cdot$，那么群可以记作$G = (A\ , \ \cdot)$。群要求运算$\cdot$在集合$A$上满足四个条件：封闭性，结合律，幺元存在，逆元存在。  特殊正交群$SO(3)$ 已知特殊正交群可以被表示如下 SO(3) = \lbrace R \i">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-03-02T16:23:04.575Z">
+<meta property="og:updated_time" content="2019-03-03T06:29:18.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="视觉SLAM十四讲-第四章习题解答">
 <meta name="twitter:description" content="验证$SO(3)$、$SE(3)$和$Sim(3)$关于乘法成群  群由是一种集合和一种运算组成的代数结构。我们把集合记作$A$，把运算记作$\cdot$，那么群可以记作$G = (A\ , \ \cdot)$。群要求运算$\cdot$在集合$A$上满足四个条件：封闭性，结合律，幺元存在，逆元存在。  特殊正交群$SO(3)$ 已知特殊正交群可以被表示如下 SO(3) = \lbrace R \i">
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  19 分钟
+                  20 分钟
                 </span>
               
             </div>
@@ -443,7 +443,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg" rel="gallery_cjsrpc51f001kew8w0cpdrq2v" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg" rel="gallery_cjssohm5e001dzc8w21z0f3ub" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=500911628,1762486054&fm=26&gp=0.jpg" itemprop="contentUrl">
               </a>
             
@@ -592,12 +592,20 @@
   \begin{bmatrix}
     \phi_{2}^{\wedge} & \rho_{2} \\
     0^{T} & 0 \\
-  \end{bmatrix} \\
-  = &\begin{bmatrix}
-    \phi_{1}^{\wedge}\phi_{2}^{\wedge} & \phi_{1}^{\wedge}\rho_{2} \\
+  \end{bmatrix} -
+  \begin{bmatrix}
+    \phi_{2}^{\wedge} & \rho_{2} \\
     0^{T} & 0 \\
   \end{bmatrix}
-\end{aligned} \tag{27}</script><p>由$\mathfrak{so}(3)$的封闭性以及矩阵运算的性质，我们可以确定$\phi_{1}^{\wedge}\phi_{2}^{\wedge}$是一个反对称矩阵，同时$\phi_{1}^{\wedge}\rho_{2} \in \mathbb{R^{3}}$。因此$\mathfrak{se}(3)$的封闭性得证。</p>
+  \begin{bmatrix}
+    \phi_{1}^{\wedge} & \rho_{1} \\
+    0^{T} & 0 \\
+  \end{bmatrix}  \\
+  = &\begin{bmatrix}
+    \phi_{1}^{\wedge}\phi_{2}^{\wedge} - \phi_{2}^{\wedge}\phi_{1}^{\wedge} & \phi_{1}^{\wedge}\rho_{2} - \phi_{2}^{\wedge}\rho_{1} \\
+    0^{T} & 0 \\
+  \end{bmatrix}
+\end{aligned} \tag{27}</script><p>由$\mathfrak{so}(3)$的封闭性以及矩阵运算的性质，我们可以确定$\phi_{1}^{\wedge}\phi_{2}^{\wedge} - \phi_{2}^{\wedge}\phi_{1}^{\wedge}$是一个反对称矩阵，同时$\phi_{1}^{\wedge}\rho_{2} - \phi_{2}^{\wedge}\rho_{1} \in \mathbb{R^{3}}$。因此$\mathfrak{se}(3)$的封闭性得证。</p>
 <p>由$\wedge$和$\vee$映射的规则，明显可知有</p>
 <script type="math/tex; mode=display">c(\xi^{\wedge}) = (c\xi)^{\wedge} \tag{28}</script><script type="math/tex; mode=display">(\xi_{x} + \xi_{y})^{\wedge} = \xi_{x}^{\wedge} + \xi_{y}^{\wedge} \tag{29}</script><p>结合$(28)(29)$以及矩阵运算的<strong>分配率</strong>，可得以下关系</p>
 <script type="math/tex; mode=display">\begin{aligned}
@@ -656,7 +664,8 @@
 <hr>
 <h4 id="证明-Rp-wedge-R-T-Rp-wedge"><a href="#证明-Rp-wedge-R-T-Rp-wedge" class="headerlink" title="证明$Rp^{\wedge}R^{T} = (Rp)^{\wedge}$"></a>证明$Rp^{\wedge}R^{T} = (Rp)^{\wedge}$</h4><p>  题目可以被更加严格地表述为：证明$\forall R \in SO(3), p \in \mathbb{R^{3}}, Rp^{\wedge}R^{T} = (Rp)^{\wedge}$。</p>
 <p>  设$\forall a, b \in \mathbb{R^{3}}$，令$c = a \times b = a^{\wedge}b$，可知</p>
-<script type="math/tex; mode=display">Rc = R(a \times b) = (Ra) \times (Rb) = (Ra)^{\wedge}Rb \tag{37}</script><p>  需要注意的是，第二个等号对于$R \in \mathbb{SO(3)}$成立，并不代表对任意矩阵成立。我们可以这样理解：向量左乘旋转矩阵代表线性坐标变换，或者说是“以另一个坐标系的视角去观察”。那么$a, b$先作外积后再进行线性坐标变换（以另一个视角观察），或是分别进行相同的线性坐标变换后再求外积（先以另外一个同样的视角观察，再作外积），并不会有任何区别。“先变换或是后变换，$Rc$都在那里，不来不去。”</p>
+<script type="math/tex; mode=display">Rc = R(a \times b) = (Ra) \times (Rb) = (Ra)^{\wedge}Rb \tag{37}</script><p>  需要注意的是，第二个等号对于$R \in SO(3)$成立，并不代表对任意矩阵成立。考虑到该步推导并不属于常见的运算性质或公理，我们给出<code>matlab</code>代码如下，请感兴趣的读者自行验证。</p>
+  <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A = <span class="built_in">rand</span>(<span class="number">3</span>, <span class="number">3</span>);   <span class="comment">%随机初始化3x3矩阵</span></span><br><span class="line">R = orth(A);      <span class="comment">%变换为单位正交矩阵</span></span><br><span class="line">a = <span class="built_in">rand</span>(<span class="number">3</span>, <span class="number">1</span>);   <span class="comment">%随机初始化3维列向量</span></span><br><span class="line">b = <span class="built_in">rand</span>(<span class="number">3</span>, <span class="number">1</span>);   <span class="comment">%随机初始化3维列向量</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">disp</span>(R * <span class="built_in">cross</span>(a, b));<span class="comment">%先作外积后旋转</span></span><br><span class="line"><span class="built_in">disp</span>(<span class="built_in">cross</span>(R*a, R*b));<span class="comment">%先旋转后作外积</span></span><br></pre></td></tr></table></figure>
 <p>  进一步地，对$(37)$两侧同时左乘$R^{T}$，有</p>
 <script type="math/tex; mode=display">c = R^{T}(Ra)^{\wedge}Rb \tag{38}</script><p>  考虑$c = a^{\wedge}b$的关系，对应$(38)$，得到</p>
 <script type="math/tex; mode=display">a^{\wedge} = R^{T}(Ra)^{\wedge}R \tag{39}</script><p>  对$(39)$两侧稍加整理即可得到有</p>
@@ -693,12 +702,12 @@
     \Delta \phi^{\wedge}p + \Delta \rho \\
     0 \\
   \end{bmatrix}}{\Delta \xi}) \\
-  &= \underset{\Delta \xi \ \rightarrow \ 0}{\lim} (-\frac{
+  &= \underset{\Delta \xi \ \rightarrow \ 0}{\lim} (\frac{
   \begin{bmatrix}
     R(\Delta \phi^{\wedge}p + \Delta \rho) \\
     0 \\
   \end{bmatrix}}{\Delta \xi}) \\
-  &= \underset{\Delta \xi \ \rightarrow \ 0}{\lim} (-\frac{
+  &= \underset{\Delta \xi \ \rightarrow \ 0}{\lim} (\frac{
   \begin{bmatrix}
     -Rp^{\wedge}\Delta \phi + R\Delta \rho \\
     0 \\
@@ -994,7 +1003,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.4k</span>
+    <span title="Site words total count">31.5k</span>
   
 </div>
 
