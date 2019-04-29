@@ -3,7 +3,7 @@
 
 
 
-<html class="theme-next pisces" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -112,7 +112,7 @@
 <meta property="og:description" content="题目链接：删除排序数组中的重复项题目描述  给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。   不要使用额外的数组空间，你必须在原地修改输入数组并在使用$O(1)$额外空间的条件下完成。 示例 输入：nums = [1,1,2] 输出：2    输入：nums = [0,0,1,1,1,2,2,3,3,4] 输出：5   题目分析  考虑该题目给">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538485914879&di=f4dc1cb336b562fea73c837e352d8840&imgtype=0&src=http%3A%2F%2Fpic3.zhimg.com%2Fv2-0c435ab948b151fd834be55f80a09794_1200x500.jpg">
-<meta property="og:updated_time" content="2019-03-08T08:45:10.057Z">
+<meta property="og:updated_time" content="2019-03-08T14:00:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode题解26-删除排序数组中的重复项">
 <meta name="twitter:description" content="题目链接：删除排序数组中的重复项题目描述  给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。   不要使用额外的数组空间，你必须在原地修改输入数组并在使用$O(1)$额外空间的条件下完成。 示例 输入：nums = [1,1,2] 输出：2    输入：nums = [0,0,1,1,1,2,2,3,3,4] 输出：5   题目分析  考虑该题目给">
@@ -124,7 +124,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  382 字
+                  382
                 </span>
               
 
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  1
                 </span>
               
             </div>
@@ -443,7 +443,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538485914879&di=f4dc1cb336b562fea73c837e352d8840&imgtype=0&src=http%3A%2F%2Fpic3.zhimg.com%2Fv2-0c435ab948b151fd834be55f80a09794_1200x500.jpg" rel="gallery_cjsztk811000c9o8w1jpv0lz5" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538485914879&di=f4dc1cb336b562fea73c837e352d8840&imgtype=0&src=http%3A%2F%2Fpic3.zhimg.com%2Fv2-0c435ab948b151fd834be55f80a09794_1200x500.jpg" rel="gallery_cjv1wprk000076olut1p616b6" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538485914879&di=f4dc1cb336b562fea73c837e352d8840&imgtype=0&src=http%3A%2F%2Fpic3.zhimg.com%2Fv2-0c435ab948b151fd834be55f80a09794_1200x500.jpg" itemprop="contentUrl">
               </a>
             
@@ -459,12 +459,12 @@
 <p>  不要使用额外的数组空间，你必须在<strong>原地修改输入数组</strong>并在使用$O(1)$额外空间的条件下完成。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote>
 <p>输入：<code>nums = [1,1,2]</code></p>
-<p>输出：2</p>
+<p>输出：<code>2</code></p>
 </blockquote>
 <hr>
 <blockquote>
 <p>输入：<code>nums = [0,0,1,1,1,2,2,3,3,4]</code></p>
-<p>输出：5</p>
+<p>输出：<code>5</code></p>
 </blockquote>
 <hr>
 <h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>  考虑该题目给定的是有序数组，因此重复的元素必然是相邻的。对于某个第一次出现数字，我们忽略其后出现的重复数字即可。使用双指针法，考虑<code>i</code>位置的元素，若<code>j = i+1</code>位置元素与其相等，则执行<code>j++</code>，直至元素不再重复，更新<code>nums[j]</code>到<code>++i</code>的位置，直至数组结束。该方法的时间复杂度为$O(n)$，空间复杂度为$O(1)$，符合题目要求。</p>
