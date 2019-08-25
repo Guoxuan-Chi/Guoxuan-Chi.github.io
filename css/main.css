@@ -2013,7 +2013,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #3effd5;
+  background: #e96516;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3232,4 +3232,10 @@ code {
   padding: 1px 4px;
   word-break: break-all;
   border-radius: 4px;
+}
+.post-body a {
+  color: #0593d3;
+}
+.post-body a:hover {
+  color: #fc6423;
 }
