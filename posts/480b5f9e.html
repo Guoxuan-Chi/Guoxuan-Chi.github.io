@@ -103,20 +103,20 @@
 
 
 
-<meta name="description" content="如何启动一个线程构造一个std::thread类型的对象即意味着开始执行一个新的线程。  使用函数名初始化std::thread，函数名后可以跟随形参列表 使用定义有函数操作符()类型的对象实例初始化std::thread，代替默认构造函数  注意，尽可能避免由C++语法解析带来的歧义。如，应当使用下列语句之一123std::thread t(func());std::thread t &amp;#123">
+<meta name="description" content="如何启动一个线程构造一个std::thread类型的对象即意味着开始执行一个新的线程。  使用函数名初始化std::thread，函数名后可以跟随形参列表 使用定义有函数操作符()类型的对象实例初始化std::thread，代替默认构造函数  注意，尽可能避免由C++语法解析带来的歧义。如，应当使用下列语句之一123std::thread t(func);std::thread t &amp;#123;f">
 <meta name="keywords" content="C++,Concurrency">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++并发编程学习第二章">
 <meta property="og:url" content="http://gxchi.tech/posts/480b5f9e.html">
 <meta property="og:site_name" content="迟国轩的博客">
-<meta property="og:description" content="如何启动一个线程构造一个std::thread类型的对象即意味着开始执行一个新的线程。  使用函数名初始化std::thread，函数名后可以跟随形参列表 使用定义有函数操作符()类型的对象实例初始化std::thread，代替默认构造函数  注意，尽可能避免由C++语法解析带来的歧义。如，应当使用下列语句之一123std::thread t(func());std::thread t &amp;#123">
+<meta property="og:description" content="如何启动一个线程构造一个std::thread类型的对象即意味着开始执行一个新的线程。  使用函数名初始化std::thread，函数名后可以跟随形参列表 使用定义有函数操作符()类型的对象实例初始化std::thread，代替默认构造函数  注意，尽可能避免由C++语法解析带来的歧义。如，应当使用下列语句之一123std::thread t(func);std::thread t &amp;#123;f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://pic3.zhimg.com/v2-f278be7973516129af9e64d45a0c6f4d_1200x500.jpg">
-<meta property="og:updated_time" content="2019-08-25T08:15:44.567Z">
+<meta property="og:image" content="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg">
+<meta property="og:updated_time" content="2019-09-05T15:10:44.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++并发编程学习第二章">
-<meta name="twitter:description" content="如何启动一个线程构造一个std::thread类型的对象即意味着开始执行一个新的线程。  使用函数名初始化std::thread，函数名后可以跟随形参列表 使用定义有函数操作符()类型的对象实例初始化std::thread，代替默认构造函数  注意，尽可能避免由C++语法解析带来的歧义。如，应当使用下列语句之一123std::thread t(func());std::thread t &amp;#123">
-<meta name="twitter:image" content="https://pic3.zhimg.com/v2-f278be7973516129af9e64d45a0c6f4d_1200x500.jpg">
+<meta name="twitter:description" content="如何启动一个线程构造一个std::thread类型的对象即意味着开始执行一个新的线程。  使用函数名初始化std::thread，函数名后可以跟随形参列表 使用定义有函数操作符()类型的对象实例初始化std::thread，代替默认构造函数  注意，尽可能避免由C++语法解析带来的歧义。如，应当使用下列语句之一123std::thread t(func);std::thread t &amp;#123;f">
+<meta name="twitter:image" content="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg">
 
 
 
@@ -443,8 +443,8 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="https://pic3.zhimg.com/v2-f278be7973516129af9e64d45a0c6f4d_1200x500.jpg" rel="gallery_cjzqp8ifl0026v41jbj8xphfz" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://pic3.zhimg.com/v2-f278be7973516129af9e64d45a0c6f4d_1200x500.jpg" itemprop="contentUrl">
+              <a class="post-gallery-img fancybox" href="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg" rel="gallery_ck5kv29oi0003lw1j8xgoah6k" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg" itemprop="contentUrl">
               </a>
             
           
@@ -460,7 +460,7 @@
 <li>使用函数名初始化<code>std::thread</code>，函数名后可以跟随形参列表</li>
 <li>使用定义有函数操作符<code>()</code>类型的对象实例初始化<code>std::thread</code>，代替默认构造函数</li>
 </ul>
-<p>注意，尽可能避免由C++语法解析带来的歧义。如，应当使用下列语句之一<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">t</span><span class="params">(func())</span></span>;</span><br><span class="line"><span class="built_in">std</span>::thread t &#123;func()&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">t</span><span class="params">((func()))</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>注意，尽可能避免由C++语法解析带来的歧义。如，应当使用下列语句之一<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">t</span><span class="params">(func)</span></span>;</span><br><span class="line"><span class="built_in">std</span>::thread t &#123;func()&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">t</span><span class="params">((func()))</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>代替以下写法<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">t</span><span class="params">(func())</span></span>;</span><br></pre></td></tr></table></figure></p>
 <h4 id="简述线程的加入join-与分离detach-的区别"><a href="#简述线程的加入join-与分离detach-的区别" class="headerlink" title="简述线程的加入join()与分离detach()的区别"></a>简述线程的加入join()与分离detach()的区别</h4><p>在启动线程后，开发人员需要尽可能快地（至少在<code>std::thread</code>对象销毁前）确定新的线程应当加入还是分离。一个线程只能选择一次<code>join()</code>或者<code>detach()</code>，之后不能修改。</p>
 <ul>
@@ -582,6 +582,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/posts/515fccc.html" rel="prev" title="C++并发编程学习第三章">
+                C++并发编程学习第三章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -659,7 +663,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -775,7 +779,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -789,7 +793,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">35.1k</span>
+    <span title="Site words total count">35.7k</span>
   
 </div>
 

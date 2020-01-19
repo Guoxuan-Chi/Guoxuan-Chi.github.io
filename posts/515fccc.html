@@ -92,7 +92,7 @@
 
 
 
-  <meta name="keywords" content="Guoxuan, SLAM, leetcode, coding, algorithm, 迟国轩, 博客, 编程, 代码, 视觉">
+  <meta name="keywords" content="C++,Concurrency,">
 
 
 
@@ -103,16 +103,20 @@
 
 
 
-<meta name="description" content="分享代码心得 共同进步成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="迟国轩的博客">
-<meta property="og:url" content="http://gxchi.tech/archives/page/3/index.html">
+<meta name="description" content="简述多线程编程中共享数据可能带来的问题以及可能的解决办法多线程对同一对象的只读行为不会引发任何问题。数据共享引发的问题通常都是由于在某一线程尝试对某一对象修改的过程中，另一个线程尝试修改（或读取）该对象。这种情况一般被称作竞争条件。 竞争条件可以被分为良性竞争和恶性竞争。良性竞争并不会对数据的一致性和完整性造成破坏，而仅仅可能是（在不影响程序正常运行的前提下）改变了部分操作的相对顺序，如：两个线程">
+<meta name="keywords" content="C++,Concurrency">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++并发编程学习第三章">
+<meta property="og:url" content="http://gxchi.tech/posts/515fccc.html">
 <meta property="og:site_name" content="迟国轩的博客">
-<meta property="og:description" content="分享代码心得 共同进步成长">
+<meta property="og:description" content="简述多线程编程中共享数据可能带来的问题以及可能的解决办法多线程对同一对象的只读行为不会引发任何问题。数据共享引发的问题通常都是由于在某一线程尝试对某一对象修改的过程中，另一个线程尝试修改（或读取）该对象。这种情况一般被称作竞争条件。 竞争条件可以被分为良性竞争和恶性竞争。良性竞争并不会对数据的一致性和完整性造成破坏，而仅仅可能是（在不影响程序正常运行的前提下）改变了部分操作的相对顺序，如：两个线程">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg">
+<meta property="og:updated_time" content="2019-09-05T15:11:02.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="迟国轩的博客">
-<meta name="twitter:description" content="分享代码心得 共同进步成长">
+<meta name="twitter:title" content="C++并发编程学习第三章">
+<meta name="twitter:description" content="简述多线程编程中共享数据可能带来的问题以及可能的解决办法多线程对同一对象的只读行为不会引发任何问题。数据共享引发的问题通常都是由于在某一线程尝试对某一对象修改的过程中，另一个线程尝试修改（或读取）该对象。这种情况一般被称作竞争条件。 竞争条件可以被分为良性竞争和恶性竞争。良性竞争并不会对数据的一致性和完整性造成破坏，而仅仅可能是（在不影响程序正常运行的前提下）改变了部分操作的相对顺序，如：两个线程">
+<meta name="twitter:image" content="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg">
 
 
 
@@ -142,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://gxchi.tech/archives/page/3/">
+  <link rel="canonical" href="http://gxchi.tech/posts/515fccc.html">
 
 
 
 
 
-  <title>归档 | 迟国轩的博客</title>
+  <title>C++并发编程学习第三章 | 迟国轩的博客</title>
   
 
 
@@ -167,7 +171,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -303,216 +307,257 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gxchi.tech/posts/515fccc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="迟国轩">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="迟国轩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">C++并发编程学习第三章</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-25T21:39:15+08:00">
+                2019-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 25 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  642
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg" rel="gallery_ck5kv29op0006lw1jyuxosbta" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
           </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/68688fec.html" itemprop="url">
-              
-                <span itemprop="name">Leetcode题解4-两个排序数组的中位数</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-04T10:18:40+08:00" content="2018-10-04">
-          10-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        </div>
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/6917d261.html" itemprop="url">
-              
-                <span itemprop="name">Leetcode题解3-无重复字符的最长子串</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-03T18:51:07+08:00" content="2018-10-03">
-          10-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h4 id="简述多线程编程中共享数据可能带来的问题以及可能的解决办法"><a href="#简述多线程编程中共享数据可能带来的问题以及可能的解决办法" class="headerlink" title="简述多线程编程中共享数据可能带来的问题以及可能的解决办法"></a>简述多线程编程中共享数据可能带来的问题以及可能的解决办法</h4><p>多线程对同一对象的只读行为不会引发任何问题。数据共享引发的问题通常都是由于在某一线程尝试对某一对象修改的过程中，另一个线程尝试修改（或读取）该对象。这种情况一般被称作竞争条件。</p>
+<p>竞争条件可以被分为良性竞争和恶性竞争。良性竞争并不会对数据的一致性和完整性造成破坏，而仅仅可能是（在不影响程序正常运行的前提下）改变了部分操作的相对顺序，如：两个线程相对独立地向同一个队列中添加新的对象。恶性竞争则会对程序的正常运行造成很大的影响，一般体现在对于“不变量”的破坏上。特别地，C++标准中定义了“数据竞争”的概念，即多个线程并发地去修改同一个独立的对象，“数据竞争”往往是未定义行为的起因，也被认为是一种恶性竞争。</p>
+<p>由于数据共享而引发的程序问题一般是时间敏感的，且问题是难以定位的。也正因此，保证数据共享的安全性也是极为必要的。</p>
+<p>为了使共享数据更加安全，通常的办法是使得对于修改对象的中间状态对外部“不可见”或者干脆让修改过程“合为一步”而不存在“中间状态”。如：当一个线程尝试删除一个链表中的节点，而另一个线程尝试读取该链表时，保证后者要么在修改前读取，要么在修改全部完成之后读取。</p>
+<p>下面简单说明三类基于以上思想的方法：</p>
+<ul>
+<li><p>互斥锁：在修改操作前上锁，直到修改完成后解锁，中间不允许其他线程对相关的变量进行修改（或者读取）。</p>
+</li>
+<li><p>无锁编程：通过对数据结构和不变量的设计，使得该结构能够完成一系列不可分割的变化，由此不借助互斥锁即可保证数据安全性。无锁编程的难度相比前者较高。</p>
+</li>
+<li><p>软件事务内存：以事务为单位对数据进行读取和修改，当数据被某一个事务占用时，将不接受其他事务的操作申请。</p>
+</li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/66b9907.html" itemprop="url">
-              
-                <span itemprop="name">Leetcode题解2-两数相加</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-02T22:15:27+08:00" content="2018-10-02">
-          10-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/15c211e3.html" itemprop="url">
-              
-                <span itemprop="name">Leetcode题解1-两数之和</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-02T19:36:32+08:00" content="2018-10-02">
-          10-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/b5419361.html" itemprop="url">
-              
-                <span itemprop="name">使用Github与Hexo自建博客</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-01T16:34:30+08:00" content="2018-10-01">
-          10-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="迟国轩 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="迟国轩 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/tags/Concurrency/" rel="tag"># Concurrency</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/480b5f9e.html" rel="next" title="C++并发编程学习第二章">
+                <i class="fa fa-chevron-left"></i> C++并发编程学习第二章
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -520,6 +565,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -540,8 +589,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -637,6 +695,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简述多线程编程中共享数据可能带来的问题以及可能的解决办法"><span class="nav-number">1.</span> <span class="nav-text">简述多线程编程中共享数据可能带来的问题以及可能的解决办法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -789,6 +863,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

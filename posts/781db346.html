@@ -111,12 +111,12 @@
 <meta property="og:site_name" content="迟国轩的博客">
 <meta property="og:description" content="什么是并发在计算机领域中，并发一般指计算机在一个系统中同时执行多个独立的任务，而非顺序地进行多个活动。 在单核计算机中，所谓的“并发”是通过较为频繁的任务切换完成的，任务在单个核心中实际是交替地顺序进程的。近年来，随着多核心计算机的普及，真正的并发编程成为了可能，对于并发编程的程序，计算机可以调用多个核心（物理核心或逻辑核心）进行高效地并行执行。 实现并发的途径实现并发的途径一般可以分为多进程编程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://pic3.zhimg.com/v2-f278be7973516129af9e64d45a0c6f4d_1200x500.jpg">
-<meta property="og:updated_time" content="2019-08-25T08:16:00.059Z">
+<meta property="og:image" content="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg">
+<meta property="og:updated_time" content="2019-09-05T15:11:05.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++并发编程学习第一章">
 <meta name="twitter:description" content="什么是并发在计算机领域中，并发一般指计算机在一个系统中同时执行多个独立的任务，而非顺序地进行多个活动。 在单核计算机中，所谓的“并发”是通过较为频繁的任务切换完成的，任务在单个核心中实际是交替地顺序进程的。近年来，随着多核心计算机的普及，真正的并发编程成为了可能，对于并发编程的程序，计算机可以调用多个核心（物理核心或逻辑核心）进行高效地并行执行。 实现并发的途径实现并发的途径一般可以分为多进程编程">
-<meta name="twitter:image" content="https://pic3.zhimg.com/v2-f278be7973516129af9e64d45a0c6f4d_1200x500.jpg">
+<meta name="twitter:image" content="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg">
 
 
 
@@ -443,8 +443,8 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="https://pic3.zhimg.com/v2-f278be7973516129af9e64d45a0c6f4d_1200x500.jpg" rel="gallery_cjzqp8iba0007v41j0q80u0gb" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://pic3.zhimg.com/v2-f278be7973516129af9e64d45a0c6f4d_1200x500.jpg" itemprop="contentUrl">
+              <a class="post-gallery-img fancybox" href="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg" rel="gallery_ck5kv29oa0001lw1jyaxe5pjl" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="http://img.mp.itc.cn/upload/20161227/17d1fb7ce8574b808a2b506b0b10e440.jpg" itemprop="contentUrl">
               </a>
             
           
@@ -464,7 +464,8 @@
 <p>缺点：操作系统提供的进程间保护降低了数据共享与交互的效率，使用多进程带来的额外开销（如启动进程、操作系统管理进程等）较高。</p>
 </li>
 <li><p>多线程编程</p>
-<p>优点：同一进程内的多线程共享内存地址，且不需要操作系统过多额外的保护，因此数据交互效率更高。<br>缺点：由于缺乏操作系统的保护，且多线程的内存地址共享，需要程序员确保（可能）被多线程同时访问的数据的一致性问题。</p>
+<p>优点：同一进程内的多线程共享内存地址，且不需要操作系统过多额外的保护，因此数据交互效率更高。</p>
+<p>缺点：由于缺乏操作系统的保护，且多线程的内存地址共享，需要程序员确保（可能）被多线程同时访问的数据的一致性问题。</p>
 </li>
 </ul>
 <h4 id="何时应当使用并发编程"><a href="#何时应当使用并发编程" class="headerlink" title="何时应当使用并发编程"></a>何时应当使用并发编程</h4><p>使用并发的原因主要由两个：提升性能以及关注点分离。</p>
@@ -474,13 +475,13 @@
 <li><p>关注点分离：对于许多程序来讲，需要执行许多不同的任务，这些任务之间的联系往往并不是特别紧密，也没有严格的先后关系，因此可以将其放在不同线程内执行。类似于“模块化编程”的思想，这种策略可能会使得程序的开发与维护变得更加简单。</p>
 </li>
 </ul>
-<p>需要注意的是，当当程序本身并不复杂时，使用多线程带来额外的开销甚至可能大于执行程序本身的开销。此外，如果程序并不能被清晰地分出不同的模块，多线程编程往往会导致频繁的数据交互，且开发难度也会大大提升。在这种情况下，使用多线程编程是弊大于利的。</p>
+<p>需要注意的是，当程序本身并不复杂时，使用多线程带来额外的开销甚至可能大于执行程序本身的开销。此外，如果程序并不能被清晰地分出不同的模块，多线程编程往往会导致频繁的数据交互，且开发难度也会大大提升。在这种情况下，使用多线程编程是弊大于利的。</p>
 <p>线程的运行会带来操作系统资源的消耗，对于每个线程，操作系统会给分配一定的堆栈空间。因此，在计算资源紧张的情况下，也应当会酌情考虑是否要使用多线程编程。</p>
 <h4 id="简述C-对并发的支持"><a href="#简述C-对并发的支持" class="headerlink" title="简述C++对并发的支持"></a>简述C++对并发的支持</h4><p>C++98标准并没有添加对于多线程的支持，但由于多线程编程的必要性，许多编译器会提供与平台相关的基于C语言的多线程编程接口。</p>
 <p>随着编程人员不再满足于使用平台相关的C语言API，C++11标准添加了面向对象的多线程编程标准。新标准中不仅包括一个全新的线程感知内存模型，还提供了用于管理线程、共享数据、线程间同步以及低级原子操作的各种类。</p>
 <p>C++多线程编程标准库中整合了一些底层工具，因此必然存在一定的抽象代价。C++标准委员会在设计类库时，保证了能够在多个主流平台上能够以极低的抽象代价实现各类功能，因此性能的损耗是可以忽略不计的。特别地，为了实现极致性能，C++标准委员会还引入了原子操作库，旨在提供底层的细粒度的多线程支持。</p>
 <h4 id="简单的多线程编程样例与分析"><a href="#简单的多线程编程样例与分析" class="headerlink" title="简单的多线程编程样例与分析"></a>简单的多线程编程样例与分析</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello Concurrency Programming World."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="function">thread <span class="title">t</span><span class="params">(hello)</span></span>;</span><br><span class="line">    t.join();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在以上程序中，<code>void hello()</code>函数作为线程<code>t</code>的入口函数，因此打印是在另一个线程（而非<code>main()</code>函数所在线程）里完成的。<code>t.join()</code>则保证了在线程<code>t</code>执行完成前，当前线程不会结束，而会一直等待。</p>
+<p>在以上程序中，<code>hello()</code>函数作为线程<code>t</code>的入口函数，因此打印是在另一个线程（而非<code>main()</code>函数所在线程）里完成的。<code>t.join()</code>则保证了在线程<code>t</code>执行完成前，当前线程不会结束，而会一直等待。</p>
 
       
     </div>
@@ -633,7 +634,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -749,7 +750,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -763,7 +764,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">35.1k</span>
+    <span title="Site words total count">35.7k</span>
   
 </div>
 
