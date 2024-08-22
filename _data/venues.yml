@@ -15,19 +15,17 @@
 # '#267226' dark_green TMC
 # '#5c0070' dark_purple others
 
-"ACM MobiCom"
-  color: "#930202"
+"ACMMobiCom"
+    color: "#930202"
 
-"ACM MobiSys"
-  color: "#d05700"
+"ACMMobiSys"
+    color: "#d05700"
 
-"IEEE GLOBECOM"
+"IEEEJSAC"
+    color: "#024070"
 
-"IEEE JSAC"
-  color: "#024070"
-
-"IEEE TMC"
-  color: "#267226"
+"IEEETMC"
+    color: "#267226"
 
 
 
