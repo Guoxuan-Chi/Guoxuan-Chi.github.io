@@ -8,9 +8,6 @@
 # "Vision":
 #   color: "#009f36"
 
-
-
-
 "ACM MobiCom":
     color: "#B31B1B"
 
@@ -21,7 +18,5 @@
     color: "#024070"
 
 "IEEE TMC":
-    color: "#00369f"
-
-
+    color: "#008080"
 
