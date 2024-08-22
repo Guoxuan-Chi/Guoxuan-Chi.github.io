@@ -1,9 +1,33 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+# "AJP":
+#   url: https://aapt.scitation.org/journal/ajp
+#   color: "#00369f"
 
-"PhysRev":
-  url: https://journals.aps.org/
+# "PhysRev":
+#   url: https://journals.aps.org/
 
-"Vision":
-  color: "#009f36"
+# "Vision":
+#   color: "#009f36"
+
+
+# '#930202' dark_red MobiCom 
+# '#d05700' dark_orange MobiSys
+# '#024070' dark_blue JSAC
+# '#267226' dark_green TMC
+# '#5c0070' dark_purple others
+
+"ACM MobiCom"
+  color: "#930202"
+
+"ACM MobiSys"
+  color: "#d05700"
+
+"IEEE GLOBECOM"
+
+"IEEE JSAC"
+  color: "#024070"
+
+"IEEE TMC"
+  color: "#267226"
+
+
+
