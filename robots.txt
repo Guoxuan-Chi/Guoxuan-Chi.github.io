@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://Guoxuan-Chi.github.ioblank/sitemap.xml
+Sitemap: https://Guoxuan-Chi.github.io/sitemap.xml
