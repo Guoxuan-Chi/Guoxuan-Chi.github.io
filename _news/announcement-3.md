@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper **AirECG** for wireless-based electrocardiogram <i class="fa-solid fa-heart-pulse" style="color: red"></i> generation got accepted by ACM IMWUT!
+Our work **AirECG** on wireless-based electrocardiogram <i class="fa-solid fa-heart-pulse" style="color: red"></i> generation got accepted by ACM IMWUT!

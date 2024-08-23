@@ -18,7 +18,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
 ---
 
-I am currently a postdoctoral researcher at the <a href='https://tns.thss.tsinghua.edu.cn/'> Institute of Trustworthy Networks and Systems </a> in Tsinghua University, leading by Professor <a href='https://tns.thss.tsinghua.edu.cn/~yunhao/en.html'> Yunhao Liu </a>. Prior to that, I received my Ph.D. (2024) degree in Software Engineering at Tsinghua University under the supervision of Professor <a href='https://tns.thss.tsinghua.edu.cn/~yangzheng/'> Zheng Yang </a>, and my B.S. (2019) degree in Communication Engineering at Beijing University of Posts and Telecommunications.
+I am currently a postdoctoral researcher at the <a href='https://tns.thss.tsinghua.edu.cn/'>Institute of Trustworthy Networks and Systems</a> in Tsinghua University, leading by Professor <a href='https://tns.thss.tsinghua.edu.cn/~yunhao/en.html'>Yunhao Liu</a>. Prior to that, I received my Ph.D. (2024) degree in Software Engineering at Tsinghua University under the supervision of Professor <a href='https://tns.thss.tsinghua.edu.cn/~yangzheng/'>Zheng Yang</a>, and my B.S. (2019) degree in Communication Engineering at Beijing University of Posts and Telecommunications.
 My current research focuses on RF-oriented Generative AI in wireless systems.
 
 
