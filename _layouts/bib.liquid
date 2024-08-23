@@ -247,7 +247,7 @@
       {% if entry.website %}
         <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
       {% endif %}
-    <!-- </div> -->
+    
     {% if site.enable_publication_badges %}
       {% assign entry_has_altmetric_badge = false %}
       {% if entry.altmetric and entry.altmetric != 'false' %}
@@ -269,7 +269,7 @@
         {% assign entry_has_inspirehep_badge = true %}
       {% endif %}
       {% if entry_has_altmetric_badge or entry_has_dimensions_badge or entry_has_google_scholar_badge or entry_has_inspirehep_badge %}
-      <!-- <div class="badges"> -->
+      
           {% if site.enable_publication_badges.google_scholar and entry_has_google_scholar_badge %}
             <a
               href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user={{ site.scholar_userid }}&citation_for_view={{ site.scholar_userid }}:{{ entry.google_scholar_id }}"
