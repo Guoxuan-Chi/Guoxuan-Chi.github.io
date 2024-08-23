@@ -9,14 +9,18 @@
   color: "#009f36"
 
 "ACM MobiCom":
+    url: "https://dl.acm.org/conference/mobicom"
     color: "#B31B1B"
 
 "ACM MobiSys": 
+    url: "https://dl.acm.org/conference/mobisys"
     color: "#FF6600"
 
 "IEEE JSAC":
+    url: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=49"
     color: "#024070"
 
 "IEEE TMC":
+    url: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7755"
     color: "#008080"
 
