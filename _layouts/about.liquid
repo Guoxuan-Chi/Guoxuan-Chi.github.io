@@ -35,6 +35,10 @@ layout: default
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}
+        <!-- Social -->
+        <div class="social" style="margin-top: -30px; margin-bottom: -10px;">
+          <div class="contact-icons">{% include social.liquid %}</div>
+        </div>
       </div>
     {% endif %}
 
@@ -64,14 +68,13 @@ layout: default
       {% include selected_papers.liquid %}
     {% endif %}
 
-    <!-- Social -->
+    <!-- Social
     {% if page.social %}
       <div class="social">
         <div class="contact-icons">{% include social.liquid %}</div>
-
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
-    {% endif %}
+    {% endif %} -->
 
     {% if site.newsletter.enabled and site.footer_fixed %}
       {% include scripts/newsletter.liquid center=true %}
