@@ -16,6 +16,10 @@
   url: "https://dl.acm.org/conference/mobisys"
   color: "#FF6600"
 
+"IEEE GLOBECOM": 
+  url: "https://ieeexplore.ieee.org/xpl/conhome/1000308/all-proceedings"
+  color: "#ffaa10"
+
 "IEEE JSAC":
   url: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=49"
   color: "#024070"
@@ -23,4 +27,8 @@
 "IEEE TMC":
   url: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7755"
   color: "#008080"
+
+"ACM TOSN":
+  url: "https://dl.acm.org/journal/tosn"
+  color: "#2878b5"
 
