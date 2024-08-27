@@ -16,7 +16,7 @@ footer_text: >
 keywords: Academic, Internet of Things, Mobile Computing, Wireless Sensing, Generative AI  # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: "icon.png" # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
-cv: "cv-240827.pdf" # the PDF file of CV in /assets/pdf
+cv: "CV240827.pdf" # the PDF file of CV in /assets/pdf
 
 url: https://Guoxuan-Chi.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
