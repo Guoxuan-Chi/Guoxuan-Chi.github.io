@@ -1,5 +1,5 @@
 {% if site.email %}
-  <a href="mailto:{{ site.email | encode_email }}" title="Email"><i class="fa-solid fa-envelope" style="font-size: 30px;"></i></a>
+  <a href="mailto:{{ site.email | encode_email }}" title="Email"><i class="fa-solid fa-envelope" style="font-size: 28px;"></i></a>
 {% endif %}
 <!-- {% if site.email %}
   <a href="mailto:{{ site.email | encode_email }}" title="email"><i class="fa-regular fa-envelope"></i></a>
@@ -14,7 +14,7 @@
   <a href="https://orcid.org/{{ site.orcid_id }}" title="ORCID"><i class="ai ai-orcid"></i></a>
 {% endif %}
 {% if site.scholar_userid %}
-  <a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" title="Google Scholar"  style="font-size: 30px;"><i class="ai ai-google-scholar"></i></a>
+  <a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" title="Google Scholar"  style="font-size: 28px;"><i class="ai ai-google-scholar"></i></a>
 {% endif %}
 {% if site.inspirehep_id %}
   <a href="https://inspirehep.net/authors/{{ site.inspirehep_id }}" title="Inspire HEP"><i class="ai ai-inspire"></i></a>
@@ -35,16 +35,16 @@
   <a href="https://www.researchgate.net/profile/{{site.research_gate_profile}}/" title="ResearchGate"><i class="ai ai-researchgate"></i></a>
 {% endif %}
 {% if site.ieee_id %}
-  <a href="https://ieeexplore.ieee.org/author/{{site.ieee_id}}/" title="IEEE Xplore"><i class="ai ai-ieee"  style="font-size: 30px;"></i></a>
+  <a href="https://ieeexplore.ieee.org/author/{{site.ieee_id}}/" title="IEEE Xplore"><i class="ai ai-ieee"  style="font-size: 28px;"></i></a>
 {% endif %}
 {% if site.acm_id %}
-  <a href="https://dl.acm.org/profile/{{site.acm_id}}/" title="ACM DL"><i class="ai ai-acm" style="font-size: 30px;"></i></a>
+  <a href="https://dl.acm.org/profile/{{site.acm_id}}/" title="ACM DL"><i class="ai ai-acm" style="font-size: 28px;"></i></a>
 {% endif %}
 {% if site.scopus_id %}
   <a href="https://www.scopus.com/authid/detail.uri?authorId={{site.scopus_id}}" title="Scopus"><i class="ai ai-scopus"></i></a>
 {% endif %}
 {% if site.github_username %}
-  <a href="https://github.com/{{ site.github_username }}" title="GitHub"><i class="fa-brands fa-github"  style="font-size: 30px;"></i></a>
+  <a href="https://github.com/{{ site.github_username }}" title="GitHub"><i class="fa-brands fa-github"  style="font-size: 28px;"></i></a>
 {% endif %}
 {% if site.linkedin_username %}
   <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
@@ -128,7 +128,7 @@
   <a href="{{ site.baseurl }}/feed.xml" title="RSS Feed"><i class="fa-solid fa-square-rss"></i></a>
 {% endif %}
 {% if site.wechat_qr %}
-  <a id="WeChatBtn" title="WeChat"><i class="fa-brands fa-weixin"  style="font-size: 30px;"></i></a>
+  <a id="WeChatBtn" title="WeChat"><i class="fa-brands fa-weixin"  style="font-size: 28px;"></i></a>
   <div id="WeChatMod" class="wechat-modal">
     <img src="{{ site.wechat_qr | prepend: 'assets/img/' | relative_url }}" alt="WeChat QR" id="WeChatQR">
   </div>
