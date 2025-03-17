@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://Guoxuan-Chi.github.io/sitemap.xml
