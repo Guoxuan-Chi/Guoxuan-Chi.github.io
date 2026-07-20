@@ -1,0 +1,29 @@
+en:
+  - label: Research
+    url: /research/
+  - label: Publications
+    url: /publications/
+  - label: Resources
+    url: /resources/
+  - label: Students
+    url: /students/
+  - label: Activities
+    url: /activities/
+  - label: CV
+    url: /assets/pdf/Guoxuan-CV-250819.pdf
+    external: true
+zh:
+  - label: 研究
+    url: /zh/research/
+  - label: 论文
+    url: /zh/publications/
+  - label: 资源
+    url: /zh/resources/
+  - label: 学生交流
+    url: /zh/students/
+  - label: 荣誉与服务
+    url: /zh/activities/
+  - label: 简历
+    url: /assets/pdf/Guoxuan-CV-250819.pdf
+    external: true
+

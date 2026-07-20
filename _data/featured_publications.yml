@@ -1,0 +1,42 @@
+- title: "RF-Diffusion: Radio Signal Generation via Time-Frequency Diffusion"
+  venue: ACM MobiCom
+  year: 2024
+  award: Best Artifact Award
+  tldr_en: A diffusion framework designed around the time-frequency and complex-valued structures of RF signals.
+  tldr_zh: 面向射频信号时频与复数结构设计的生成式扩散框架。
+  paper: /assets/pdf/Paper-RF-Diffusion.pdf
+  code: https://github.com/mobicom24/RF-Diffusion
+  html: https://dl.acm.org/doi/abs/10.1145/3636534.3649348
+
+- title: "XFall: Domain Adaptive Wi-Fi-Based Fall Detection With Cross-Modal Supervision"
+  venue: IEEE JSAC
+  year: 2024
+  tldr_en: Cross-domain Wi-Fi fall detection using environment-independent features and visual supervision.
+  tldr_zh: 结合环境无关特征与视觉监督，实现跨域 Wi-Fi 跌倒检测。
+  paper: /assets/pdf/Paper-XFall.pdf
+  html: https://ieeexplore.ieee.org/abstract/document/10557503
+
+- title: "Wi-Drone: Wi-Fi-based 6-DoF Tracking for Indoor Drone Flight Control"
+  venue: ACM MobiSys
+  year: 2022
+  tldr_en: Wi-Fi-only 6-DoF pose tracking accurate and robust enough for indoor drone control.
+  tldr_zh: 仅依赖 Wi-Fi 实现可用于室内无人机控制的六自由度位姿跟踪。
+  paper: /assets/pdf/Paper-Wi-Drone.pdf
+  html: https://dl.acm.org/doi/abs/10.1145/3498361.3538936
+
+- title: "Locate, Tell, and Guide: Enabling Public Cameras to Navigate the Public"
+  venue: IEEE TMC
+  year: 2021
+  tldr_en: Turns existing public cameras into infrastructure for localization, semantic understanding, and navigation.
+  tldr_zh: 将公共摄像头转化为兼具定位、语义理解与导航能力的空间基础设施。
+  paper: /assets/pdf/Paper-iSAT.pdf
+  html: https://ieeexplore.ieee.org/abstract/document/9466392
+
+- title: "Chameleon: Fast-slow Neuro-symbolic Lane Topology Extraction"
+  venue: IEEE ICRA
+  year: 2025
+  tldr_en: A fast-slow neuro-symbolic pipeline for efficient lane-topology reasoning in mapless autonomy.
+  tldr_zh: 面向无图自动驾驶车道拓扑推理的快慢协同神经符号方法。
+  paper: /assets/pdf/Paper-Chameleon.pdf
+  html: https://arxiv.org/abs/2503.07485
+

@@ -1,0 +1,13 @@
+{% assign is_zh = false %}
+{% if page.lang contains 'zh' %}{% assign is_zh = true %}{% endif %}
+<ol class="news-archive">
+  {% for item in site.data.news %}
+    <li>
+      <time datetime="{{ item.date }}">{{ item.date | date: '%Y.%m.%d' }}</time>
+      <div>
+        <span class="news-type">{{ item.type }}</span>
+        <p>{% if is_zh %}{{ item.zh }}{% else %}{{ item.en }}{% endif %}</p>
+      </div>
+    </li>
+  {% endfor %}
+</ol>

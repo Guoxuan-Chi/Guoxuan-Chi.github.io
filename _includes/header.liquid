@@ -1,0 +1,69 @@
+{% assign language = 'en' %}
+{% if page.lang contains 'zh' %}
+  {% assign language = 'zh' %}
+{% endif %}
+{% assign nav_items = site.data.navigation[language] %}
+{% assign home_url = '/' %}
+{% assign home_label = 'Guoxuan Chi' %}
+{% assign language_label = '中文' %}
+{% assign language_aria = '切换到中文' %}
+{% assign language_url = page.translation_url | default: '/zh/' %}
+{% if language == 'zh' %}
+  {% assign home_url = '/zh/' %}
+  {% assign home_label = '迟国轩' %}
+  {% assign language_label = 'EN' %}
+  {% assign language_aria = 'Switch to English' %}
+  {% assign language_url = page.translation_url | default: '/' %}
+{% endif %}
+
+<header class="site-header">
+  <nav id="navbar" class="navbar navbar-light navbar-expand-lg fixed-top" aria-label="{% if language == 'zh' %}主导航{% else %}Primary navigation{% endif %}">
+    <div class="container">
+      <a class="navbar-brand faculty-brand" href="{{ home_url | relative_url }}" aria-label="{{ home_label }}">
+        <span class="faculty-brand-mark">
+          <img src="{{ '/assets/img/BUPT.jpg' | relative_url }}" alt="" width="34" height="34">
+        </span>
+        <span class="faculty-brand-name">{{ home_label }}</span>
+      </a>
+
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="{% if language == 'zh' %}展开导航{% else %}Toggle navigation{% endif %}"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto align-items-lg-center">
+          {% for item in nav_items %}
+            {% assign item_url = item.url %}
+            {% assign is_active = false %}
+            {% if page.url == item_url %}
+              {% assign is_active = true %}
+            {% endif %}
+            <li class="nav-item{% if is_active %} active{% endif %}">
+              <a
+                class="nav-link"
+                href="{{ item_url | relative_url }}"
+                {% if item.external %}target="_blank" rel="noopener noreferrer"{% endif %}
+              >
+                {{ item.label }}
+                {% if is_active %}<span class="sr-only">({% if language == 'zh' %}当前页面{% else %}current{% endif %})</span>{% endif %}
+              </a>
+            </li>
+          {% endfor %}
+          <li class="nav-item language-item">
+            <a class="nav-link language-switch" href="{{ language_url | relative_url }}" aria-label="{{ language_aria }}">
+              {{ language_label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

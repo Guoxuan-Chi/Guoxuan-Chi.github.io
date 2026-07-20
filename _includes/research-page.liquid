@@ -1,0 +1,61 @@
+{% assign is_zh = false %}
+{% if page.lang contains 'zh' %}{% assign is_zh = true %}{% endif %}
+
+<section class="research-statement">
+  <p class="lead">
+    {% if is_zh %}
+      无线系统不只是传输比特的管道，它也是连接人工智能与物理世界的重要界面。
+      我的研究围绕一个核心问题展开：如何让智能模型理解无线信号的结构与物理规律，
+      并进一步支持感知、生成、定位和行动？
+    {% else %}
+      Wireless systems are more than pipes for moving bits: they are an interface
+      between artificial intelligence and the physical world. My research asks how
+      intelligent models can understand the structure and physics of radio signals,
+      then use them to generate, perceive, localize, and act.
+    {% endif %}
+  </p>
+  <div class="statement-principles">
+    <div><strong>{% if is_zh %}物理结构{% else %}Physical structure{% endif %}</strong><span>{% if is_zh %}让模型尊重信号与传播规律{% else %}Models grounded in signals and propagation{% endif %}</span></div>
+    <div><strong>{% if is_zh %}跨域泛化{% else %}Generalization{% endif %}</strong><span>{% if is_zh %}跨环境、跨设备与跨模态工作{% else %}Across environments, devices, and modalities{% endif %}</span></div>
+    <div><strong>{% if is_zh %}系统闭环{% else %}Systems impact{% endif %}</strong><span>{% if is_zh %}从方法走向真实系统与开放资源{% else %}From methods to systems and open artifacts{% endif %}</span></div>
+  </div>
+</section>
+
+<div class="research-details">
+  {% for area in site.data.research %}
+    <section class="research-detail" id="{{ area.id }}">
+      <div class="research-detail-aside">
+        <div class="detail-number">{{ area.number }}</div>
+        <div class="detail-short">{% if is_zh %}{{ area.short_zh }}{% else %}{{ area.short_en }}{% endif %}</div>
+      </div>
+      <div class="research-detail-main">
+        <h2>{% if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif %}</h2>
+        <p class="detail-tagline">{% if is_zh %}{{ area.tagline_zh }}{% else %}{{ area.tagline_en }}{% endif %}</p>
+        <p>{% if is_zh %}{{ area.description_zh }}{% else %}{{ area.description_en }}{% endif %}</p>
+        <div class="keyword-list">
+          {% for keyword in area.keywords %}<span>{{ keyword }}</span>{% endfor %}
+        </div>
+        <div class="representative-line">
+          <strong>{% if is_zh %}代表工作{% else %}Representative work{% endif %}</strong>
+          <span>{% if is_zh %}{{ area.representative_zh }}{% else %}{{ area.representative_en }}{% endif %}</span>
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+</div>
+
+<section class="future-agenda">
+  <div class="section-kicker">{% if is_zh %}未来议题{% else %}Forward agenda{% endif %}</div>
+  <h2>{% if is_zh %}让无线智能成为真实世界 AI 的基础能力{% else %}Making wireless intelligence a foundation for real-world AI{% endif %}</h2>
+  <p>
+    {% if is_zh %}
+      下一阶段，我希望进一步探索射频基础模型、多模态空间表征，以及通信、感知与行动之间的协同设计，
+      形成从无线数据生成到具身空间理解的连续研究链条。
+    {% else %}
+      My forward agenda connects RF foundation models, multimodal spatial representations,
+      and the co-design of communication, sensing, and action—from wireless data generation
+      to embodied understanding of physical environments.
+    {% endif %}
+  </p>
+</section>
+

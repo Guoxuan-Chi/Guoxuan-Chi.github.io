@@ -1,0 +1,204 @@
+---
+layout: default
+---
+{% assign is_zh = false %}
+{% assign research_path = '/research/' %}
+{% assign publications_path = '/publications/' %}
+{% assign resources_path = '/resources/' %}
+{% assign students_path = '/students/' %}
+{% assign news_path = '/news/' %}
+{% if page.lang contains 'zh' %}
+  {% assign is_zh = true %}
+  {% assign research_path = '/zh/research/' %}
+  {% assign publications_path = '/zh/publications/' %}
+  {% assign resources_path = '/zh/resources/' %}
+  {% assign students_path = '/zh/students/' %}
+  {% assign news_path = '/zh/news/' %}
+{% endif %}
+{% assign profile = site.data.profile %}
+
+<div class="faculty-home">
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">
+        {% if is_zh %}无线智能 · 面向物理世界的人工智能{% else %}Wireless intelligence · AI for the physical world{% endif %}
+      </div>
+      <h1 id="home-title">
+        {% if is_zh %}
+          {{ profile.name_zh }} <span>{{ profile.name_en }}</span>
+        {% else %}
+          {{ profile.name_en }} <span>{{ profile.name_zh }}</span>
+        {% endif %}
+      </h1>
+      <div class="hero-role">
+        {% if is_zh %}
+          {{ profile.role_zh }} · {{ profile.school_zh }}<br>
+          <a href="https://www.bupt.edu.cn/" target="_blank" rel="noopener noreferrer">{{ profile.university_zh }}</a>
+        {% else %}
+          {{ profile.role_en }} · {{ profile.school_en }}<br>
+          <a href="https://www.bupt.edu.cn/" target="_blank" rel="noopener noreferrer">{{ profile.university_en }}</a>
+        {% endif %}
+      </div>
+      <p class="hero-tagline">{% if is_zh %}{{ profile.tagline_zh }}{% else %}{{ profile.tagline_en }}{% endif %}</p>
+      <p class="hero-summary">{% if is_zh %}{{ profile.summary_zh }}{% else %}{{ profile.summary_en }}{% endif %}</p>
+      <p class="hero-education">{% if is_zh %}{{ profile.education_zh }}{% else %}{{ profile.education_en }}{% endif %}</p>
+      <div class="hero-links">
+        <a href="mailto:{{ profile.email }}"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Email</a>
+        <a href="{{ profile.scholar }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar" aria-hidden="true"></i> Scholar</a>
+        <a href="{{ profile.github }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
+        <a href="{{ profile.cv | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-file-pdf" aria-hidden="true"></i> CV</a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <div class="portrait-frame">
+        <picture>
+          <source media="(max-width: 575px)" srcset="{{ profile.portrait_small | prepend: '/assets/img/' | relative_url }}">
+          <img
+            src="{{ profile.portrait | prepend: '/assets/img/' | relative_url }}"
+            alt="{% if is_zh %}迟国轩的学术肖像{% else %}Portrait of Guoxuan Chi{% endif %}"
+            width="960"
+            height="1200"
+            loading="eager"
+          >
+        </picture>
+      </div>
+      <div class="portrait-caption">
+        <span>{{ profile.location_en }}</span>
+        <span>BUPT · AI</span>
+      </div>
+    </div>
+  </section>
+
+  <aside class="conversation-strip">
+    <div class="strip-label">{% if is_zh %}学生与合作{% else %}Students & collaboration{% endif %}</div>
+    <p>
+      {% if is_zh %}
+        欢迎对无线智能、RF 感知与具身空间智能感兴趣的同学和合作伙伴交流。正式招生与科研实习信息将在确定后更新。
+      {% else %}
+        I welcome conversations with students and collaborators interested in AI for wireless systems, RF sensing, and embodied intelligence. Formal openings will be posted when available.
+      {% endif %}
+    </p>
+    <a href="{{ students_path | relative_url }}">{% if is_zh %}了解研究主题{% else %}Explore possible topics{% endif %} <span aria-hidden="true">→</span></a>
+  </aside>
+
+  <section class="home-section research-overview" aria-labelledby="research-heading">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">{% if is_zh %}研究主线{% else %}Research agenda{% endif %}</div>
+        <h2 id="research-heading">{% if is_zh %}从无线信号到空间智能{% else %}From radio signals to spatial intelligence{% endif %}</h2>
+      </div>
+      <a class="section-link" href="{{ research_path | relative_url }}">{% if is_zh %}完整研究介绍{% else %}Research overview{% endif %} <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="research-grid">
+      {% for area in site.data.research %}
+        <article class="research-pillar">
+          <div class="pillar-number">{{ area.number }}</div>
+          <div class="pillar-short">{% if is_zh %}{{ area.short_zh }}{% else %}{{ area.short_en }}{% endif %}</div>
+          <h3><a href="{{ research_path | relative_url }}#{{ area.id }}">{% if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif %}</a></h3>
+          <p>{% if is_zh %}{{ area.tagline_zh }}{% else %}{{ area.tagline_en }}{% endif %}</p>
+          <div class="pillar-work">{% if is_zh %}{{ area.representative_zh }}{% else %}{{ area.representative_en }}{% endif %}</div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="home-section selected-work" aria-labelledby="work-heading">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">{% if is_zh %}代表成果{% else %}Selected work{% endif %}</div>
+        <h2 id="work-heading">{% if is_zh %}代表性论文与系统{% else %}Representative papers & systems{% endif %}</h2>
+      </div>
+      <a class="section-link" href="{{ publications_path | relative_url }}">{% if is_zh %}全部论文{% else %}All publications{% endif %} <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="featured-publications">
+      {% for publication in site.data.featured_publications %}
+        <article class="featured-publication">
+          <div class="publication-meta">
+            <span>{{ publication.venue }}</span>
+            <span>{{ publication.year }}</span>
+            {% if publication.award %}<span class="publication-award">{{ publication.award }}</span>{% endif %}
+          </div>
+          <div class="publication-main">
+            <h3>{{ publication.title }}</h3>
+            <p>{% if is_zh %}{{ publication.tldr_zh }}{% else %}{{ publication.tldr_en }}{% endif %}</p>
+          </div>
+          <div class="publication-actions">
+            {% if publication.html %}<a href="{{ publication.html }}" target="_blank" rel="noopener noreferrer">HTML</a>{% endif %}
+            {% if publication.paper %}<a href="{{ publication.paper | relative_url }}" target="_blank" rel="noopener noreferrer">PDF</a>{% endif %}
+            {% if publication.code %}<a href="{{ publication.code }}" target="_blank" rel="noopener noreferrer">Code</a>{% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="home-section home-evidence" aria-label="{% if is_zh %}近期动态与学术亮点{% else %}News and academic highlights{% endif %}">
+    <div class="evidence-column">
+      <div class="section-heading compact">
+        <div>
+          <div class="section-kicker">{% if is_zh %}近期动态{% else %}Recent news{% endif %}</div>
+          <h2>{% if is_zh %}研究进展{% else %}Research updates{% endif %}</h2>
+        </div>
+        <a class="section-link" href="{{ news_path | relative_url }}">{% if is_zh %}全部{% else %}Archive{% endif %}</a>
+      </div>
+      <ol class="news-list">
+        {% for item in site.data.news limit: 5 %}
+          <li>
+            <time datetime="{{ item.date }}">{% if is_zh %}{{ item.date | date: '%Y.%m' }}{% else %}{{ item.date | date: '%b %Y' }}{% endif %}</time>
+            <span>{% if is_zh %}{{ item.zh }}{% else %}{{ item.en }}{% endif %}</span>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+    <div class="evidence-column highlights-column">
+      <div class="section-heading compact">
+        <div>
+          <div class="section-kicker">{% if is_zh %}学术亮点{% else %}Academic highlights{% endif %}</div>
+          <h2>{% if is_zh %}可信的学术证据{% else %}Signals of impact{% endif %}</h2>
+        </div>
+      </div>
+      <ul class="highlight-list">
+        <li>
+          <strong>2024</strong>
+          <span>{% if is_zh %}ACM SIGCOMM 中国博士学位论文奖{% else %}ACM SIGCOMM China Doctoral Dissertation Award{% endif %}</span>
+        </li>
+        <li>
+          <strong>2024</strong>
+          <span>{% if is_zh %}ACM MobiCom 最佳 Artifact 奖{% else %}ACM MobiCom Best Artifact Award{% endif %}</span>
+        </li>
+        <li>
+          <strong>Open</strong>
+          <span>{% if is_zh %}RF-Diffusion、Widar3.0 与无线感知教程持续公开{% else %}Open research artifacts spanning RF-Diffusion, Widar3.0, and wireless sensing tutorials{% endif %}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="home-section resources-preview" aria-labelledby="resources-heading">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">{% if is_zh %}开放资源{% else %}Open resources{% endif %}</div>
+        <h2 id="resources-heading">{% if is_zh %}代码、系统与教程{% else %}Code, systems & tutorials{% endif %}</h2>
+      </div>
+      <a class="section-link" href="{{ resources_path | relative_url }}">{% if is_zh %}查看全部资源{% else %}Explore resources{% endif %} <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="resource-list">
+      {% for resource in site.data.resources %}
+        <article class="resource-row">
+          <div class="resource-index">0{{ forloop.index }}</div>
+          <div>
+            <div class="resource-type">{% if is_zh %}{{ resource.type_zh }}{% else %}{{ resource.type_en }}{% endif %}</div>
+            <h3>{{ resource.name }}</h3>
+          </div>
+          <p>{% if is_zh %}{{ resource.description_zh }}{% else %}{{ resource.description_en }}{% endif %}</p>
+          <div class="resource-actions">
+            {% for link in resource.links %}
+              <a href="{{ link.url | relative_url }}" target="_blank" rel="noopener noreferrer">{% if is_zh %}{{ link.label_zh }}{% else %}{{ link.label }}{% endif %}</a>
+            {% endfor %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+

@@ -1,0 +1,34 @@
+name_en: Guoxuan Chi
+name_zh: 迟国轩
+role_en: Faculty Member
+role_zh: 教师
+school_en: School of Artificial Intelligence
+school_zh: 人工智能学院
+university_en: Beijing University of Posts and Telecommunications
+university_zh: 北京邮电大学
+location_en: Beijing, China
+location_zh: 中国 · 北京
+email: chiguoxuan@gmail.com
+portrait: guoxuan-chi-portrait.webp
+portrait_small: guoxuan-chi-portrait-480.webp
+avatar: guoxuan-chi-avatar.webp
+tagline_en: AI for wireless systems that generate, perceive, and navigate the physical world.
+tagline_zh: 研究面向无线与物联网系统、能够生成、感知并理解物理世界的智能方法。
+summary_en: >-
+  My research sits at the intersection of artificial intelligence, wireless systems,
+  and the Internet of Things. I build RF-native generative models, robust wireless
+  sensing systems, and spatial intelligence methods for embodied navigation.
+summary_zh: >-
+  我的研究位于人工智能、无线系统与物联网的交叉地带，关注射频原生生成模型、
+  鲁棒无线感知，以及面向具身导航的空间智能方法。
+education_en: >-
+  I received my Ph.D. in Software Engineering from Tsinghua University in 2024
+  and my B.S. in Communication Engineering from BUPT in 2019.
+education_zh: >-
+  2024 年获清华大学软件工程博士学位，2019 年获北京邮电大学通信工程学士学位。
+scholar: https://scholar.google.com/citations?user=RkTfnqcAAAAJ
+github: https://github.com/Guoxuan-Chi
+acm: https://dl.acm.org/profile/99659743055
+ieee: https://ieeexplore.ieee.org/author/37086428497
+cv: /assets/pdf/Guoxuan-CV-250819.pdf
+
