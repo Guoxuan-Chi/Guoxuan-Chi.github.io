@@ -1,0 +1,33 @@
+{% assign is_zh = false %}
+{% if page.lang contains 'zh' %}{% assign is_zh = true %}{% endif %}
+<div class="activities-grid">
+  <section>
+    <div class="section-kicker">{% if is_zh %}荣誉{% else %}Honors{% endif %}</div>
+    <h2>{% if is_zh %}荣誉与奖励{% else %}Honors & awards{% endif %}</h2>
+    <ol class="timeline-list">
+      {% for item in site.data.activities.honors %}
+        <li><time>{{ item.year }}</time><span>{% if is_zh %}{{ item.title_zh }}{% else %}{{ item.title_en }}{% endif %}</span></li>
+      {% endfor %}
+    </ol>
+  </section>
+  <section>
+    <div class="section-kicker">{% if is_zh %}学术共同体{% else %}Community{% endif %}</div>
+    <h2>{% if is_zh %}学术服务{% else %}Academic service{% endif %}</h2>
+    <div class="service-groups">
+      {% for group in site.data.activities.service %}
+        <div class="service-group">
+          <h3>{% if is_zh %}{{ group.group_zh }}{% else %}{{ group.group_en }}{% endif %}</h3>
+          <ul>{% for item in group.items %}<li>{{ item }}</li>{% endfor %}</ul>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+<aside class="activity-note">
+  {% if is_zh %}
+    以上页面提供适合同行、评审专家和学术合作方快速浏览的结构化信息；完整经历以最新简历为准。
+  {% else %}
+    This page provides a concise record for peers, reviewers, and potential collaborators. Please refer to the latest CV for the complete record.
+  {% endif %}
+</aside>
+

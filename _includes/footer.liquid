@@ -1,0 +1,36 @@
+{% assign footer_zh = false %}
+{% if page.lang contains 'zh' %}
+  {% assign footer_zh = true %}
+{% endif %}
+<footer class="faculty-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-primary">
+      <div>
+        <div class="footer-name">Guoxuan Chi · 迟国轩</div>
+        <div class="footer-affiliation">
+          {% if footer_zh %}
+            北京邮电大学人工智能学院
+          {% else %}
+            School of Artificial Intelligence · BUPT
+          {% endif %}
+        </div>
+      </div>
+      <div class="footer-links" aria-label="{% if footer_zh %}学术链接{% else %}Academic links{% endif %}">
+        <a href="mailto:{{ site.data.profile.email }}">Email</a>
+        <a href="{{ site.data.profile.scholar }}" target="_blank" rel="noopener noreferrer">Scholar</a>
+        <a href="{{ site.data.profile.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="{{ site.data.profile.cv | relative_url }}" target="_blank" rel="noopener noreferrer">CV</a>
+      </div>
+    </div>
+    <div class="footer-secondary">
+      <span>© {{ site.time | date: '%Y' }} Guoxuan Chi</span>
+      <span>
+        {% if footer_zh %}
+          面向无线、物联网与人工智能的交叉研究
+        {% else %}
+          Wireless · IoT · Artificial Intelligence
+        {% endif %}
+      </span>
+    </div>
+  </div>
+</footer>

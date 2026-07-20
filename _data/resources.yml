@@ -1,0 +1,39 @@
+- name: RF-Diffusion
+  type_en: Open-source research
+  type_zh: 开源研究项目
+  description_en: Generative modeling for time-series RF signals with a time-frequency diffusion formulation.
+  description_zh: 基于时频扩散理论的时序射频信号生成框架。
+  links:
+    - label: Code
+      label_zh: 代码
+      url: https://github.com/mobicom24/RF-Diffusion
+    - label: Paper
+      label_zh: 论文
+      url: /assets/pdf/Paper-RF-Diffusion.pdf
+    - label: Slides
+      label_zh: 幻灯片
+      url: /assets/pdf/RF-Diffusion_Session10_MobiCom24-Compressed.pptx
+
+- name: Widar3.0
+  type_en: System & dataset
+  type_zh: 系统与数据集
+  description_en: A cross-domain Wi-Fi sensing platform and public research resource.
+  description_zh: 面向跨域 Wi-Fi 感知的系统平台与公开研究资源。
+  links:
+    - label: Project
+      label_zh: 项目主页
+      url: https://tns.thss.tsinghua.edu.cn/widar3.0/
+
+- name: Hands-on Wireless Sensing with Wi-Fi
+  type_en: Tutorial
+  type_zh: 教程
+  description_en: A practical tutorial covering Wi-Fi sensing principles, processing pipelines, and implementation.
+  description_zh: 系统介绍 Wi-Fi 感知原理、信号处理流程与实践方法的教程。
+  links:
+    - label: Tutorial
+      label_zh: 教程主页
+      url: https://tns.thss.tsinghua.edu.cn/wst/
+    - label: Paper
+      label_zh: 论文
+      url: /assets/pdf/Paper-Hands-On.pdf
+

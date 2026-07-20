@@ -1,0 +1,59 @@
+{% assign is_zh = false %}
+{% if page.lang contains 'zh' %}{% assign is_zh = true %}{% endif %}
+<section class="student-status">
+  <div class="status-dot" aria-hidden="true"></div>
+  <div>
+    <strong>{% if is_zh %}当前状态{% else %}Current status{% endif %}</strong>
+    <p>
+      {% if is_zh %}
+        正式招生、科研实习及课程信息尚未确定，确认后会在本页更新。现阶段欢迎围绕研究问题进行学术交流。
+      {% else %}
+        Formal openings, research internships, and course information are not yet announced.
+        Confirmed opportunities will be posted here; research conversations are welcome in the meantime.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+<section class="student-section">
+  <div class="section-kicker">{% if is_zh %}可能的研究主题{% else %}Possible topics{% endif %}</div>
+  <h2>{% if is_zh %}适合从哪里开始{% else %}Where a project might begin{% endif %}</h2>
+  <div class="topic-grid">
+    {% for area in site.data.research %}
+      <article>
+        <span>{{ area.number }}</span>
+        <h3>{% if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif %}</h3>
+        <p>{% if is_zh %}{{ area.tagline_zh }}{% else %}{{ area.tagline_en }}{% endif %}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="student-section contact-guide">
+  <div>
+    <div class="section-kicker">{% if is_zh %}联系建议{% else %}Starting a conversation{% endif %}</div>
+    <h2>{% if is_zh %}让邮件聚焦于研究问题{% else %}Keep the first email research-focused{% endif %}</h2>
+  </div>
+  <div>
+    <p>
+      {% if is_zh %}
+        如果希望交流，请简要介绍你的背景、最感兴趣的具体问题、相关经历或作品，以及希望参与的时间范围。
+        不需要准备冗长材料，一封清晰、具体的邮件更有帮助。
+      {% else %}
+        A useful first message briefly introduces your background, the concrete question that interests you,
+        any relevant work, and the period in which you hope to participate. Clarity matters more than length.
+      {% endif %}
+    </p>
+    <a class="primary-text-link" href="mailto:{{ site.data.profile.email }}">
+      {{ site.data.profile.email }} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<section class="teaching-placeholder">
+  <strong>{% if is_zh %}课程与指导{% else %}Teaching & mentoring{% endif %}</strong>
+  <span>
+    {% if is_zh %}正式课程、学生与指导信息将在确定后补充。{% else %}Formal course, student, and mentoring information will be added when available.{% endif %}
+  </span>
+</section>
+

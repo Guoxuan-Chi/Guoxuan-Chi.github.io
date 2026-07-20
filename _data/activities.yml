@@ -1,0 +1,37 @@
+honors:
+  - year: 2024
+    title_en: ACM SIGCOMM China Doctoral Dissertation Award
+    title_zh: ACM SIGCOMM 中国博士学位论文奖
+  - year: 2024
+    title_en: ACM MobiCom Best Artifact Award
+    title_zh: ACM MobiCom 最佳 Artifact 奖
+  - year: 2021–2023
+    title_en: First-class Scholarship, Tsinghua University
+    title_zh: 清华大学一等综合奖学金
+  - year: 2019
+    title_en: Special Scholarship (Top 3 Students), BUPT
+    title_zh: 北京邮电大学特殊贡献奖学金（Top 3）
+  - year: 2016–2018
+    title_en: National Scholarship, Ministry of Education
+    title_zh: 国家奖学金
+
+service:
+  - group_en: Program Committee
+    group_zh: 程序委员会
+    items:
+      - IEEE GLOBECOM 2025
+      - IEEE ICPADS 2025
+      - ACM MobiCom Artifact Evaluation Committee 2024
+  - group_en: Distinguished Reviewer
+    group_zh: 杰出审稿人
+    items:
+      - ACM Transactions on Internet of Things, 2025–present
+  - group_en: Reviewer
+    group_zh: 期刊与会议审稿
+    items:
+      - IEEE JSAC, 2023–present
+      - IEEE TMC, 2021–present
+      - IEEE TII, 2024–present
+      - ACM IMWUT / UbiComp, 2023–present
+      - ACM TOSN, 2022–present
+

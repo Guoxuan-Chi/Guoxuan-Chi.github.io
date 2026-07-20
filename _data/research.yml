@@ -1,0 +1,67 @@
+- id: generative-ai
+  number: "01"
+  short_en: Generative AI
+  short_zh: 生成式人工智能
+  title_en: Generative AI for Wireless Systems
+  title_zh: 面向无线系统的生成式人工智能
+  tagline_en: RF-native models, not image models transplanted to signals.
+  tagline_zh: 从射频信号结构出发，而不是简单迁移图像生成模型。
+  description_en: >-
+    I study generative models that respect the time-frequency, complex-valued,
+    and physical structures of radio signals. The goal is to make generative AI
+    a native tool for wireless data synthesis, channel understanding, sensing,
+    and communication.
+  description_zh: >-
+    研究符合射频信号时频特性、复数结构与物理规律的生成模型，使生成式人工智能
+    真正服务于无线数据合成、信道理解、感知与通信。
+  keywords:
+    - RF-native generation
+    - Time-frequency modeling
+    - Multimodal learning
+  representative_en: RF-Diffusion · WiViD · AirECG
+  representative_zh: RF-Diffusion · WiViD · AirECG
+
+- id: wireless-sensing
+  number: "02"
+  short_en: RF Sensing
+  short_zh: 射频与无线感知
+  title_en: RF & Wireless Sensing
+  title_zh: 射频与无线感知
+  tagline_en: Reliable perception from signals already present in the environment.
+  tagline_zh: 利用环境中已有的无线信号，实现可靠、可泛化的感知。
+  description_en: >-
+    I develop sensing and localization systems that turn Wi-Fi and mmWave signals
+    into robust measurements of people, devices, and motion. A recurring question
+    is how to generalize across environments, deployments, and sensing modalities.
+  description_zh: >-
+    利用 Wi-Fi、毫米波等信号感知人体、设备与运动状态，并重点解决跨环境、
+    跨部署和跨模态条件下的鲁棒性与泛化问题。
+  keywords:
+    - Wi-Fi sensing
+    - Localization
+    - Cross-domain robustness
+  representative_en: XFall · Wi-Drone · milliLoc
+  representative_zh: XFall · Wi-Drone · milliLoc
+
+- id: embodied-navigation
+  number: "03"
+  short_en: Embodied Navigation
+  short_zh: 具身导航
+  title_en: Embodied Navigation & Spatial Intelligence
+  title_zh: 具身导航与空间智能
+  tagline_en: Connecting perception, maps, and action for agents in the physical world.
+  tagline_zh: 连接感知、地图与行动，让智能体理解并进入真实空间。
+  description_en: >-
+    I explore how heterogeneous sensors, online maps, and structured reasoning can
+    support localization, navigation, and motion in physical environments. This
+    direction extends my work from wireless perception toward embodied spatial intelligence.
+  description_zh: >-
+    研究异构传感器、在线地图与结构化推理如何共同支撑定位、导航与运动，
+    将无线感知进一步延伸到面向真实环境的具身空间智能。
+  keywords:
+    - Spatial intelligence
+    - Mapless autonomy
+    - Multimodal navigation
+  representative_en: iSAT · FollowUpAR · Chameleon
+  representative_zh: iSAT · FollowUpAR · Chameleon
+

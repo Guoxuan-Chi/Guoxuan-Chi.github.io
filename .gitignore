@@ -1,0 +1,14 @@
+_site
+.bundle
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+.DS_store
+.tweet-cache
+assets/libs/
+node_modules/
+vendor
+.idea
+_guoxuan-chi.github.io/
+lighthouse_results/
+tmp/
