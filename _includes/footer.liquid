@@ -5,65 +5,14 @@
 
 <footer class="faculty-footer" role="contentinfo">
   <div class="container">
-    <div class="footer-visuals">
-      <section class="footer-affiliations" aria-label="{% if footer_zh %}教育与任职{% else %}Education and appointments{% endif %}">
-        <h2>{% if footer_zh %}教育与任职{% else %}Education & appointments{% endif %}</h2>
-        <div class="footer-logo-row">
-          <a class="footer-logo" href="https://www.bupt.edu.cn/" target="_blank" rel="external nofollow noopener" title="{% if footer_zh %}北京邮电大学{% else %}Beijing University of Posts and Telecommunications{% endif %}">
-            <img src="{{ '/assets/img/BUPT.jpg' | relative_url }}" alt="{% if footer_zh %}北京邮电大学校徽{% else %}BUPT emblem{% endif %}" width="72" height="72">
-            <span class="footer-logo-copy">
-              <strong>{% if footer_zh %}北京邮电大学{% else %}BUPT{% endif %}</strong>
-              <span class="footer-credentials">
-                <span class="footer-credential">
-                  <span class="footer-credential-label">{% if footer_zh %}现任{% else %}Current{% endif %}</span>
-                  <span>{% if footer_zh %}助理教授{% else %}Assistant Professor{% endif %}</span>
-                </span>
-                <span class="footer-credential">
-                  <span class="footer-credential-label">2019</span>
-                  <span>{% if footer_zh %}通信工程学士{% else %}B.S., Communication Engineering{% endif %}</span>
-                </span>
-              </span>
-            </span>
-          </a>
-          <a class="footer-logo" href="https://www.tsinghua.edu.cn/" target="_blank" rel="external nofollow noopener" title="{% if footer_zh %}清华大学{% else %}Tsinghua University{% endif %}">
-            <img src="{{ '/assets/img/THU.jpg' | relative_url }}" alt="{% if footer_zh %}清华大学校徽{% else %}Tsinghua University emblem{% endif %}" width="72" height="72">
-            <span class="footer-logo-copy">
-              <strong>{% if footer_zh %}清华大学{% else %}Tsinghua University{% endif %}</strong>
-              <span class="footer-credentials">
-                <span class="footer-credential">
-                  <span class="footer-credential-label">2024</span>
-                  <span>{% if footer_zh %}软件工程博士{% else %}Ph.D., Software Engineering{% endif %}</span>
-                </span>
-                <span class="footer-credential">
-                  <span class="footer-credential-label">{% if footer_zh %}曾任{% else %}Former{% endif %}</span>
-                  <span>{% if footer_zh %}博士后研究人员{% else %}Postdoctoral Researcher{% endif %}</span>
-                </span>
-              </span>
-            </span>
-          </a>
-        </div>
-      </section>
-
-      <section class="footer-visitors" aria-label="{% if footer_zh %}全球访客分布{% else %}Global visitor map{% endif %}">
-        <h2>{% if footer_zh %}访客地图{% else %}Visitor map{% endif %}</h2>
-        <div class="footer-visitor-map">
-          <script
-            type="text/javascript"
-            id="clustrmaps"
-            src="https://cdn.clustrmaps.com/map_v2.js?cl=5e6b78&amp;w=a&amp;t=tt&amp;d=wDSNb0PcPrTDwV86kfnD4phMqfk8jFa7OYB_aB2figs&amp;co=f7f9fb&amp;cmo=0b67a3&amp;cmn=f2b84b&amp;ct=5e6b78"
-          ></script>
-          <noscript>
-            <a href="https://clustrmaps.com/site/1c136" target="_blank" rel="external nofollow noopener">
-              {% if footer_zh %}查看全球访客统计{% else %}View global visitor statistics{% endif %}
-            </a>
-          </noscript>
-        </div>
-      </section>
-    </div>
-
     <div class="footer-secondary">
-      <span>© {{ site.time | date: '%Y' }} Guoxuan Chi</span>
-      <span>{% if footer_zh %}办公地点：北京邮电大学明光楼 705{% else %}Office: Room 705, Mingguang Building, BUPT{% endif %}</span>
+      <span>
+        © {{ site.time | date: '%Y' }} Guoxuan Chi ·
+        {% if footer_zh %}北京邮电大学{% else %}Beijing University of Posts and Telecommunications{% endif %}
+      </span>
+      <span>
+        {% if footer_zh %}最后更新：{{ site.time | date: '%Y年%m月' }}{% else %}Last updated: {{ site.time | date: '%B %Y' }}{% endif %}
+      </span>
     </div>
   </div>
 </footer>
