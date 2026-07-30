@@ -5,7 +5,9 @@
     <section class="resource-entry">
       <div class="resource-entry-meta">
         <span>0{{ forloop.index }}</span>
-        <span>{% if is_zh %}{{ resource.type_zh }}{% else %}{{ resource.type_en }}{% endif %}</span>
+        <span>
+          {%- if is_zh %}{{ resource.type_zh }}{% else %}{{ resource.type_en }}{% endif -%}
+        </span>
       </div>
       {% if resource.image %}
         <figure class="resource-entry-media">
@@ -20,11 +22,14 @@
       {% endif %}
       <div class="resource-entry-body">
         <h2>{{ resource.name }}</h2>
-        <p>{% if is_zh %}{{ resource.description_zh }}{% else %}{{ resource.description_en }}{% endif %}</p>
+        <p>
+          {% if is_zh %}{{ resource.description_zh }}{% else %}{{ resource.description_en }}{% endif %}
+        </p>
         <div class="resource-entry-links">
           {% for link in resource.links %}
             <a href="{{ link.url | relative_url }}" target="_blank" rel="noopener noreferrer">
-              {% if is_zh %}{{ link.label_zh }}{% else %}{{ link.label }}{% endif %} <span aria-hidden="true">↗</span>
+              {% if is_zh %}{{ link.label_zh }}{% else %}{{ link.label }}{% endif %}
+              <span aria-hidden="true">↗</span>
             </a>
           {% endfor %}
         </div>

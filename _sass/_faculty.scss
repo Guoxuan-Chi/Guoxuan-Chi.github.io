@@ -32,8 +32,16 @@ html {
 body {
   color: var(--faculty-ink);
   font-family:
-    Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    Arial,
+    sans-serif;
   font-size: 1rem;
   font-weight: var(--faculty-weight-regular);
   line-height: 1.56;
@@ -261,25 +269,40 @@ a:hover {
 
 .hero-links {
   align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.58rem 1.15rem;
+  display: inline-grid;
+  gap: 0.68rem;
   margin-top: 1rem;
+  max-width: 100%;
+  width: fit-content;
 }
 
 .hero-email-links {
   align-items: center;
   color: var(--faculty-ink);
   display: inline-flex;
-  flex-basis: 100%;
   flex-wrap: wrap;
   gap: 0.35rem;
-  width: 100%;
+  width: auto;
 }
 
 .hero-email-links > span:not([aria-hidden]) {
   cursor: text;
   user-select: all;
+}
+
+.hero-email-secondary {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.hero-profile-links {
+  align-items: center;
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
+  width: 100%;
 }
 
 .hero-links a {
@@ -1459,7 +1482,9 @@ a:hover {
   box-shadow: 0 5px 18px rgba(20, 34, 52, 0.035);
   margin-bottom: 0.75rem;
   padding: 1rem 1.05rem;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .faculty-publications ol.bibliography li:hover {
@@ -2228,7 +2253,7 @@ html[lang^="zh"] .faculty-home .hero-application-line {
 }
 
 html[lang^="zh"] .faculty-home .hero-links {
-  gap: 0.48rem 1rem;
+  gap: 0.58rem;
   margin-top: 0.85rem;
 }
 

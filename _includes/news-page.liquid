@@ -6,7 +6,9 @@
       <time datetime="{{ item.date }}">{{ item.date | date: '%Y.%m.%d' }}</time>
       <div>
         <span class="news-type">{{ item.type }}</span>
-        <p>{% if is_zh %}{{ item.zh }}{% else %}{{ item.en }}{% endif %}</p>
+        <p>
+          {% if is_zh %}{{ item.zh }}{% else %}{{ item.en }}{% endif %}
+        </p>
       </div>
     </li>
   {% endfor %}
