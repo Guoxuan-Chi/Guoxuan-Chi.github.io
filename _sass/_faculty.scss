@@ -2248,25 +2248,6 @@ html[lang^="zh"] .faculty-home .portrait-contact dt {
   font-weight: 560 !important;
 }
 
-html[lang^="zh"] .faculty-home .conversation-strip {
-  background: transparent;
-  border-bottom: 1px solid var(--faculty-line);
-  border-left: 0;
-  border-top: 1px solid var(--faculty-line);
-  padding: 0.95rem 0;
-}
-
-html[lang^="zh"] .faculty-home .strip-label {
-  color: #687684 !important;
-  font-size: 0.78rem;
-  font-weight: 560 !important;
-  letter-spacing: 0.035em;
-}
-
-html[lang^="zh"] .faculty-home .conversation-strip a {
-  font-weight: 560;
-}
-
 @media (max-width: 380px) {
   .hero-copy h1 {
     font-size: var(--faculty-type-heading) !important;
