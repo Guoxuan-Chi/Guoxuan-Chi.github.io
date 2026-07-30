@@ -345,6 +345,13 @@ a:hover {
   text-transform: uppercase;
 }
 
+.portrait-contact dt:lang(zh) {
+  letter-spacing: 0;
+  text-align: justify;
+  text-align-last: justify;
+  width: 3em;
+}
+
 .portrait-contact dd {
   color: #687684;
   font-size: 0.82rem;

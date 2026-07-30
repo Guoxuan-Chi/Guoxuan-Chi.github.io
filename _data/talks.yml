@@ -13,13 +13,17 @@
   # The first photo is used as the homepage cover; all photos appear on Activities.
   images: []
 
-- title_en: "Author Talk in the ‘顶会作者读顶会’ Series"
-  title_zh: "顶会作者读顶会"
-  event_en: "Huang Danian Chasiwu Seminar"
-  event_zh: "黄大年茶思屋"
+- title_en: "On the Integration of Generative AI and Wireless Sensing"
+  title_zh: "生成式人工智能与无线感知的融合"
+  event_en: "‘顶会作者读顶会’ Series · Chaspark"
+  event_zh: "“顶会作者读顶会”系列第 2 讲 · 黄大年茶思屋"
+  date: "2025-04-23"
   description_en: >-
-    An invited presentation sharing recent research with students and peers.
+    An invited presentation on generative methods for radio signals and their
+    applications to wireless sensing, signal denoising, and channel estimation.
   description_zh: >-
-    受邀参加“顶会作者读顶会”系列活动，并以论文作者身份与同学和同行分享近期研究。
+    介绍面向射频信号的生成方法与复数域神经网络，并讨论生成式模型在无线感知、
+    异常活动识别、信号去噪和信道估计等任务中的应用。
+  event_url: https://www.bilibili.com/video/BV1tWL4z1Eas/
   # Keep the same object format as above when photos are added.
   images: []
