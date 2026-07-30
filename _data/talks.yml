@@ -9,14 +9,19 @@
   description_zh: >-
     介绍面向射频信号的时频扩散方法，以及生成式模型在无线感知中的关键作用。
   event_url: https://www.acmturc.com/2025/cn/mobile/SIGCOMM_China.html
-  # Optional photos: [{ src: /assets/img/talks/photo.webp, alt_en: "...", alt_zh: "..." }]
   # The first photo is used as the homepage cover; all photos appear on Activities.
-  images: []
+  images:
+    - src: /assets/img/talks/acm-turc-2025-talk.jpg
+      alt_en: Guoxuan Chi presenting at the ACM TURC 2025 SIGCOMM China Forum
+      alt_zh: 迟国轩在ACM TURC 2025 SIGCOMM China论坛作邀请报告
+    - src: /assets/img/talks/acm-turc-2025-certificate.jpg
+      alt_en: Guoxuan Chi receiving a speaker certificate at ACM TURC 2025
+      alt_zh: 迟国轩在ACM TURC 2025领取报告证书
 
 - title_en: "On the Integration of Generative AI and Wireless Sensing"
   title_zh: "生成式人工智能与无线感知的融合"
   event_en: "‘顶会作者读顶会’ Series · Chaspark"
-  event_zh: "“顶会作者读顶会”系列第 2 讲 · 黄大年茶思屋"
+  event_zh: "“顶会作者读顶会”系列第2讲 · 黄大年茶思屋"
   date: "2025-04-23"
   description_en: >-
     An invited presentation on generative methods for radio signals and their
