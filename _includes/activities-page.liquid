@@ -20,7 +20,7 @@
       {% for talk in site.data.talks %}
         {% assign has_talk_images = false %}
         {% if talk.images and talk.images.size > 0 %}{% assign has_talk_images = true %}{% endif %}
-        <article class="resource-entry{% unless has_talk_images %} resource-entry--text{% endunless %}">
+        <article{% if talk.id %} id="talk-{{ talk.id }}"{% endif %} class="resource-entry{% unless has_talk_images %} resource-entry--text{% endunless %}">
           <div class="resource-entry-meta">
             <span>{% if talk.date %}{% if is_zh %}{{ talk.date | date: '%Y.%m' }}{% else %}{{ talk.date | date: '%b %Y' }}{% endif %}{% else %}0{{ forloop.index }}{% endif %}</span>
             <span>{% if is_zh %}特邀报告{% else %}Invited talk{% endif %}</span>
