@@ -33,7 +33,7 @@ layout: default
       <div class="hero-role">
         {% if is_zh %}
           {{ profile.role_zh }} · {{ profile.school_zh }}<br>
-          <a href="https://www.bupt.edu.cn/" target="_blank" rel="noopener noreferrer">{{ profile.university_zh }}</a>
+          {{ profile.university_zh }}
         {% else %}
           {{ profile.role_en }} · {{ profile.school_en }}<br>
           <a href="https://www.bupt.edu.cn/" target="_blank" rel="noopener noreferrer">{{ profile.university_en }}</a>
@@ -212,20 +212,7 @@ layout: default
       </div>
       <div class="talk-grid">
         {% for talk in site.data.talks limit: 2 %}
-          {% assign cover = talk.images | first %}
-          <article class="talk-card{% unless cover %} talk-card--text{% endunless %}">
-            {% if cover %}
-              <figure class="talk-media">
-                <img
-                  src="{{ cover.src | relative_url }}"
-                  alt="{% if is_zh %}{{ cover.alt_zh }}{% else %}{{ cover.alt_en }}{% endif %}"
-                  width="960"
-                  height="600"
-                  loading="lazy"
-                >
-                {% if talk.images.size > 1 %}<span class="talk-gallery-count">+{{ talk.images.size | minus: 1 }}</span>{% endif %}
-              </figure>
-            {% endif %}
+          <article class="talk-card talk-card--text">
             <div class="talk-body">
               <div class="talk-meta">
                 {% if talk.date %}<time datetime="{{ talk.date }}">{% if is_zh %}{{ talk.date | date: '%Y.%m.%d' }}{% else %}{{ talk.date | date: '%b %-d, %Y' }}{% endif %}</time>{% endif %}
@@ -234,6 +221,7 @@ layout: default
               <h3>{% if is_zh %}{{ talk.title_zh }}{% else %}{{ talk.title_en }}{% endif %}</h3>
               <p>{% if is_zh %}{{ talk.description_zh }}{% else %}{{ talk.description_en }}{% endif %}</p>
               <div class="talk-actions">
+                {% if talk.images and talk.images.size > 0 and talk.id %}<a href="{{ activities_path | relative_url }}#talk-{{ talk.id }}">{% if is_zh %}查看照片{% else %}Photos{% endif %}</a>{% endif %}
                 {% if talk.event_url %}<a href="{{ talk.event_url }}" target="_blank" rel="noopener noreferrer">{% if is_zh %}活动页面{% else %}Event{% endif %}</a>{% endif %}
                 {% if talk.paper_url %}<a href="{{ talk.paper_url }}" target="_blank" rel="noopener noreferrer">{% if is_zh %}论文{% else %}Paper{% endif %}</a>{% endif %}
                 {% if talk.slides_url %}<a href="{{ talk.slides_url | relative_url }}" target="_blank" rel="noopener noreferrer">{% if is_zh %}幻灯片{% else %}Slides{% endif %}</a>{% endif %}

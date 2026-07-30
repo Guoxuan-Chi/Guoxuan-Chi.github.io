@@ -2163,10 +2163,10 @@ a,
  ******************************************************************************/
 
 html[lang^="zh"] .faculty-home .hero-eyebrow {
-  color: #75818d !important;
-  font-size: 0.76rem;
-  font-weight: 500 !important;
-  letter-spacing: 0.035em;
+  color: var(--bupt-blue-bright) !important;
+  font-size: 0.82rem;
+  font-weight: 650 !important;
+  letter-spacing: 0.13em;
   text-transform: none;
 }
 
@@ -2188,13 +2188,10 @@ html[lang^="zh"] .faculty-home .hero-role {
   margin-bottom: 0.85rem;
 }
 
-html[lang^="zh"] .faculty-home .hero-role a,
 html[lang^="zh"] .faculty-home .hero-summary a {
-  color: inherit !important;
-  text-decoration-color: #b8c1c9;
-  text-decoration-line: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.16em;
+  color: var(--bupt-blue-bright) !important;
+  font-weight: 520 !important;
+  text-decoration: none;
 }
 
 html[lang^="zh"] .faculty-home .hero-summary {
@@ -2209,21 +2206,25 @@ html[lang^="zh"] .faculty-home .hero-research-focus {
 }
 
 html[lang^="zh"] .faculty-home .hero-core-question {
-  display: block;
-  font-size: 0.98rem;
+  display: flex;
+  font-size: 1.01rem;
 }
 
 html[lang^="zh"] .faculty-home .hero-core-question i {
-  display: none;
+  display: inline-block;
 }
 
 html[lang^="zh"] .faculty-home .hero-core-question strong {
-  font-weight: 520 !important;
+  font-weight: 620 !important;
 }
 
 html[lang^="zh"] .faculty-home .hero-application-line {
   font-size: 0.84rem;
-  margin-left: 0;
+  margin-left: 1.56rem;
+}
+
+.activity-talks .resource-entry[id] {
+  scroll-margin-top: 5rem;
 }
 
 html[lang^="zh"] .faculty-home .hero-links {
