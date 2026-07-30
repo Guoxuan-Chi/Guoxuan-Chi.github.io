@@ -1,3 +1,22 @@
+- date: "2026-06-01"
+  en: Our multimodal Wi-Fi-and-vision depth-estimation work was published in ACM TOSN.
+  zh: Wi-Fi 与视觉多模态深度估计工作发表于 ACM TOSN。
+  type: publication
+  home: true
+- date: "2026-03-16"
+  en: Invited to serve as a TPC member of IEEE PIMRC 2026.
+  zh: 受邀担任 IEEE PIMRC 2026 程序委员会委员。
+  type: service
+  home: true
+- date: "2026-01-27"
+  en: Invited to serve as a TPC member of IEEE GLOBECOM 2026.
+  zh: 受邀担任 IEEE GLOBECOM 2026 程序委员会委员。
+  type: service
+- date: "2025-10-12"
+  en: Gave an invited talk at the ACM TURC 2025 SIGCOMM China Forum.
+  zh: 在 ACM TURC 2025 SIGCOMM China 论坛作邀请报告。
+  type: talk
+  home: true
 - date: "2025-08-01"
   en: Served as a TPC member of IEEE ICPADS 2025.
   zh: 受邀担任 IEEE ICPADS 2025 程序委员会委员。
@@ -14,6 +33,7 @@
   en: RF-Diffusion received the ACM MobiCom 2024 Best Artifact Award.
   zh: RF-Diffusion 获 ACM MobiCom 2024 最佳 Artifact 奖。
   type: award
+  home: true
 - date: "2024-08-15"
   en: AirECG was accepted by ACM IMWUT.
   zh: 无接触心电感知工作 AirECG 被 ACM IMWUT 录用。

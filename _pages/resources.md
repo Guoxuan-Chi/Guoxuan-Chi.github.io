@@ -1,12 +1,14 @@
 ---
 layout: faculty-page
-title: Resources
-kicker: Open research
+title: Systems & Resources
+kicker: Moved to Research
 permalink: /resources/
 lang: en
 translation_url: /zh/resources/
-description: Open-source code, systems, datasets, slides, and tutorials associated with Guoxuan Chi's research.
+description: Systems, datasets, code, and tutorials associated with Guoxuan Chi's research.
+redirect: /research/#systems-resources
+redirect_delay: 0
+sitemap: false
 ---
 
-{% include resources-page.liquid %}
-
+<p>Systems and resources are now integrated with the <a href="{{ '/research/#systems-resources' | relative_url }}">Research page</a>.</p>

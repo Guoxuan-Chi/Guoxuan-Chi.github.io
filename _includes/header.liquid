@@ -19,11 +19,10 @@
 <header class="site-header">
   <nav id="navbar" class="navbar navbar-light navbar-expand-lg fixed-top" aria-label="{% if language == 'zh' %}主导航{% else %}Primary navigation{% endif %}">
     <div class="container">
-      <a class="navbar-brand faculty-brand" href="{{ home_url | relative_url }}" aria-label="{{ home_label }}">
+      <a class="navbar-brand faculty-brand" href="{{ home_url | relative_url }}" aria-label="{% if language == 'zh' %}迟国轩主页{% else %}Guoxuan Chi home{% endif %}">
         <span class="faculty-brand-mark">
-          <img src="{{ '/assets/img/BUPT.jpg' | relative_url }}" alt="" width="34" height="34">
+          <img src="{{ '/assets/img/bupt-lockup.png' | relative_url }}" alt="" width="720" height="194">
         </span>
-        <span class="faculty-brand-name">{{ home_label }}</span>
       </a>
 
       <button
@@ -58,7 +57,12 @@
             </li>
           {% endfor %}
           <li class="nav-item language-item">
-            <a class="nav-link language-switch" href="{{ language_url | relative_url }}" aria-label="{{ language_aria }}">
+            <a
+              class="nav-link language-switch"
+              href="{{ language_url | relative_url }}"
+              aria-label="{{ language_aria }}"
+              data-language-choice="{% if language == 'zh' %}en{% else %}zh{% endif %}"
+            >
               {{ language_label }}
             </a>
           </li>

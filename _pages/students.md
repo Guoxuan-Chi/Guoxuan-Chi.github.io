@@ -1,12 +1,11 @@
 ---
 layout: faculty-page
-title: Students
-kicker: Research conversations
+title: Opportunities
+kicker: Prospective students and collaborators
 permalink: /students/
 lang: en
 translation_url: /zh/students/
-description: Information for students interested in generative AI for wireless systems, RF sensing, and embodied intelligence.
+description: Information for prospective students and potential collaborators interested in wireless intelligence, RF sensing, and spatial intelligence.
 ---
 
 {% include students-page.liquid %}
-

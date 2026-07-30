@@ -7,6 +7,17 @@
         <span>0{{ forloop.index }}</span>
         <span>{% if is_zh %}{{ resource.type_zh }}{% else %}{{ resource.type_en }}{% endif %}</span>
       </div>
+      {% if resource.image %}
+        <figure class="resource-entry-media">
+          <img
+            src="{{ resource.image | relative_url }}"
+            alt="{% if is_zh %}{{ resource.image_alt_zh }}{% else %}{{ resource.image_alt_en }}{% endif %}"
+            width="960"
+            height="600"
+            loading="lazy"
+          >
+        </figure>
+      {% endif %}
       <div class="resource-entry-body">
         <h2>{{ resource.name }}</h2>
         <p>{% if is_zh %}{{ resource.description_zh }}{% else %}{{ resource.description_en }}{% endif %}</p>
@@ -21,13 +32,14 @@
     </section>
   {% endfor %}
 </div>
-<aside class="resource-note">
-  {% if is_zh %}
-    <strong>开放研究说明</strong>
-    <p>本页优先收录可复用的代码、数据、教程与系统材料。新的开放资源将在稳定后持续补充。</p>
-  {% else %}
-    <strong>About open research</strong>
-    <p>This page prioritizes reusable code, data, tutorials, and system artifacts. New resources will be added once they are ready for public use.</p>
-  {% endif %}
-</aside>
-
+{% unless include.embedded %}
+  <aside class="resource-note">
+    {% if is_zh %}
+      <strong>资源说明</strong>
+      <p>本页列出与研究方向相关的代码、数据、教程和系统材料。</p>
+    {% else %}
+      <strong>About these resources</strong>
+      <p>This page lists systems, codebases, datasets, and tutorials associated with the research agenda.</p>
+    {% endif %}
+  </aside>
+{% endunless %}

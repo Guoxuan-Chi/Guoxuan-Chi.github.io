@@ -3,21 +3,21 @@
 <section class="student-status">
   <div class="status-dot" aria-hidden="true"></div>
   <div>
-    <strong>{% if is_zh %}当前状态{% else %}Current status{% endif %}</strong>
+    <strong>{% if is_zh %}当前情况{% else %}Availability{% endif %}</strong>
     <p>
       {% if is_zh %}
-        正式招生、科研实习及课程信息尚未确定，确认后会在本页更新。现阶段欢迎围绕研究问题进行学术交流。
+        目前暂无已确认并可公布的招生或科研实习名额；后续确定后将在本页更新。欢迎对相关方向感兴趣的同学和潜在合作伙伴联系交流。
       {% else %}
-        Formal openings, research internships, and course information are not yet announced.
-        Confirmed opportunities will be posted here; research conversations are welcome in the meantime.
+        There are currently no confirmed student positions or research internship opportunities to announce. Future opportunities will be posted here.
+        In the meantime, I welcome conversations with prospective students and potential collaborators.
       {% endif %}
     </p>
   </div>
 </section>
 
 <section class="student-section">
-  <div class="section-kicker">{% if is_zh %}可能的研究主题{% else %}Possible topics{% endif %}</div>
-  <h2>{% if is_zh %}适合从哪里开始{% else %}Where a project might begin{% endif %}</h2>
+  <div class="section-kicker">{% if is_zh %}研究方向{% else %}Research topics{% endif %}</div>
+  <h2>{% if is_zh %}可交流的研究主题{% else %}Potential research topics{% endif %}</h2>
   <div class="topic-grid">
     {% for area in site.data.research %}
       <article>
@@ -31,29 +31,25 @@
 
 <section class="student-section contact-guide">
   <div>
-    <div class="section-kicker">{% if is_zh %}联系建议{% else %}Starting a conversation{% endif %}</div>
-    <h2>{% if is_zh %}让邮件聚焦于研究问题{% else %}Keep the first email research-focused{% endif %}</h2>
+    <div class="section-kicker">{% if is_zh %}联系方式{% else %}Contact{% endif %}</div>
+    <h2>{% if is_zh %}联系前请提供的信息{% else %}What to include in your email{% endif %}</h2>
   </div>
   <div>
     <p>
       {% if is_zh %}
-        如果希望交流，请简要介绍你的背景、最感兴趣的具体问题、相关经历或作品，以及希望参与的时间范围。
-        不需要准备冗长材料，一封清晰、具体的邮件更有帮助。
+        请简要介绍你的教育背景、感兴趣的具体研究问题、相关经历或作品，以及预计开始时间和可投入周期。
       {% else %}
         A useful first message briefly introduces your background, the concrete question that interests you,
-        any relevant work, and the period in which you hope to participate. Clarity matters more than length.
+        any relevant work, and your expected timeline. Clarity matters more than length.
       {% endif %}
     </p>
-    <a class="primary-text-link" href="mailto:{{ site.data.profile.email }}">
-      {{ site.data.profile.email }} <span aria-hidden="true">→</span>
-    </a>
+    <span class="primary-text-link">{{ site.data.profile.email_bupt }}</span>
   </div>
 </section>
 
 <section class="teaching-placeholder">
   <strong>{% if is_zh %}课程与指导{% else %}Teaching & mentoring{% endif %}</strong>
   <span>
-    {% if is_zh %}正式课程、学生与指导信息将在确定后补充。{% else %}Formal course, student, and mentoring information will be added when available.{% endif %}
+    {% if is_zh %}课程与指导信息将在确定后补充。{% else %}Course and mentoring information will be added as it becomes available.{% endif %}
   </span>
 </section>
-

@@ -1,34 +1,52 @@
 name_en: Guoxuan Chi
 name_zh: 迟国轩
-role_en: Faculty Member
-role_zh: 教师
+role_en: Assistant Professor
+role_zh: 助理教授
 school_en: School of Artificial Intelligence
 school_zh: 人工智能学院
 university_en: Beijing University of Posts and Telecommunications
 university_zh: 北京邮电大学
 location_en: Beijing, China
 location_zh: 中国 · 北京
-email: chiguoxuan@gmail.com
+office_en: "Room 705 · Mingguang Building"
+office_zh: "明光楼 705"
+email: chiguoxuan@bupt.edu.cn
+email_bupt: chiguoxuan@bupt.edu.cn
+email_personal: chiguoxuan@gmail.com
 portrait: guoxuan-chi-portrait.webp
 portrait_small: guoxuan-chi-portrait-480.webp
 avatar: guoxuan-chi-avatar.webp
-tagline_en: AI for wireless systems that generate, perceive, and navigate the physical world.
-tagline_zh: 研究面向无线与物联网系统、能够生成、感知并理解物理世界的智能方法。
 summary_en: >-
-  My research sits at the intersection of artificial intelligence, wireless systems,
-  and the Internet of Things. I build RF-native generative models, robust wireless
-  sensing systems, and spatial intelligence methods for embodied navigation.
+  I am currently an Assistant Professor in the School of Artificial Intelligence at Beijing
+  University of Posts and Telecommunications (<a href="https://www.bupt.edu.cn/"
+  target="_blank" rel="noopener noreferrer">BUPT</a>). Before joining BUPT, I was a
+  postdoctoral researcher at the Institute of Trustworthy Networks and Systems,
+  Tsinghua University, led by Prof. <a href="https://tns.thss.tsinghua.edu.cn/~yunhao/en.html"
+  target="_blank" rel="noopener noreferrer">Yunhao Liu</a>. I received my Ph.D. from
+  Tsinghua University in 2024 under the supervision of
+  Prof. <a href="https://tns.thss.tsinghua.edu.cn/~yangzheng/" target="_blank"
+  rel="noopener noreferrer">Zheng Yang</a>, and my B.E. from BUPT in 2019.
 summary_zh: >-
-  我的研究位于人工智能、无线系统与物联网的交叉地带，关注射频原生生成模型、
-  鲁棒无线感知，以及面向具身导航的空间智能方法。
-education_en: >-
-  I received my Ph.D. in Software Engineering from Tsinghua University in 2024
-  and my B.S. in Communication Engineering from BUPT in 2019.
-education_zh: >-
-  2024 年获清华大学软件工程博士学位，2019 年获北京邮电大学通信工程学士学位。
+  现任北京邮电大学（<a href="https://www.bupt.edu.cn/" target="_blank"
+  rel="noopener noreferrer">北邮</a>）人工智能学院助理教授。加入北邮前，我在
+  清华大学可信网络与系统研究所从事博士后研究；该研究所由
+  <a href="https://tns.thss.tsinghua.edu.cn/~yunhao/en.html" target="_blank"
+  rel="noopener noreferrer">刘云浩</a>教授领衔。2024 年获清华大学博士学位，导师为
+  <a href="https://tns.thss.tsinghua.edu.cn/~yangzheng/" target="_blank"
+  rel="noopener noreferrer">杨铮</a>教授；2019 年获北京邮电大学学士学位。
+core_question_en: How can generative AI understand the physical world through radio signals?
+core_question_zh: 生成式人工智能如何通过射频信号理解物理世界？
+application_areas:
+  - en: Wireless Sensing
+    zh: 无线感知
+  - en: ISAC
+    zh: 通感一体化（ISAC）
+  - en: Embodied Navigation
+    zh: 具身导航
+yunhao_url: https://tns.thss.tsinghua.edu.cn/~yunhao/en.html
+zheng_url: https://tns.thss.tsinghua.edu.cn/~yangzheng/
 scholar: https://scholar.google.com/citations?user=RkTfnqcAAAAJ
-github: https://github.com/Guoxuan-Chi
+orcid: https://orcid.org/0000-0002-6941-1612
 acm: https://dl.acm.org/profile/99659743055
 ieee: https://ieeexplore.ieee.org/author/37086428497
 cv: /assets/pdf/Guoxuan-CV-250819.pdf
-

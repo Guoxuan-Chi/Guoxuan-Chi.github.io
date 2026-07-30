@@ -1,0 +1,25 @@
+- title_en: "Generative AI-Driven Techniques for Wireless Sensing"
+  title_zh: "生成式 AI 驱动的无线感知关键技术"
+  event_en: "ACM TURC 2025 · SIGCOMM China Forum"
+  event_zh: "ACM TURC 2025 · SIGCOMM China 论坛"
+  date: "2025-10-12"
+  description_en: >-
+    An invited presentation on time-frequency diffusion for RF signals and the
+    role of generative models in wireless sensing.
+  description_zh: >-
+    介绍面向射频信号的时频扩散方法，以及生成式模型在无线感知中的关键作用。
+  event_url: https://www.acmturc.com/2025/cn/mobile/SIGCOMM_China.html
+  # Optional photos: [{ src: /assets/img/talks/photo.webp, alt_en: "...", alt_zh: "..." }]
+  # The first photo is used as the homepage cover; all photos appear on Activities.
+  images: []
+
+- title_en: "Author Talk in the ‘顶会作者读顶会’ Series"
+  title_zh: "顶会作者读顶会"
+  event_en: "Huang Danian Chasiwu Seminar"
+  event_zh: "黄大年茶思屋"
+  description_en: >-
+    An invited presentation sharing recent research with students and peers.
+  description_zh: >-
+    受邀参加“顶会作者读顶会”系列活动，并以论文作者身份与同学和同行分享近期研究。
+  # Keep the same object format as above when photos are added.
+  images: []

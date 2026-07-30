@@ -14,10 +14,20 @@
       then use them to generate, perceive, localize, and act.
     {% endif %}
   </p>
+  <div class="section-kicker">{% if is_zh %}研究方向{% else %}Research themes{% endif %}</div>
+  <nav class="research-index" aria-label="{% if is_zh %}研究方向目录{% else %}Research theme index{% endif %}">
+    {% for area in site.data.research %}
+      <a href="#{{ area.id }}">
+        <span class="research-index-number">{{ area.number }}</span>
+        <strong class="research-index-title">{% if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif %}</strong>
+        <span class="research-index-short">{% if is_zh %}{{ area.representative_zh }}{% else %}{{ area.representative_en }}{% endif %}</span>
+      </a>
+    {% endfor %}
+  </nav>
   <div class="statement-principles">
     <div><strong>{% if is_zh %}物理结构{% else %}Physical structure{% endif %}</strong><span>{% if is_zh %}让模型尊重信号与传播规律{% else %}Models grounded in signals and propagation{% endif %}</span></div>
     <div><strong>{% if is_zh %}跨域泛化{% else %}Generalization{% endif %}</strong><span>{% if is_zh %}跨环境、跨设备与跨模态工作{% else %}Across environments, devices, and modalities{% endif %}</span></div>
-    <div><strong>{% if is_zh %}系统闭环{% else %}Systems impact{% endif %}</strong><span>{% if is_zh %}从方法走向真实系统与开放资源{% else %}From methods to systems and open artifacts{% endif %}</span></div>
+    <div><strong>{% if is_zh %}系统验证{% else %}Systems validation{% endif %}</strong><span>{% if is_zh %}在真实系统、代码与数据中验证方法{% else %}Validate methods through real systems, code, and data{% endif %}</span></div>
   </div>
 </section>
 
@@ -29,6 +39,17 @@
         <div class="detail-short">{% if is_zh %}{{ area.short_zh }}{% else %}{{ area.short_en }}{% endif %}</div>
       </div>
       <div class="research-detail-main">
+        {% if area.image %}
+          <figure class="research-detail-media">
+            <img
+              src="{{ area.image | relative_url }}"
+              alt="{% if is_zh %}{{ area.image_alt_zh }}{% else %}{{ area.image_alt_en }}{% endif %}"
+              width="960"
+              height="600"
+              loading="lazy"
+            >
+          </figure>
+        {% endif %}
         <h2>{% if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif %}</h2>
         <p class="detail-tagline">{% if is_zh %}{{ area.tagline_zh }}{% else %}{{ area.tagline_en }}{% endif %}</p>
         <p>{% if is_zh %}{{ area.description_zh }}{% else %}{{ area.description_en }}{% endif %}</p>
@@ -36,7 +57,7 @@
           {% for keyword in area.keywords %}<span>{{ keyword }}</span>{% endfor %}
         </div>
         <div class="representative-line">
-          <strong>{% if is_zh %}代表工作{% else %}Representative work{% endif %}</strong>
+          <strong>{% if is_zh %}相关工作{% else %}Related work{% endif %}</strong>
           <span>{% if is_zh %}{{ area.representative_zh }}{% else %}{{ area.representative_en }}{% endif %}</span>
         </div>
       </div>
@@ -46,7 +67,7 @@
 
 <section class="future-agenda">
   <div class="section-kicker">{% if is_zh %}未来议题{% else %}Forward agenda{% endif %}</div>
-  <h2>{% if is_zh %}让无线智能成为真实世界 AI 的基础能力{% else %}Making wireless intelligence a foundation for real-world AI{% endif %}</h2>
+  <h2>{% if is_zh %}无线智能与真实世界 AI 的下一步研究{% else %}Next steps in wireless intelligence for real-world AI{% endif %}</h2>
   <p>
     {% if is_zh %}
       下一阶段，我希望进一步探索射频基础模型、多模态空间表征，以及通信、感知与行动之间的协同设计，
@@ -59,3 +80,15 @@
   </p>
 </section>
 
+<section class="research-resources" id="systems-resources" aria-labelledby="systems-resources-heading">
+  <div class="section-kicker">{% if is_zh %}系统与资源{% else %}Systems & resources{% endif %}</div>
+  <h2 id="systems-resources-heading">{% if is_zh %}与研究方向相关的系统和资源{% else %}Related systems and research resources{% endif %}</h2>
+  <p class="research-resources-intro">
+    {% if is_zh %}
+      以下系统、代码、数据与教程对应上述研究主线，为实验、教学和进一步合作提供入口。
+    {% else %}
+      These systems, codebases, datasets, and tutorials complement the research agenda above and support experimentation, teaching, and future collaboration.
+    {% endif %}
+  </p>
+  {% include resources-page.liquid embedded=true %}
+</section>
