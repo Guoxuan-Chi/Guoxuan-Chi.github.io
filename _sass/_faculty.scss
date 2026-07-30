@@ -299,10 +299,10 @@ a:hover {
 .hero-profile-links {
   align-items: center;
   display: grid;
-  gap: 1.4rem;
+  gap: 1rem;
   grid-template-columns: repeat(3, auto);
   justify-content: space-between;
-  width: 100%;
+  width: min(100%, 18.5rem);
 }
 
 .hero-links a {
@@ -1697,6 +1697,10 @@ a:hover {
   .hero-links {
     margin-bottom: 0;
     order: 8;
+  }
+
+  .hero-profile-links {
+    width: min(100%, 17rem);
   }
 
   .hero-portrait {
