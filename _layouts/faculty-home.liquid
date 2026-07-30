@@ -95,15 +95,15 @@ layout: default
   </section>
 
   <aside class="conversation-strip">
-    <div class="strip-label">{% if is_zh %}招生信息{% else %}Opportunities{% endif %}</div>
+    <div class="strip-label">{% if is_zh %}招生与学术合作{% else %}Opportunities{% endif %}</div>
     <p>
       {% if is_zh %}
-        欢迎有志于生成式人工智能、无线感知与空间智能研究的同学申请研究生。也欢迎学有余力、愿意主动探索的本科生联系科研实习与竞赛合作，并期待与相关领域同行开展学术交流与合作。
+        欢迎有志于生成式人工智能、无线感知与通信系统的同学申请研究生。也欢迎学有余力、愿意主动探索的本科生联系科研实习与竞赛指导，期待与相关领域同行开展学术交流合作。
       {% else %}
         Confirmed student and research-internship openings will be posted here. I also welcome conversations with prospective students and collaborators in wireless intelligence, RF sensing, and spatial intelligence.
       {% endif %}
     </p>
-    <a href="{{ students_path | relative_url }}">{% if is_zh %}了解招生与研究方向{% else %}Opportunities & contact{% endif %} <span aria-hidden="true">→</span></a>
+    <a href="{{ students_path | relative_url }}">{% if is_zh %}了解详情{% else %}Opportunities & contact{% endif %} <span aria-hidden="true">→</span></a>
   </aside>
 
   <section class="home-section home-news" aria-labelledby="news-heading">
