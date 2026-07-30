@@ -9,7 +9,7 @@
     role of generative models in wireless sensing.
   description_zh: >-
     介绍面向射频信号的时频扩散方法，以及生成式模型在无线感知中的关键作用。
-  event_url: https://www.acmturc.com/2025/cn/mobile/SIGCOMM_China.html
+  event_url: https://www.acmturc.com/2025/cn/SIGCOMM_China.html
   # Photos appear on Activities; the homepage uses a text-only card.
   images:
     - src: /assets/img/talks/acm-turc-2025-talk.jpg
