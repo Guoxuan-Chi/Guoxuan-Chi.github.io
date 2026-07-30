@@ -1,11 +1,11 @@
 en:
+  - label: Home
+    url: /
   - label: Research
     url: /research/
   - label: Publications
     url: /publications/
-  - label: Resources
-    url: /resources/
-  - label: Students
+  - label: Opportunities
     url: /students/
   - label: Activities
     url: /activities/
@@ -13,17 +13,16 @@ en:
     url: /assets/pdf/Guoxuan-CV-250819.pdf
     external: true
 zh:
+  - label: 首页
+    url: /zh/
   - label: 研究
     url: /zh/research/
   - label: 论文
     url: /zh/publications/
-  - label: 资源
-    url: /zh/resources/
-  - label: 学生交流
+  - label: 招生与合作
     url: /zh/students/
-  - label: 荣誉与服务
+  - label: 学术活动
     url: /zh/activities/
   - label: 简历
     url: /assets/pdf/Guoxuan-CV-250819.pdf
     external: true
-

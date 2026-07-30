@@ -2,41 +2,54 @@
   venue: ACM MobiCom
   year: 2024
   award: Best Artifact Award
-  tldr_en: A diffusion framework designed around the time-frequency and complex-valued structures of RF signals.
-  tldr_zh: 面向射频信号时频与复数结构设计的生成式扩散框架。
+  tldr_en: A time-frequency diffusion framework for generating diverse, high-quality time-series RF signals.
+  tldr_zh: 面向时序射频信号生成的时频扩散框架，可用于无线感知数据合成与信道估计。
+  image: /assets/img/research/rf-diffusion.webp
+  image_alt_en: RF-Diffusion time-frequency diffusion framework
+  image_alt_zh: RF-Diffusion 时频扩散框架
   paper: /assets/pdf/Paper-RF-Diffusion.pdf
-  code: https://github.com/mobicom24/RF-Diffusion
   html: https://dl.acm.org/doi/abs/10.1145/3636534.3649348
+  code: https://github.com/mobicom24/RF-Diffusion
 
 - title: "XFall: Domain Adaptive Wi-Fi-Based Fall Detection With Cross-Modal Supervision"
   venue: IEEE JSAC
   year: 2024
-  tldr_en: Cross-domain Wi-Fi fall detection using environment-independent features and visual supervision.
-  tldr_zh: 结合环境无关特征与视觉监督，实现跨域 Wi-Fi 跌倒检测。
+  tldr_en: Domain-adaptive Wi-Fi fall detection using environment-independent features and visual supervision.
+  tldr_zh: 利用环境无关特征与视觉监督提升 Wi-Fi 跌倒检测在不同环境中的泛化能力。
+  image: /assets/img/research/xfall.webp
+  image_alt_en: XFall cross-modal fall detection framework
+  image_alt_zh: XFall 跨模态跌倒检测框架
   paper: /assets/pdf/Paper-XFall.pdf
   html: https://ieeexplore.ieee.org/abstract/document/10557503
 
 - title: "Wi-Drone: Wi-Fi-based 6-DoF Tracking for Indoor Drone Flight Control"
   venue: ACM MobiSys
   year: 2022
-  tldr_en: Wi-Fi-only 6-DoF pose tracking accurate and robust enough for indoor drone control.
-  tldr_zh: 仅依赖 Wi-Fi 实现可用于室内无人机控制的六自由度位姿跟踪。
+  tldr_en: Standalone Wi-Fi 6-DoF pose tracking designed for reliable indoor drone flight control.
+  tldr_zh: 面向室内无人机飞行控制的 Wi-Fi 独立六自由度位姿跟踪系统。
+  image: /assets/img/research/wi-drone.webp
+  image_alt_en: Wi-Drone indoor tracking system
+  image_alt_zh: Wi-Drone 室内跟踪系统
   paper: /assets/pdf/Paper-Wi-Drone.pdf
   html: https://dl.acm.org/doi/abs/10.1145/3498361.3538936
 
 - title: "Locate, Tell, and Guide: Enabling Public Cameras to Navigate the Public"
   venue: IEEE TMC
-  year: 2021
-  tldr_en: Turns existing public cameras into infrastructure for localization, semantic understanding, and navigation.
-  tldr_zh: 将公共摄像头转化为兼具定位、语义理解与导航能力的空间基础设施。
+  year: 2023
+  tldr_en: A public-camera-based system that localizes users, attaches semantic context, and provides indoor navigation.
+  tldr_zh: 利用公共摄像头完成用户定位、场景语义理解与室内导航。
+  image: /assets/img/research/isat.webp
+  image_alt_en: Locate, Tell, and Guide system overview
+  image_alt_zh: Locate, Tell, and Guide 系统框架
   paper: /assets/pdf/Paper-iSAT.pdf
   html: https://ieeexplore.ieee.org/abstract/document/9466392
 
-- title: "Chameleon: Fast-slow Neuro-symbolic Lane Topology Extraction"
-  venue: IEEE ICRA
-  year: 2025
-  tldr_en: A fast-slow neuro-symbolic pipeline for efficient lane-topology reasoning in mapless autonomy.
-  tldr_zh: 面向无图自动驾驶车道拓扑推理的快慢协同神经符号方法。
-  paper: /assets/pdf/Paper-Chameleon.pdf
-  html: https://arxiv.org/abs/2503.07485
-
+- title: "Multimodal Diffusion-Based Depth Estimation Framework with Wi-Fi and Vision"
+  venue: ACM TOSN
+  year: 2026
+  tldr_en: A multimodal diffusion framework that combines commodity Wi-Fi CSI and RGB images for robust depth estimation.
+  tldr_zh: 融合商用 Wi-Fi CSI 与 RGB 图像的多模态扩散框架，实现准确、鲁棒的深度估计。
+  image: /assets/img/research/wivid.webp
+  image_alt_en: Multimodal Wi-Fi and vision depth estimation framework
+  image_alt_zh: Wi-Fi 与视觉多模态深度估计框架
+  html: https://dl.acm.org/doi/abs/10.1145/3821417

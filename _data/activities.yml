@@ -15,10 +15,25 @@ honors:
     title_en: National Scholarship, Ministry of Education
     title_zh: 国家奖学金
 
+funding:
+  - role_en: Principal Investigator
+    role_zh: 主持
+    title_en: Young Scientists Fund (Category C), National Natural Science Foundation of China
+    title_zh: 国家自然科学基金青年科学基金项目（C类）
+  - role_en: Principal Investigator
+    role_zh: 主持
+    title_en: General Program, China Postdoctoral Science Foundation
+    title_zh: 中国博士后科学基金面上资助
+
+# Add confirmed collaborative projects here with role_en/role_zh set to
+# "Participant" / "参与" and an exact official project title.
 service:
   - group_en: Program Committee
     group_zh: 程序委员会
     items:
+      - IEEE GLOBECOM 2026
+      - IEEE PIMRC 2026
+      - IEEE ICC 2026
       - IEEE GLOBECOM 2025
       - IEEE ICPADS 2025
       - ACM MobiCom Artifact Evaluation Committee 2024
@@ -31,7 +46,9 @@ service:
     items:
       - IEEE JSAC, 2023–present
       - IEEE TMC, 2021–present
+      - IEEE TWC, 2025–present
+      - IEEE TCOM, 2025–present
+      - IEEE TDSC, 2025–present
       - IEEE TII, 2024–present
       - ACM IMWUT / UbiComp, 2023–present
       - ACM TOSN, 2022–present
-

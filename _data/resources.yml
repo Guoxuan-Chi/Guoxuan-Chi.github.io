@@ -1,4 +1,7 @@
 - name: RF-Diffusion
+  image: /assets/img/research/rf-diffusion.webp
+  image_alt_en: RF-Diffusion time-frequency diffusion overview
+  image_alt_zh: RF-Diffusion 时频扩散框架
   type_en: Open-source research
   type_zh: 开源研究项目
   description_en: Generative modeling for time-series RF signals with a time-frequency diffusion formulation.
@@ -15,6 +18,9 @@
       url: /assets/pdf/RF-Diffusion_Session10_MobiCom24-Compressed.pptx
 
 - name: Widar3.0
+  image: /assets/img/research/widar3.webp
+  image_alt_en: Widar3.0 wireless sensing experiment
+  image_alt_zh: Widar3.0 无线感知实验
   type_en: System & dataset
   type_zh: 系统与数据集
   description_en: A cross-domain Wi-Fi sensing platform and public research resource.
@@ -25,6 +31,9 @@
       url: https://tns.thss.tsinghua.edu.cn/widar3.0/
 
 - name: Hands-on Wireless Sensing with Wi-Fi
+  image: /assets/img/research/wireless-tutorial.webp
+  image_alt_en: Wireless sensing tutorial pipeline
+  image_alt_zh: 无线感知教程流程
   type_en: Tutorial
   type_zh: 教程
   description_en: A practical tutorial covering Wi-Fi sensing principles, processing pipelines, and implementation.
@@ -36,4 +45,3 @@
     - label: Paper
       label_zh: 论文
       url: /assets/pdf/Paper-Hands-On.pdf
-

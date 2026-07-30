@@ -81,7 +81,7 @@ dblp_url: # your DBLP profile url
 discord_id: # your discord id (18-digit unique numerical identifier)
 facebook_id: # your facebook id
 flickr_id: # your flickr id
-github_username: Guoxuan-Chi # your GitHub user name
+github_username: # intentionally omitted from the public profile
 gitlab_username: # your GitLab user name
 ieee_id: 37086428497 # your ieeexplore.ieee.org/author/id
 inspirehep_id: # Inspire HEP author ID
@@ -93,7 +93,7 @@ lattes_id: # your ID on Lattes (Brazilian Lattes CV)
 linkedin_username: # your LinkedIn user name
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
 medium_username: # your Medium username
-orcid_id: # your ORCID ID
+orcid_id: 0000-0002-6941-1612 # your ORCID ID
 osf_id: # your OSF ID
 pinterest_id: # your pinterest id
 publons_id: # your ID on Publons
@@ -255,14 +255,12 @@ exclude:
   - assets/bibliography/
   - assets/html/relativity.html
   - assets/img/THU-Head.jpg
-  - assets/img/THU.jpg
   - assets/img/icon.png
   - assets/img/prof_pic.jpg
   - assets/img/prof_pic_1.jpg
   - assets/img/prof_pic_2.jpg
   - assets/img/prof_pic_3.jpg
   - assets/img/template_error.png
-  - assets/img/wechat.png
   - assets/json/resume.json
   - assets/json/table_data.json
   - assets/plotly/
@@ -311,6 +309,7 @@ sass:
 
 jekyll-minifier:
   exclude: ["robots.txt", "assets/js/search/*.js"]
+  compress_javascript: false
   uglifier_args:
     harmony: true
 
@@ -401,7 +400,7 @@ max_author_limit: 3 # leave blank to always show all authors
 more_authors_animation_delay: 10 # more authors are revealed on click using animation; smaller delay means faster animation
 
 # Enables publication thumbnails. If disabled, none of the publications will display thumbnails, even if specified in the bib entry.
-enable_publication_thumbnails: false
+enable_publication_thumbnails: true
 
 # -----------------------------------------------------------------------------
 # Jekyll Link Attributes

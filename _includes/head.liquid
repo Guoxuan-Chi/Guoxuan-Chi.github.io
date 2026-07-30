@@ -84,6 +84,14 @@
 
 <!-- Theme utilities used by shared scripts -->
 <script src="{{ '/assets/js/theme.js' | relative_url | bust_file_cache }}"></script>
+<script>
+  window.facultyLanguageRouting = {
+    current: {% if page.lang contains 'zh' %}'zh'{% else %}'en'{% endif %},
+    isHome: {% if page.url == '/' or page.url == '/zh/' %}true{% else %}false{% endif %},
+    translation: {{ page.translation_url | default: '/' | relative_url | jsonify }}
+  };
+</script>
+<script defer src="{{ '/assets/js/language-routing.js' | relative_url | bust_file_cache }}"></script>
 {% if site.enable_darkmode %}
   <link
     defer
