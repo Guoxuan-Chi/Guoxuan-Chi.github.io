@@ -3,7 +3,9 @@
 <section class="student-status">
   <div class="status-dot" aria-hidden="true"></div>
   <div>
-    <strong>{% if is_zh %}当前情况{% else %}Availability{% endif %}</strong>
+    <strong>
+      {%- if is_zh %}当前情况{% else %}Availability{% endif -%}
+    </strong>
     <p>
       {% if is_zh %}
         现面向2027年入学招收学术型硕士研究生。欢迎有志于生成式人工智能、无线感知与空间智能研究的同学联系申请。
@@ -17,14 +19,22 @@
 </section>
 
 <section class="student-section">
-  <div class="section-kicker">{% if is_zh %}研究方向{% else %}Research topics{% endif %}</div>
-  <h2>{% if is_zh %}可交流的研究主题{% else %}Potential research topics{% endif %}</h2>
+  <div class="section-kicker">
+    {% if is_zh %}研究方向{% else %}Research topics{% endif %}
+  </div>
+  <h2>
+    {% if is_zh %}可交流的研究主题{% else %}Potential research topics{% endif %}
+  </h2>
   <div class="topic-grid">
     {% for area in site.data.research %}
       <article>
         <span>{{ area.number }}</span>
-        <h3>{% if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif %}</h3>
-        <p>{% if is_zh %}{{ area.tagline_zh }}{% else %}{{ area.tagline_en }}{% endif %}</p>
+        <h3>
+          {% if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif %}
+        </h3>
+        <p>
+          {% if is_zh %}{{ area.tagline_zh }}{% else %}{{ area.tagline_en }}{% endif %}
+        </p>
       </article>
     {% endfor %}
   </div>
@@ -32,16 +42,20 @@
 
 <section class="student-section contact-guide">
   <div>
-    <div class="section-kicker">{% if is_zh %}联系方式{% else %}Contact{% endif %}</div>
-    <h2>{% if is_zh %}联系前请提供的信息{% else %}What to include in your email{% endif %}</h2>
+    <div class="section-kicker">
+      {% if is_zh %}联系方式{% else %}Contact{% endif %}
+    </div>
+    <h2>
+      {% if is_zh %}联系前请提供的信息{% else %}What to include in your email{% endif %}
+    </h2>
   </div>
   <div>
     <p>
       {% if is_zh %}
         请简要介绍你的教育背景、感兴趣的具体研究问题、相关经历或作品，以及预计开始时间和可投入周期。
       {% else %}
-        A useful first message briefly introduces your background, the concrete question that interests you,
-        any relevant work, and your expected timeline. Clarity matters more than length.
+        A useful first message briefly introduces your background, the concrete question that interests you, any relevant work, and your expected
+        timeline. Clarity matters more than length.
       {% endif %}
     </p>
     <span class="primary-text-link">{{ site.data.profile.email_bupt }}</span>
@@ -49,7 +63,9 @@
 </section>
 
 <section class="teaching-placeholder">
-  <strong>{% if is_zh %}课程与指导{% else %}Teaching & mentoring{% endif %}</strong>
+  <strong>
+    {%- if is_zh %}课程与指导{% else %}Teaching & mentoring{% endif -%}
+  </strong>
   <span>
     {% if is_zh %}课程与指导信息将在确定后补充。{% else %}Course and mentoring information will be added as it becomes available.{% endif %}
   </span>

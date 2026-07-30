@@ -9,4 +9,3 @@ description: Research, publication, award, and academic service updates.
 ---
 
 {% include news-page.liquid %}
-

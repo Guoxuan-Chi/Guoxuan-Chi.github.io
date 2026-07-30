@@ -12,11 +12,11 @@
   url: "https://dl.acm.org/conference/mobicom"
   color: "#B31B1B"
 
-"ACM MobiSys": 
+"ACM MobiSys":
   url: "https://dl.acm.org/conference/mobisys"
   color: "#FF6600"
 
-"ACM IMWUT": 
+"ACM IMWUT":
   url: "https://ieeexplore.ieee.org/xpl/conhome/1000308/all-proceedings"
   color: "#ffaa10"
 
@@ -31,4 +31,3 @@
 "ACM TOSN":
   url: "https://dl.acm.org/journal/tosn"
   color: "#2878b5"
-
