@@ -15,7 +15,7 @@ footer_text:
 # Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 keywords: Generative AI, RF Sensing, Wireless Sensing, Embodied Navigation, Internet of Things, BUPT
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: "BUPT.jpg" # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: "icon.png" # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 cv: "Guoxuan-CV-250819.pdf" # the PDF file of CV in /assets/pdf
 
 # url: https://tns.thss.tsinghua.edu.cn #https://Guoxuan-Chi.github.io # the base hostname & protocol for your site
