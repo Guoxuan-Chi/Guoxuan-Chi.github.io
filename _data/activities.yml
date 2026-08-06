@@ -1,8 +1,10 @@
 honors:
   - year: 2024
+    homepage: true
     title_en: ACM SIGCOMM China Doctoral Dissertation Award
     title_zh: ACM SIGCOMM 中国博士学位论文奖
   - year: 2024
+    homepage: true
     title_en: ACM MobiCom Best Artifact Award
     title_zh: ACM MobiCom 最佳 Artifact 奖
   - year: 2021–2023
