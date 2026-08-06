@@ -21,7 +21,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>
-  {% if site.title == 'blank' %}
+  {% if page.lang contains 'zh' %}
+    {% capture title %}迟国轩 | Guoxuan Chi{% endcapture %}
+  {% elsif site.title == 'blank' %}
     {% capture title %}{{ author_name }}{% endcapture %}
   {% else %}
     {% capture title %}{{ site.title }}{% endcapture %}
