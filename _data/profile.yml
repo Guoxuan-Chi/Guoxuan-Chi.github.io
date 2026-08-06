@@ -1,7 +1,7 @@
 name_en: Guoxuan Chi
 name_zh: 迟国轩
 role_en: Assistant Professor
-role_zh: 助理教授
+role_zh: 助理教授、硕士生导师
 school_en: School of Artificial Intelligence
 school_zh: 人工智能学院
 university_en: Beijing University of Posts and Telecommunications
@@ -27,7 +27,7 @@ summary_en: >-
   Prof. <a href="https://tns.thss.tsinghua.edu.cn/~yangzheng/" target="_blank"
   rel="noopener noreferrer">Zheng Yang</a>, and my B.E. from BUPT in 2019.
 summary_zh: >-
-  现任北京邮电大学人工智能学院助理教授。加入北邮前，曾于<a href="https://tns.thss.tsinghua.edu.cn/~yunhao/en.html" target="_blank" rel="noopener noreferrer">刘云浩</a>教授领导的清华大学可信网络与系统研究所从事博士后研究。2024年获清华大学博士学位，导师为<a href="https://tns.thss.tsinghua.edu.cn/~yangzheng/" target="_blank" rel="noopener noreferrer">杨铮</a>教授；2019年获北京邮电大学学士学位。
+  现任北京邮电大学人工智能学院助理教授，硕士生导师。加入北邮前，曾于<a href="https://tns.thss.tsinghua.edu.cn/~yunhao/en.html" target="_blank" rel="noopener noreferrer">刘云浩</a>教授领导的清华大学可信网络与系统研究所从事博士后研究。2024年获清华大学博士学位，导师为<a href="https://tns.thss.tsinghua.edu.cn/~yangzheng/" target="_blank" rel="noopener noreferrer">杨铮</a>教授；2019年获北京邮电大学学士学位。
 core_question_en: How can generative AI understand the physical world through radio signals?
 core_question_zh: 生成式人工智能方法及其在无线感知、通信与导航中的应用
 application_areas:
