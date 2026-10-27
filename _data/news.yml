@@ -1,3 +1,24 @@
+- date: "2026-10-23"
+  en: Served as chair of the CNCC 2026 forum “Wireless Short-Range Networks in the AI Era—Evolution or Reinvention?”
+  zh: 担任 CNCC 2026“AI时代的无线短距网络：演进还是重构？”专题论坛主席。
+  type: service
+  home: true
+  url: https://ccf.org.cn/CNCC2026/schedule_d_4204
+  conference_id: cncc-2026
+- date: "2026-09-18"
+  en: Received the 2026 CCF Natural Science Award, First Prize, for time-frequency-enhanced wireless sensing for the Internet of Things.
+  zh: “物联网时频增强无线感知理论与方法”获2026年度 CCF 自然科学一等奖。
+  type: award
+  home: true
+  url: https://www.ccf.org.cn/Awards/Awards/2026-09-18/932967.shtml
+- date: "2026-08-14"
+  date_end: "2026-08-17"
+  en: Served as a session chair at HMCC 2026 & HHME 2026.
+  zh: 担任第二届中国人机计算大会暨第二十二届和谐人机环境联合学术会议分会主席。
+  type: service
+  home: true
+  url: https://hhme.ccf.org.cn/landing.html
+  conference_id: hmcc-hhme-2026
 - date: "2026-06-01"
   en: Our multimodal Wi-Fi-and-vision depth-estimation work was published in ACM TOSN.
   zh: Wi-Fi 与视觉多模态深度估计工作发表于 ACM TOSN。
@@ -31,7 +52,7 @@
   type: service
 - date: "2024-11-20"
   en: RF-Diffusion received the ACM MobiCom 2024 Best Artifact Award.
-  zh: RF-Diffusion 获 ACM MobiCom 2024 最佳 Artifact 奖。
+  zh: RF-Diffusion 获 ACM MobiCom 2024 最佳系统实现奖。
   type: award
   home: true
 - date: "2024-08-15"

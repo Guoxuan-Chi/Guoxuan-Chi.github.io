@@ -37,14 +37,3 @@
     </section>
   {% endfor %}
 </div>
-{% unless include.embedded %}
-  <aside class="resource-note">
-    {% if is_zh %}
-      <strong>资源说明</strong>
-      <p>本页列出与研究方向相关的代码、数据、教程和系统材料。</p>
-    {% else %}
-      <strong>About these resources</strong>
-      <p>This page lists systems, codebases, datasets, and tutorials associated with the research agenda.</p>
-    {% endif %}
-  </aside>
-{% endunless %}

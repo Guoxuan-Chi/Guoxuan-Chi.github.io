@@ -20,94 +20,110 @@
     {% endfor %}
   </div>
 </section>
-{% if site.data.talks and site.data.talks.size > 0 %}
-  <section class="activity-talks" id="invited-talks" aria-labelledby="invited-talks-heading">
+{% assign exchanges = site.data.activities.conferences | concat: site.data.talks | sort: 'date' | reverse %}
+{% if exchanges and exchanges.size > 0 %}
+  <section class="activity-talks" id="academic-exchange" aria-labelledby="academic-exchange-heading">
+    <span class="activity-anchor" id="conference-chairing" aria-hidden="true"></span>
+    <span class="activity-anchor" id="invited-talks" aria-hidden="true"></span>
     <div class="section-kicker">
       {% if is_zh %}学术交流{% else %}Academic exchange{% endif %}
     </div>
-    <h2 id="invited-talks-heading">
-      {% if is_zh %}特邀报告{% else %}Invited talks{% endif %}
+    <h2 id="academic-exchange-heading">
+      {% if is_zh %}会议主持与邀请报告{% else %}Conference chairing & invited talks{% endif %}
     </h2>
     <div class="resource-directory">
-      {% for talk in site.data.talks %}
-        {% assign has_talk_images = false %}
-        {% if talk.images and talk.images.size > 0 %}{% assign has_talk_images = true %}{% endif %}
+      {% for exchange in exchanges %}
+        {% assign has_images = false %}
+        {% if exchange.images and exchange.images.size > 0 %}{% assign has_images = true %}{% endif %}
         <article
-          {% if talk.id %}
-            id="talk-{{ talk.id }}"
-          {% endif %}
-          class="resource-entry{% unless has_talk_images %} resource-entry--text{% endunless %}"
+          id="{% if exchange.role_en %}conference-{% else %}talk-{% endif %}{{ exchange.id }}"
+          class="resource-entry academic-exchange-entry{% unless has_images %} resource-entry--text{% endunless %}"
         >
           <div class="resource-entry-meta">
-            <span>
-              {%- if talk.date -%}
-                {%- if is_zh %}{{ talk.date | date: '%Y.%m' }}{% else %}{{ talk.date | date: '%b %Y' }}{% endif -%}
+            <time datetime="{{ exchange.date }}">
+              {%- if is_zh -%}
+                {{- exchange.date | date: '%Y.%m.%d' -}}
+                {%- if exchange.date_end %}–{{ exchange.date_end | date: '%d' }}{% endif -%}
               {%- else -%}
-                0{{ forloop.index -}}
+                {{- exchange.date | date: '%b %-d' -}}
+                {%- if exchange.date_end %}–{{ exchange.date_end | date: '%-d' }}{% endif -%}
+                , {{ exchange.date | date: '%Y' }}
               {%- endif -%}
-            </span>
+            </time>
             <span>
-              {%- if is_zh %}特邀报告{% else %}Invited talk{% endif -%}
+              {%- if is_zh %}{{ exchange.role_zh | default: '邀请报告' }}{% else %}{{ exchange.role_en | default: 'Invited talk' }}{% endif -%}
             </span>
           </div>
-
-          {% if has_talk_images %}
-            <div class="talk-gallery">
-              <div class="row no-gutters">
-                {% for image in talk.images %}
-                  {% assign image_src = image.src | default: image.path | default: image %}
-                  {% assign image_alt = image.alt_en | default: talk.title_en %}
-                  {% if is_zh %}{% assign image_alt = image.alt_zh | default: talk.title_zh %}{% endif %}
-                  <figure class="{% if talk.images.size > 1 %}col-6{% else %}col-12{% endif %} resource-entry-media">
-                    <img src="{{ image_src | relative_url }}" alt="{{ image_alt }}" width="960" height="600" loading="lazy">
-                  </figure>
-                {% endfor %}
-              </div>
-            </div>
-          {% endif %}
-
           <div class="resource-entry-body">
-            <h2>
-              {% if is_zh %}{{ talk.title_zh }}{% else %}{{ talk.title_en }}{% endif %}
-            </h2>
+            <h3>
+              {% if is_zh %}{{ exchange.title_zh }}{% else %}{{ exchange.title_en }}{% endif %}
+            </h3>
             <p>
               <strong>
-                {%- if is_zh %}{{ talk.event_zh }}{% else %}{{ talk.event_en }}{% endif -%}
+                {%- if is_zh %}{{ exchange.event_zh }}{% else %}{{ exchange.event_en }}{% endif -%}
               </strong>
+              {% if exchange.location_en -%}
+                · {% if is_zh %}{{ exchange.location_zh }}{% else %}{{ exchange.location_en }}{% endif -%}
+              {%- endif %}
             </p>
             <p>
-              {% if is_zh %}{{ talk.description_zh }}{% else %}{{ talk.description_en }}{% endif %}
+              {% if is_zh %}{{ exchange.description_zh }}{% else %}{{ exchange.description_en }}{% endif %}
             </p>
-            {% if talk.event_url or talk.paper_url or talk.slides_url %}
+            {% if exchange.event_url or exchange.paper_url or exchange.slides_url %}
               <div class="resource-entry-links">
-                {% if talk.event_url -%}
-                  <a href="{{ talk.event_url }}" target="_blank" rel="noopener noreferrer">
-                    {%- if is_zh %}活动页面{% else %}Event{% endif %}
-                    <span aria-hidden="true">↗</span></a
-                  >
-                {%- endif %}
-                {% if talk.paper_url -%}
-                  <a href="{{ talk.paper_url }}" target="_blank" rel="noopener noreferrer">
-                    {%- if is_zh %}论文{% else %}Paper{% endif %}
-                    <span aria-hidden="true">↗</span></a
-                  >
-                {%- endif %}
-                {% if talk.slides_url -%}
-                  <a href="{{ talk.slides_url | relative_url }}" target="_blank" rel="noopener noreferrer">
-                    {%- if is_zh %}幻灯片{% else %}Slides{% endif %}
-                    <span aria-hidden="true">↗</span></a
-                  >
-                {%- endif %}
+                {% if exchange.event_url %}
+                  <a href="{{ exchange.event_url }}" target="_blank" rel="noopener noreferrer">
+                    {% if is_zh %}活动页面{% else %}Event{% endif %}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                {% endif %}
+                {% if exchange.paper_url %}
+                  <a href="{{ exchange.paper_url }}" target="_blank" rel="noopener noreferrer">
+                    {% if is_zh %}论文{% else %}Paper{% endif %}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                {% endif %}
+                {% if exchange.slides_url %}
+                  <a href="{{ exchange.slides_url | relative_url }}" target="_blank" rel="noopener noreferrer">
+                    {% if is_zh %}幻灯片{% else %}Slides{% endif %}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                {% endif %}
               </div>
             {% endif %}
           </div>
+          {% if has_images %}
+            <div class="activity-gallery{% if exchange.images.size > 1 %} activity-gallery--multiple{% endif %}">
+              {% for image in exchange.images %}
+                {% assign image_src = image.src | default: image.path | default: image %}
+                {% assign image_alt = image.alt_en | default: exchange.title_en %}
+                {% if is_zh %}{% assign image_alt = image.alt_zh | default: exchange.title_zh %}{% endif %}
+                <figure class="resource-entry-media">
+                  <a
+                    href="{{ image_src | relative_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{% if is_zh %}查看原图：{% else %}View full photo: {% endif %}{{ image_alt | escape }}"
+                  >
+                    <img
+                      src="{{ image_src | relative_url }}"
+                      alt="{{ image_alt | escape }}"
+                      width="{{ image.width | default: 960 }}"
+                      height="{{ image.height | default: 600 }}"
+                      loading="lazy"
+                    >
+                  </a>
+                </figure>
+              {% endfor %}
+            </div>
+          {% endif %}
         </article>
       {% endfor %}
     </div>
   </section>
 {% endif %}
 <div class="activities-grid">
-  <section>
+  <section id="honors">
     <div class="section-kicker">
       {% if is_zh %}外部认可{% else %}Recognition{% endif %}
     </div>
@@ -120,6 +136,11 @@
           <time>{{ item.year }}</time
           ><span>
             {%- if is_zh %}{{ item.title_zh }}{% else %}{{ item.title_en }}{% endif -%}
+            {% if item.project_en %}
+              <small class="honor-project">
+                {%- if is_zh %}{{ item.project_zh }}{% else %}{{ item.project_en }}{% endif -%}
+              </small>
+            {% endif %}
           </span>
         </li>
       {% endfor %}
@@ -148,11 +169,3 @@
     </div>
   </section>
 </div>
-<aside class="activity-note">
-  {% if is_zh %}
-    本页列出主要科研项目、邀请报告、荣誉与学术服务；完整经历以最新简历为准。
-  {% else %}
-    This page provides a concise record of research support, invited talks, honors, and service. Please refer to the latest CV for the complete
-    record.
-  {% endif %}
-</aside>

@@ -1,75 +1,74 @@
-- id: generative-ai
-  image: /assets/img/research/rf-diffusion.webp
-  image_alt_en: RF-Diffusion time-frequency diffusion overview
-  image_alt_zh: RF-Diffusion 时频扩散框架
-  number: "01"
-  short_en: Generative AI
-  short_zh: 生成式人工智能
-  title_en: Generative AI for Wireless Systems
-  title_zh: 面向无线系统的生成式人工智能
-  tagline_en: Generative models grounded in the structure and physics of radio signals.
-  tagline_zh: 以射频信号的结构与物理规律为基础构建生成模型。
-  description_en: >-
-    I study generative models that respect the time-frequency, complex-valued,
-    and physical structures of radio signals. The goal is to make generative AI
-    a native tool for wireless data synthesis, channel understanding, sensing,
-    and communication.
-  description_zh: >-
-    研究符合射频信号时频特性、复数结构与物理规律的生成模型，使生成式人工智能
-    真正服务于无线数据合成、信道理解、感知与通信。
-  keywords:
-    - RF-native generation
-    - Time-frequency modeling
-    - Multimodal learning
-  representative_en: RF-Diffusion · WiViD · AirECG
-  representative_zh: RF-Diffusion · WiViD · AirECG
-
 - id: wireless-sensing
   image: /assets/img/research/xfall.webp
   image_alt_en: XFall cross-modal Wi-Fi sensing architecture
   image_alt_zh: XFall 跨模态 Wi-Fi 感知框架
-  number: "02"
-  short_en: RF Sensing
-  short_zh: 射频与无线感知
-  title_en: RF & Wireless Sensing
-  title_zh: 射频与无线感知
-  tagline_en: Reliable perception from signals already present in the environment.
-  tagline_zh: 利用环境中已有的无线信号，实现可靠、可泛化的感知。
+  number: "01"
+  short_en: IoT Sensing
+  short_zh: 物联网感知
+  title_en: Intelligent IoT Sensing
+  title_zh: 物联网智能感知
+  tagline_en: Sensing human activities, health, and the environment through wireless signals.
+  tagline_zh: 利用无线信号感知人体活动、健康状态与周围环境。
   description_en: >-
-    I develop sensing and localization systems that turn Wi-Fi and mmWave signals
-    into robust measurements of people, devices, and motion. A recurring question
-    is how to generalize across environments, deployments, and sensing modalities.
+    I study Wi-Fi and mmWave sensing for human activity recognition, health monitoring,
+    and environmental perception, with a focus on reliable operation across environments
+    and devices. Applications include smart healthcare and human-computer interaction.
   description_zh: >-
-    利用 Wi-Fi、毫米波等信号感知人体、设备与运动状态，并重点解决跨环境、
-    跨部署和跨模态条件下的鲁棒性与泛化问题。
+    利用 Wi-Fi、毫米波等无线信号感知人体活动、健康状态与环境信息，
+    研究感知系统在不同场景和设备条件下的可靠性，面向智慧健康、人机交互等应用。
   keywords:
     - Wi-Fi sensing
-    - Localization
-    - Cross-domain robustness
-  representative_en: XFall · Wi-Drone · milliLoc
-  representative_zh: XFall · Wi-Drone · milliLoc
+    - Multimodal perception
+    - Health monitoring
+  representative_en: XFall · AirECG · WiViD
+  representative_zh: XFall · AirECG · WiViD
+
+- id: generative-ai
+  image: /assets/img/research/rf-diffusion.webp
+  image_alt_en: RF-Diffusion time-frequency diffusion overview
+  image_alt_zh: RF-Diffusion 时频扩散框架
+  number: "02"
+  short_en: Wireless Communications
+  short_zh: 无线通信
+  title_en: Wireless Communications & ISAC
+  title_zh: 无线通信与通感一体化
+  tagline_en: Joint applications of wireless communication and sensing.
+  tagline_zh: 面向无线通信与感知的协同应用。
+  description_en: >-
+    I study channel estimation and the integration of communication and sensing,
+    focusing on wireless systems in changing environments. My work on AI-based radio
+    signal generation and reconstruction supports channel estimation and sensing data augmentation.
+  description_zh: >-
+    围绕信道估计、通信与感知协同等应用，研究复杂环境下无线系统的性能与适应能力。
+    已有工作利用人工智能实现射频信号生成与重建，为信道估计和感知数据扩充提供支持。
+  keywords:
+    - Channel estimation
+    - Integrated sensing and communication
+    - Intelligent wireless systems
+  representative_en: RF-Diffusion
+  representative_zh: RF-Diffusion
 
 - id: embodied-navigation
   image: /assets/img/research/isat.webp
   image_alt_en: iSAT indoor navigation interface
   image_alt_zh: iSAT 室内导航界面
   number: "03"
-  short_en: Embodied Navigation
-  short_zh: 具身导航
-  title_en: Embodied Navigation & Spatial Intelligence
-  title_zh: 具身导航与空间智能
-  tagline_en: Connecting perception, maps, and action for agents in the physical world.
-  tagline_zh: 连接感知、地图与行动，让智能体理解并进入真实空间。
+  short_en: Navigation & Embodied Intelligence
+  short_zh: 导航与具身智能
+  title_en: Localization, Navigation & Embodied Intelligence
+  title_zh: 定位导航与具身智能
+  tagline_en: Localization, navigation, and environmental understanding for mobile devices and autonomous systems.
+  tagline_zh: 支持移动终端与自主系统的定位、导航和环境理解。
   description_en: >-
-    I explore how heterogeneous sensors, online maps, and structured reasoning can
-    support localization, navigation, and motion in physical environments. This
-    direction extends my work from wireless perception toward embodied spatial intelligence.
+    I study localization, navigation, and environmental understanding using wireless
+    signals, vision, and map information, with applications in indoor navigation,
+    drone tracking, augmented reality, and autonomous systems.
   description_zh: >-
-    研究异构传感器、在线地图与结构化推理如何共同支撑定位、导航与运动，
-    将无线感知进一步延伸到面向真实环境的具身空间智能。
+    结合无线信号、视觉与地图信息，研究定位、导航与环境理解，
+    面向室内导航、无人机跟踪、增强现实与自主系统等应用。
   keywords:
-    - Spatial intelligence
-    - Mapless autonomy
+    - Localization
     - Multimodal navigation
-  representative_en: iSAT · FollowUpAR · Map Uncertainty
-  representative_zh: iSAT · FollowUpAR · Map Uncertainty
+    - Embodied intelligence
+  representative_en: Wi-Drone · milliLoc · iSAT
+  representative_zh: Wi-Drone · milliLoc · iSAT

@@ -218,6 +218,14 @@ a:hover {
   font-size: 1rem;
 }
 
+.hero-summary p {
+  margin: 0 0 0.7rem;
+}
+
+.hero-summary p:last-child {
+  margin-bottom: 0;
+}
+
 .hero-summary a {
   color: var(--bupt-blue);
   font-weight: inherit;
@@ -346,7 +354,6 @@ a:hover {
 }
 
 .portrait-contact {
-  border-top: 1px solid var(--faculty-line);
   margin: 0.8rem 0 0;
   padding: 0.45rem 0 0;
 }
@@ -389,7 +396,7 @@ a:hover {
   display: grid;
   gap: 1rem 1.5rem;
   grid-template-columns: 150px 1fr auto;
-  margin-bottom: 3.7rem;
+  margin-bottom: 1.75rem;
   padding: 1rem 1.25rem;
 }
 
@@ -415,8 +422,11 @@ a:hover {
 }
 
 .home-section {
-  border-top: 1px solid var(--faculty-line);
-  padding: 3.5rem 0 3.85rem;
+  padding: 2.5rem 0 2.75rem;
+}
+
+.home-section:last-child {
+  padding-bottom: 0;
 }
 
 .section-heading {
@@ -886,9 +896,7 @@ a:hover {
 }
 
 .faculty-page-header {
-  border-bottom: 1px solid var(--faculty-line);
-  margin-bottom: 2.7rem;
-  padding: 0 0 1.75rem;
+  margin-bottom: 2.5rem;
 }
 
 .faculty-page-header h1 {
@@ -984,17 +992,24 @@ a:hover {
   font-size: 0.9rem;
 }
 
-.research-details {
-  border-top: 1px solid var(--faculty-line);
-}
-
 .research-detail {
-  border-bottom: 1px solid var(--faculty-line);
   display: grid;
   gap: 2rem;
   grid-template-columns: 150px minmax(0, 1fr);
   padding: 2.45rem 0;
   scroll-margin-top: 110px;
+}
+
+.research-detail + .research-detail {
+  border-top: 1px solid var(--faculty-line);
+}
+
+.research-detail:first-child {
+  padding-top: 0;
+}
+
+.research-detail:last-child {
+  padding-bottom: 0;
 }
 
 .detail-number {
@@ -1088,9 +1103,7 @@ a:hover {
 /* Resources */
 
 .research-resources {
-  border-top: 1px solid var(--faculty-line);
-  margin-top: 4rem;
-  padding-top: 3rem;
+  margin-top: 3.5rem;
   scroll-margin-top: 100px;
 }
 
@@ -1108,16 +1121,23 @@ a:hover {
   max-width: 760px;
 }
 
-.resource-directory {
-  border-top: 1px solid var(--faculty-line);
-}
-
 .resource-entry {
-  border-bottom: 1px solid var(--faculty-line);
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 135px 240px minmax(0, 1fr);
   padding: 1.6rem 0 1.75rem;
+}
+
+.resource-entry + .resource-entry {
+  border-top: 1px solid var(--faculty-line);
+}
+
+.resource-directory > .resource-entry:first-child {
+  padding-top: 0;
+}
+
+.resource-directory > .resource-entry:last-child {
+  padding-bottom: 0;
 }
 
 .resource-entry--text {
@@ -1155,7 +1175,8 @@ a:hover {
   color: #84919d;
 }
 
-.resource-entry-body h2 {
+.resource-entry-body h2,
+.resource-entry-body h3 {
   color: var(--faculty-ink);
   font-size: 1.45rem;
   font-weight: 680;
@@ -1202,9 +1223,7 @@ a:hover {
 }
 
 .activity-talks {
-  border-top: 1px solid var(--faculty-line);
   margin: 0 0 3.5rem;
-  padding-top: 3rem;
   scroll-margin-top: 100px;
 }
 
@@ -1217,23 +1236,51 @@ a:hover {
 }
 
 .activity-talks .resource-entry {
-  grid-template-columns: 120px minmax(0, 1fr);
+  align-items: start;
+  gap: 1.25rem;
+  grid-template-columns: 100px minmax(0, 1fr) 240px;
+  padding: 1.35rem 0;
+}
+
+.activity-talks .resource-entry--text {
+  grid-template-columns: 100px minmax(0, 1fr);
 }
 
 .activity-talks .resource-entry-meta {
-  grid-row: 1 / span 2;
+  font-size: 0.78rem;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
-.activity-talks .talk-gallery,
 .activity-talks .resource-entry-body {
   grid-column: 2;
 }
 
-.activity-talks .talk-gallery .row {
+.activity-talks .resource-entry-body h3 {
+  font-size: 1.08rem;
+  line-height: 1.5;
+}
+
+.activity-talks .resource-entry-body p {
+  font-size: 0.88rem;
+  margin-bottom: 0.55rem;
+}
+
+.activity-talks .resource-entry-links {
+  font-size: 0.82rem;
+  margin-top: 0.65rem;
+}
+
+.activity-talks .activity-gallery {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.5rem;
+  grid-column: 3;
+  max-width: 280px;
+  width: 100%;
+}
+
+.activity-talks .activity-gallery--multiple {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 0;
 }
 
 .activity-talks .resource-entry-media {
@@ -1244,7 +1291,32 @@ a:hover {
 }
 
 .activity-talks .resource-entry-media img {
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.activity-gallery a {
+  display: block;
+  height: 100%;
+}
+
+.activity-anchor {
+  display: block;
+  scroll-margin-top: 100px;
+}
+
+.news-detail-link {
+  display: inline-block;
+  font-size: 0.85em;
+  margin-inline-start: 0.45em;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.honor-project {
+  color: var(--faculty-muted);
+  display: block;
+  line-height: 1.55;
+  margin-top: 0.3rem;
 }
 
 .activity-funding h2 {
@@ -1252,17 +1324,24 @@ a:hover {
   margin: 0.4rem 0 1.2rem;
 }
 
-.funding-list {
-  border-top: 1px solid var(--faculty-line);
-}
-
 .funding-record {
   align-items: start;
-  border-bottom: 1px solid var(--faculty-line);
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 180px minmax(0, 1fr);
   padding: 0.8rem 0;
+}
+
+.funding-record + .funding-record {
+  border-top: 1px solid var(--faculty-line);
+}
+
+.funding-record:first-child {
+  padding-top: 0;
+}
+
+.funding-record:last-child {
+  padding-bottom: 0;
 }
 
 .funding-role {
@@ -1300,6 +1379,11 @@ a:hover {
   padding: 0.7rem 0;
 }
 
+.timeline-list li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
 .timeline-list time {
   color: var(--bupt-blue);
   font-size: 0.82rem;
@@ -1315,6 +1399,11 @@ a:hover {
 .service-group {
   border-top: 1px solid var(--faculty-line);
   padding: 0.75rem 0 0.5rem;
+}
+
+.service-group:first-child {
+  border-top: 0;
+  padding-top: 0;
 }
 
 .service-group h3 {
@@ -1368,8 +1457,11 @@ a:hover {
 }
 
 .student-section {
-  border-top: 1px solid var(--faculty-line);
-  padding: 2.75rem 0 3.1rem;
+  padding: 0 0 3rem;
+}
+
+.student-section:last-child {
+  padding-bottom: 0;
 }
 
 .student-section h2 {
@@ -1489,19 +1581,13 @@ a:hover {
 
 .faculty-publications ol.bibliography li {
   background: #fff;
-  border: 1px solid var(--faculty-line);
-  border-left: 3px solid transparent;
-  box-shadow: 0 5px 18px rgba(20, 34, 52, 0.035);
-  margin-bottom: 0.75rem;
-  padding: 1rem 1.05rem;
-  transition:
-    border-color 160ms ease,
-    box-shadow 160ms ease;
+  border: 0;
+  margin-bottom: 0;
+  padding: 1.15rem 0;
 }
 
-.faculty-publications ol.bibliography li:hover {
-  border-left-color: var(--bupt-blue-bright);
-  box-shadow: 0 8px 24px rgba(20, 34, 52, 0.065);
+.faculty-publications ol.bibliography li + li {
+  border-top: 1px solid var(--faculty-line);
 }
 
 .faculty-publications ol.bibliography li .row {
@@ -1553,6 +1639,61 @@ a:hover {
   line-height: 1.55;
 }
 
+// A font change within an author line can look like a title boundary to Scholar.
+.author.citation_author .author-name {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: normal;
+  font-weight: inherit;
+}
+
+.author.citation_author .author-self {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.publication-detail {
+  margin: 2rem auto 3rem;
+  max-width: 850px;
+
+  h1.citation_title {
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .citation_author {
+    font-size: 1.08rem;
+    line-height: 1.65;
+  }
+
+  .publication-venue {
+    color: var(--faculty-muted);
+    font-size: 0.95rem;
+    margin: 0.8rem 0;
+  }
+
+  .publication-actions {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .publication-abstract h2 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .publication-abstract p {
+    line-height: 1.75;
+  }
+
+  .publication-back {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+}
+
 .faculty-publications .links a.btn {
   background: #fff !important;
   border-color: #aebdca !important;
@@ -1577,16 +1718,20 @@ a:hover {
 
 /* News */
 
-.news-archive {
-  border-top: 1px solid var(--faculty-line);
-}
-
 .news-archive li {
   border-bottom: 1px solid var(--faculty-line);
   display: grid;
   gap: 2rem;
   grid-template-columns: 110px 1fr;
   padding: 0.85rem 0;
+}
+
+.news-archive li:first-child {
+  padding-top: 0;
+}
+
+.news-archive li:last-child {
+  border-bottom: 0;
 }
 
 .news-archive time {
@@ -1833,15 +1978,23 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  .activity-talks .resource-entry {
+  .activity-talks .resource-entry,
+  .activity-talks .resource-entry--text {
     grid-template-columns: 1fr;
   }
 
   .activity-talks .resource-entry-meta,
-  .activity-talks .talk-gallery,
+  .activity-talks .activity-gallery,
   .activity-talks .resource-entry-body {
     grid-column: 1;
     grid-row: auto;
+  }
+
+  .activity-talks .resource-entry-meta {
+    align-items: baseline;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
   }
 
   .research-detail-aside {
@@ -1902,7 +2055,7 @@ a:hover {
   }
 
   .home-section {
-    padding: 2.8rem 0 3.05rem;
+    padding: 2.15rem 0 2.4rem;
   }
 
   .section-heading {
@@ -1978,6 +2131,14 @@ a:hover {
     padding: 2rem 0;
   }
 
+  .research-detail:first-child {
+    padding-top: 0;
+  }
+
+  .research-detail:last-child {
+    padding-bottom: 0;
+  }
+
   .activities-grid {
     gap: 2.7rem;
   }
@@ -1996,10 +2157,6 @@ a:hover {
   .footer-secondary {
     display: flex;
     gap: 0.35rem;
-  }
-
-  .activity-talks .talk-gallery .row {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -2249,9 +2406,7 @@ html[lang^="zh"] .faculty-home .hero-summary {
 }
 
 html[lang^="zh"] .faculty-home .hero-research-focus {
-  border-top: 1px solid var(--faculty-line);
   margin-top: 0.85rem;
-  padding-top: 0.78rem;
 }
 
 html[lang^="zh"] .faculty-home .hero-core-question {

@@ -5,7 +5,7 @@ kicker: Prospective students and collaborators
 permalink: /students/
 lang: en
 translation_url: /zh/students/
-description: Master's student recruitment and collaboration information for prospective students interested in generative AI, wireless sensing, and spatial intelligence.
+description: Research and collaboration in IoT sensing, wireless communications, navigation, and embodied intelligence.
 ---
 
 {% include students-page.liquid %}

@@ -1,0 +1,37 @@
+---
+layout: default
+---
+{% assign publication = page.publication %}
+<article class="publication-detail">
+  <header>
+    <h1 class="citation_title">{{ publication.title | escape }}</h1>
+    <div class="author citation_author">{% include publication_authors.liquid entry=page.entry %}</div>
+    <p class="publication-venue">
+      {{ publication.journal | default: publication.booktitle | escape -}}
+      {%- if publication.volume %}, {{ publication.volume | escape }}{% endif %}
+      {%- if publication.number %}({{ publication.number | escape }}){% endif -%}
+      {%- if publication.pages %}, pp. {{ publication.pages | escape }}{% endif %}, {{ publication.year | escape }}.
+    </p>
+  </header>
+  <div class="publication-actions">
+    {% if publication.local_pdf %}
+      <a href="{{ publication.local_pdf | relative_url }}">PDF</a>
+    {% elsif publication.pdf %}
+      <a href="{{ publication.pdf | escape }}">PDF</a>
+    {% endif %}
+    {% if publication.doi -%}
+      <a href="https://doi.org/{{ publication.doi | escape }}">DOI</a>
+    {%- endif %}
+    {% if publication.html -%}
+      <a href="{{ publication.html | escape }}">Publisher / original record</a>
+    {%- endif %}
+    {% if publication.code -%}
+      <a href="{{ publication.code | escape }}">Code</a>
+    {%- endif %}
+  </div>
+  <section class="publication-abstract" aria-labelledby="abstract-heading">
+    <h2 id="abstract-heading">Abstract</h2>
+    <p>{{ publication.abstract | escape }}</p>
+  </section>
+  <a class="publication-back" href="{{ '/publications/' | relative_url }}">All publications</a>
+</article>

@@ -10,7 +10,7 @@ en:
   - label: Activities
     url: /activities/
   - label: CV
-    url: /assets/pdf/Guoxuan-CV-250819.pdf
+    url: /assets/pdf/Guoxuan-CV-20261027-EN.pdf
     external: true
 zh:
   - label: 首页
@@ -24,5 +24,5 @@ zh:
   - label: 学术活动
     url: /zh/activities/
   - label: 简历
-    url: /assets/pdf/Guoxuan-CV-250819.pdf
+    url: /assets/pdf/Guoxuan-CV-20261027-ZH.pdf
     external: true
