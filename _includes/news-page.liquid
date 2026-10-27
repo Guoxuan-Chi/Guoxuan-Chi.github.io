@@ -1,13 +1,30 @@
 {% assign is_zh = false %}
-{% if page.lang contains 'zh' %}{% assign is_zh = true %}{% endif %}
+{% assign activities_path = '/activities/' %}
+{% if page.lang contains 'zh' %}
+  {% assign is_zh = true %}
+  {% assign activities_path = '/zh/activities/' %}
+{% endif %}
 <ol class="news-archive">
-  {% for item in site.data.news %}
+  {% assign news_items = site.data.news | sort: 'date' | reverse %}
+  {% for item in news_items %}
     <li>
-      <time datetime="{{ item.date }}">{{ item.date | date: '%Y.%m.%d' }}</time>
+      <time datetime="{{ item.date }}">
+        {{- item.date | date: '%Y.%m.%d' -}}
+        {%- if item.date_end %}–{{ item.date_end | date: '%m.%d' }}{% endif -%}
+      </time>
       <div>
         <span class="news-type">{{ item.type }}</span>
         <p>
           {% if is_zh %}{{ item.zh }}{% else %}{{ item.en }}{% endif %}
+          {% if item.conference_id %}
+            <a class="news-detail-link" href="{{ activities_path | relative_url }}#conference-{{ item.conference_id }}">
+              {%- if is_zh %}照片与详情{% else %}Photos & details{% endif -%}
+            </a>
+          {% elsif item.url and item.type != 'award' %}
+            <a class="news-detail-link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+              {%- if is_zh %}详情{% else %}Details{% endif -%}
+            </a>
+          {% endif %}
         </p>
       </div>
     </li>

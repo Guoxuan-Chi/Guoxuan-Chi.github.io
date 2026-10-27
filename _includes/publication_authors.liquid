@@ -1,0 +1,30 @@
+{%- comment -%}
+  Keep every author in the initial HTML and use the same font for all names.
+  Author data must not contain HTML. Superscript contribution marks are presentation only.
+{%- endcomment -%}
+{%- for author in include.entry.author_array -%}
+  {%- assign author_first = author.first | strip_html | strip -%}
+  {%- assign author_last = author.last | strip_html | regex_replace: '[*∗†‡§¶‖&^]', '' | strip -%}
+  {%- assign author_marks = author.last | strip_html | regex_replace: '[^*∗†‡§¶‖&^]', '' -%}
+  {%- assign author_name = author_first -%}
+  {%- if author.prefix != blank -%}
+    {%- assign author_prefix = author.prefix | strip_html -%}
+    {%- assign author_name = author_name | append: ' ' | append: author_prefix -%}
+  {%- endif -%}
+  {%- assign author_name = author_name | append: ' ' | append: author_last -%}
+  {%- if author.suffix != blank -%}
+    {%- assign author_suffix = author.suffix | strip_html -%}
+    {%- assign author_name = author_name | append: ', ' | append: author_suffix -%}
+  {%- endif -%}
+  {%- assign author_is_self = false -%}
+  {%- if site.scholar.last_name contains author_last and site.scholar.first_name contains author_first -%}
+    {%- assign author_is_self = true -%}
+  {%- endif -%}
+  {%- unless forloop.first -%}, {% endunless -%}
+  <span class="author-name{% if author_is_self %} author-self{% endif %}">
+    {{- author_name | strip | escape -}}
+  </span>
+  {%- if author_marks != blank -%}
+    <sup>{{ author_marks | escape }}</sup>
+  {%- endif -%}
+{%- endfor -%}

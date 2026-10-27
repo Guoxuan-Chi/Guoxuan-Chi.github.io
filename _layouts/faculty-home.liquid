@@ -16,6 +16,8 @@ layout: default
   {% assign activities_path = '/zh/activities/' %}
 {% endif %}
 {% assign profile = site.data.profile %}
+{% assign cv_path = profile.cv_en | default: profile.cv %}
+{% if is_zh %}{% assign cv_path = profile.cv_zh | default: profile.cv %}{% endif %}
 
 <div class="faculty-home">
   <section class="home-hero" aria-labelledby="home-title">
@@ -48,9 +50,9 @@ layout: default
       {% if hero_tagline and hero_tagline != blank %}
         <p class="hero-tagline">{{ hero_tagline }}</p>
       {% endif %}
-      <p class="hero-summary">
+      <div class="hero-summary">
         {% if is_zh %}{{ profile.summary_zh }}{% else %}{{ profile.summary_en }}{% endif %}
-      </p>
+      </div>
       <div class="hero-education hero-research-focus">
         <p class="hero-core-question">
           <i class="ti ti-sparkles" aria-hidden="true"></i>
@@ -70,17 +72,13 @@ layout: default
         <span class="hero-email-links">
           <i class="fa-regular fa-envelope" aria-hidden="true"></i>
           <span>{{ profile.email_bupt }}</span>
-          <span class="hero-email-secondary">
-            <span aria-hidden="true">/</span>
-            <span>{{ profile.email_personal }}</span>
-          </span>
         </span>
         <span class="hero-profile-links">
           <a href="{{ profile.scholar }}" target="_blank" rel="noopener noreferrer"
             ><i class="ai ai-google-scholar" aria-hidden="true"></i> Scholar</a
           >
           <a href="{{ profile.orcid }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-orcid" aria-hidden="true"></i> ORCID</a>
-          <a href="{{ profile.cv | relative_url }}" target="_blank" rel="noopener noreferrer"
+          <a href="{{ cv_path | relative_url }}" target="_blank" rel="noopener noreferrer"
             ><i class="fa-regular fa-file-pdf" aria-hidden="true"></i> CV</a
           >
         </span>
@@ -122,14 +120,13 @@ layout: default
 
   <aside class="conversation-strip">
     <div class="strip-label">
-      {% if is_zh %}招生与学术合作{% else %}Opportunities{% endif %}
+      {% if is_zh %}学术交流与合作{% else %}Research & collaboration{% endif %}
     </div>
     <p>
       {% if is_zh %}
-        现面向2027年入学招收硕士研究生。欢迎对相关方向感兴趣或已有自己研究想法的同学联系交流，也欢迎本科生参与科研实践与竞赛指导。
+        欢迎对相关研究方向感兴趣的同学联系交流，也欢迎开展学术合作。
       {% else %}
-        I am recruiting master's students for 2027 entry. Whether you are interested in my research areas or have ideas of your own, you are welcome
-        to get in touch. I also welcome undergraduates interested in research projects or competition mentoring.
+        Students and researchers interested in these areas are welcome to get in touch to discuss research and collaboration.
       {% endif %}
     </p>
     <a href="{{ students_path | relative_url }}">
@@ -154,7 +151,7 @@ layout: default
       >
     </div>
     <ol class="news-list home-news-list">
-      {% assign home_news = site.data.news | where: 'home', true %}
+      {% assign home_news = site.data.news | where: 'home', true | sort: 'date' | reverse %}
       {% for item in home_news limit: 4 %}
         <li>
           <time datetime="{{ item.date }}">
@@ -162,6 +159,15 @@ layout: default
           </time>
           <span>
             {%- if is_zh %}{{ item.zh }}{% else %}{{ item.en }}{% endif -%}
+            {% if item.conference_id %}
+              <a class="news-detail-link" href="{{ activities_path | relative_url }}#conference-{{ item.conference_id }}">
+                {%- if is_zh %}照片与详情{% else %}Photos & details{% endif -%}
+              </a>
+            {% elsif item.url and item.type != 'award' %}
+              <a class="news-detail-link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+                {%- if is_zh %}详情{% else %}Details{% endif -%}
+              </a>
+            {% endif %}
           </span>
         </li>
       {% endfor %}
@@ -175,7 +181,7 @@ layout: default
           {% if is_zh %}研究{% else %}Research{% endif %}
         </div>
         <h2 id="research-heading">
-          {% if is_zh %}射频生成、无线感知与空间智能{% else %}RF generation, wireless sensing & spatial intelligence{% endif %}
+          {% if is_zh %}智能感知、无线通信与具身智能{% else %}Intelligent sensing, wireless communications & embodied intelligence{% endif %}
         </h2>
       </div>
       <a class="section-link" href="{{ research_path | relative_url }}">
@@ -291,7 +297,7 @@ layout: default
             {% if is_zh %}邀请报告{% else %}Invited talks{% endif %}
           </h2>
         </div>
-        <a class="section-link" href="{{ activities_path | relative_url }}#invited-talks">
+        <a class="section-link" href="{{ activities_path | relative_url }}#academic-exchange">
           {%- if is_zh %}学术活动{% else %}Academic activities{% endif %}
           <span aria-hidden="true">→</span></a
         >

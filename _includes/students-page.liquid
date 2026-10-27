@@ -1,30 +1,8 @@
 {% assign is_zh = false %}
 {% if page.lang contains 'zh' %}{% assign is_zh = true %}{% endif %}
-<section class="student-status">
-  <div class="status-dot" aria-hidden="true"></div>
-  <div>
-    <strong>
-      {%- if is_zh %}当前情况{% else %}Availability{% endif -%}
-    </strong>
-    <p>
-      {% if is_zh %}
-        现面向2027年入学招收学术型硕士研究生。无论是对我的研究方向感兴趣，还是已有自己的研究想法，都欢迎联系交流。
-        也欢迎本科生参与科研实习与竞赛合作，以及相关领域同行开展学术交流与合作。
-      {% else %}
-        I am recruiting master's students for 2027 entry. Whether you are interested in my research areas or have ideas of your own, you are welcome
-        to get in touch. I also welcome undergraduates interested in research internships or competition collaborations, as well as academic
-        collaboration with colleagues in related fields.
-      {% endif %}
-    </p>
-  </div>
-</section>
-
 <section class="student-section">
-  <div class="section-kicker">
-    {% if is_zh %}研究方向{% else %}Research topics{% endif %}
-  </div>
   <h2>
-    {% if is_zh %}可交流的研究主题{% else %}Potential research topics{% endif %}
+    {% if is_zh %}研究方向{% else %}Research areas{% endif %}
   </h2>
   <div class="topic-grid">
     {% for area in site.data.research %}
@@ -40,34 +18,26 @@
     {% endfor %}
   </div>
 </section>
-
 <section class="student-section contact-guide">
   <div>
-    <div class="section-kicker">
-      {% if is_zh %}联系方式{% else %}Contact{% endif %}
-    </div>
     <h2>
-      {% if is_zh %}联系前请提供的信息{% else %}What to include in your email{% endif %}
+      {% if is_zh %}联系方式{% else %}Contact{% endif %}
     </h2>
   </div>
   <div>
+    <span class="primary-text-link">{{ site.data.profile.email_bupt }}</span>
     <p>
       {% if is_zh %}
-        请简要介绍你的教育背景、感兴趣的具体研究问题、相关经历或作品，以及预计开始时间和可投入周期。
+        {{ site.data.profile.university_zh }} · {{ site.data.profile.school_zh -}}
+        <br>
+        {{ site.data.profile.office_zh }}
       {% else %}
-        A useful first message briefly introduces your background, the concrete question that interests you, any relevant work, and your expected
-        timeline. Clarity matters more than length.
+        {{ site.data.profile.school_en -}}
+        <br>
+        {{ site.data.profile.university_en -}}
+        <br>
+        {{ site.data.profile.office_en }}
       {% endif %}
     </p>
-    <span class="primary-text-link">{{ site.data.profile.email_bupt }}</span>
   </div>
-</section>
-
-<section class="teaching-placeholder">
-  <strong>
-    {%- if is_zh %}课程与指导{% else %}Teaching & mentoring{% endif -%}
-  </strong>
-  <span>
-    {% if is_zh %}课程与指导信息将在确定后补充。{% else %}Course and mentoring information will be added as it becomes available.{% endif %}
-  </span>
 </section>

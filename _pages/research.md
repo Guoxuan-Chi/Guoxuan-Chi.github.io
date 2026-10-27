@@ -1,11 +1,11 @@
 ---
 layout: faculty-page
 title: Research
-kicker: Research agenda
+kicker: Research areas
 permalink: /research/
 lang: en
 translation_url: /zh/research/
-description: A research agenda connecting RF-native generative models, wireless sensing, spatial intelligence, and reusable systems.
+description: Intelligent IoT sensing, wireless communications, localization, navigation, and embodied intelligence.
 ---
 
 {% include research-page.liquid %}

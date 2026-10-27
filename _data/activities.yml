@@ -1,18 +1,70 @@
+conferences:
+  - id: cncc-2026
+    date: "2026-10-23"
+    role_en: Forum Chair
+    role_zh: 论坛主席
+    title_en: "Wireless Short-Range Networks in the AI Era: Evolution or Reinvention?"
+    title_zh: "AI时代的无线短距网络：演进还是重构？"
+    event_en: China National Computer Congress (CNCC 2026)
+    event_zh: 中国计算机大会（CNCC 2026）
+    location_en: Chengdu, China
+    location_zh: 四川 · 成都
+    description_en: >-
+      Served as chair of the CNCC 2026 forum on wireless short-range networks in the AI era.
+    description_zh: >-
+      担任 CNCC 2026“AI时代的无线短距网络：演进还是重构？”专题论坛主席。
+    event_url: https://ccf.org.cn/CNCC2026/schedule_d_4204
+    images:
+      - src: /assets/img/activities/cncc-2026-chair.webp
+        width: 1535
+        height: 1024
+        alt_en: Guoxuan Chi chairing a forum at CNCC 2026 in Chengdu
+        alt_zh: 迟国轩担任 CNCC 2026 专题论坛主席
+  - id: hmcc-hhme-2026
+    date: "2026-08-14"
+    date_end: "2026-08-17"
+    role_en: Session Chair
+    role_zh: 分会主席
+    title_en: HMCC 2026 & HHME 2026
+    title_zh: 第二届中国人机计算大会暨第二十二届和谐人机环境联合学术会议
+    event_en: HMCC 2026 & HHME 2026
+    event_zh: HMCC 2026 & HHME 2026
+    location_en: Changsha, China
+    location_zh: 湖南 · 长沙
+    description_en: >-
+      Served as a session chair at HMCC 2026 & HHME 2026.
+    description_zh: >-
+      担任第二届中国人机计算大会暨第二十二届和谐人机环境联合学术会议分会主席。
+    event_url: https://hhme.ccf.org.cn/landing.html
+    images:
+      - src: /assets/img/activities/hmcc-hhme-2026-session-chair.webp
+        width: 1921
+        height: 1280
+        alt_en: Guoxuan Chi serving as a session chair at HMCC 2026 & HHME 2026 in Changsha
+        alt_zh: 迟国轩担任 HMCC 2026 暨 HHME 2026 大会分会主席
+
 honors:
+  - year: 2026
+    homepage: true
+    title_en: CCF Natural Science Award, First Prize
+    title_zh: CCF 自然科学一等奖
+    project_en: Theory and Methods of Time-Frequency-Enhanced Wireless Sensing for the Internet of Things
+    project_zh: 物联网时频增强无线感知理论与方法
+    url: https://www.ccf.org.cn/Awards/Awards/2026-09-18/932967.shtml
   - year: 2024
     homepage: true
     title_en: ACM SIGCOMM China Doctoral Dissertation Award
-    title_zh: ACM SIGCOMM 中国博士学位论文奖
+    title_zh: ACM SIGCOMM China 优秀博士论文奖
   - year: 2024
     homepage: true
     title_en: ACM MobiCom Best Artifact Award
-    title_zh: ACM MobiCom 最佳 Artifact 奖
+    title_zh: ACM MobiCom 最佳系统实现奖
   - year: 2021–2023
     title_en: First-class Scholarship, Tsinghua University
     title_zh: 清华大学一等综合奖学金
   - year: 2019
-    title_en: Special Scholarship (Top 3 Students), BUPT
-    title_zh: 北京邮电大学特殊贡献奖学金（Top 3）
+    title_en: Special Scholarship for Undergraduates, BUPT
+    title_zh: 北京邮电大学本科生特等奖学金
   - year: 2016–2018
     title_en: National Scholarship, Ministry of Education
     title_zh: 国家奖学金

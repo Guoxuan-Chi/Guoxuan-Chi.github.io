@@ -1,0 +1,16 @@
+{%- assign citation = page.publication -%}
+<meta name="citation_title" content="{{ citation.title | escape }}">
+{% for author in citation.authors %}
+  <meta name="citation_author" content="{{ author | escape }}">
+{% endfor %}
+<meta name="citation_publication_date" content="{{ citation.year | escape }}">
+{% if citation.journal %}<meta name="citation_journal_title" content="{{ citation.journal | escape }}">{% endif %}
+{% if citation.booktitle %}<meta name="citation_conference_title" content="{{ citation.booktitle | escape }}">{% endif %}
+{% if citation.volume %}<meta name="citation_volume" content="{{ citation.volume | escape }}">{% endif %}
+{% if citation.number %}<meta name="citation_issue" content="{{ citation.number | escape }}">{% endif %}
+{% if citation.firstpage != blank %}<meta name="citation_firstpage" content="{{ citation.firstpage | escape }}">{% endif %}
+{% if citation.lastpage != blank %}<meta name="citation_lastpage" content="{{ citation.lastpage | escape }}">{% endif %}
+{% if citation.doi %}<meta name="citation_doi" content="{{ citation.doi | escape }}">{% endif %}
+{% if citation.issn %}<meta name="citation_issn" content="{{ citation.issn | escape }}">{% endif %}
+{% if citation.isbn %}<meta name="citation_isbn" content="{{ citation.isbn | escape }}">{% endif %}
+{% if citation.local_pdf %}<meta name="citation_pdf_url" content="{{ citation.local_pdf | absolute_url | escape }}">{% endif %}

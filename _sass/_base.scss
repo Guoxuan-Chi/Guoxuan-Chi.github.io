@@ -718,33 +718,13 @@ footer.sticky-bottom {
       }
 
       .title {
+        font-size: 1.08rem;
         font-weight: bolder;
-      }
+        line-height: 1.42;
+        margin: 0;
 
-      .author {
         a {
-          border-bottom: 1px dashed var(--global-theme-color);
-
-          &:hover {
-            border-bottom-style: solid;
-            text-decoration: none;
-          }
-        }
-
-        > em {
-          border-bottom: 1px solid;
-          font-style: normal;
-        }
-
-        > span.more-authors {
-          color: var(--global-text-color-light);
-          border-bottom: 1px dashed var(--global-text-color-light);
-          cursor: pointer;
-
-          &:hover {
-            color: var(--global-text-color);
-            border-bottom: 1px dashed var(--global-text-color);
-          }
+          color: inherit;
         }
       }
 
