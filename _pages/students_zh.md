@@ -1,7 +1,6 @@
 ---
 layout: faculty-page
-title: 招生与合作
-kicker: 学生与合作伙伴
+title: 联系与合作
 permalink: /zh/students/
 lang: zh-CN
 translation_url: /students/

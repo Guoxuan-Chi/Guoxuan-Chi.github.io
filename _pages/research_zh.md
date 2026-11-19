@@ -1,7 +1,6 @@
 ---
 layout: faculty-page
-title: 研究
-kicker: 研究方向
+title: 研究方向
 permalink: /zh/research/
 lang: zh-CN
 translation_url: /research/

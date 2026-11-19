@@ -1,24 +1,32 @@
 {% assign is_zh = false %}
 {% if page.lang contains 'zh' %}{% assign is_zh = true %}{% endif %}
-
 <div class="research-details">
   {% for area in site.data.research %}
-    <section class="research-detail" id="{{ area.id }}">
-      <div class="research-detail-aside">
-        <div class="detail-number">{{ area.number }}</div>
-        <div class="detail-short">
-          {% if is_zh %}{{ area.short_zh }}{% else %}{{ area.short_en }}{% endif %}
-        </div>
-      </div>
+    <section class="research-detail" id="{{ area.id }}" aria-labelledby="{{ area.id }}-heading">
       <div class="research-detail-main">
-        <h2>
+        <h2 id="{{ area.id }}-heading">
           {% if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif %}
         </h2>
         <p>
           {% if is_zh %}{{ area.description_zh }}{% else %}{{ area.description_en }}{% endif %}
         </p>
-        {% if area.image %}
-          <figure class="research-detail-media">
+        <p class="representative-line">
+          <strong>
+            {%- if is_zh %}相关工作{% else %}Related work{% endif -%}
+          </strong>
+          <span>
+            {%- if is_zh %}{{ area.representative_zh }}{% else %}{{ area.representative_en }}{% endif -%}
+          </span>
+        </p>
+      </div>
+      {% if area.image %}
+        <figure class="research-detail-media">
+          <a
+            href="{{ area.image | relative_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="{% if is_zh %}查看完整图片：{{ area.title_zh }}{% else %}View full figure: {{ area.title_en }}{% endif %}"
+          >
             <img
               src="{{ area.image | relative_url }}"
               alt="{% if is_zh %}{{ area.image_alt_zh }}{% else %}{{ area.image_alt_en }}{% endif %}"
@@ -26,21 +34,12 @@
               height="600"
               loading="lazy"
             >
-          </figure>
-        {% endif %}
-        <div class="representative-line">
-          <strong>
-            {%- if is_zh %}相关工作{% else %}Related work{% endif -%}
-          </strong>
-          <span>
-            {%- if is_zh %}{{ area.representative_zh }}{% else %}{{ area.representative_en }}{% endif -%}
-          </span>
-        </div>
-      </div>
+          </a>
+        </figure>
+      {% endif %}
     </section>
   {% endfor %}
 </div>
-
 <section class="research-resources" id="systems-resources" aria-labelledby="systems-resources-heading">
   <h2 id="systems-resources-heading">
     {% if is_zh %}系统与开源资源{% else %}Systems & open resources{% endif %}

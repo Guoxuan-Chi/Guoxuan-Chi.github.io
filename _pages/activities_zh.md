@@ -1,7 +1,6 @@
 ---
 layout: faculty-page
 title: 学术活动
-kicker: 个人履历
 permalink: /zh/activities/
 lang: zh-CN
 translation_url: /activities/

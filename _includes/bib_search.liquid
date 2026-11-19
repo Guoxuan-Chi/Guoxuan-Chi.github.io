@@ -1,4 +1,14 @@
 {% if site.bib_search %}
   <script src="{{ '/assets/js/bibsearch.js' | relative_url | bust_file_cache }}" type="module"></script>
-  <input type="text" id="bibsearch" spellcheck="false" autocomplete="off" class="search bibsearch-form-input" placeholder="Type to filter">
+  <label class="sr-only" for="bibsearch">
+    {%- if page.lang contains 'zh' %}搜索论文{% else %}Search publications{% endif -%}
+  </label>
+  <input
+    type="search"
+    id="bibsearch"
+    spellcheck="false"
+    autocomplete="off"
+    class="search bibsearch-form-input"
+    placeholder="{% if page.lang contains 'zh' %}按标题、作者或关键词筛选{% else %}Filter by title, author, or keyword{% endif %}"
+  >
 {% endif %}

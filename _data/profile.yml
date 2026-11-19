@@ -16,8 +16,7 @@ portrait: guoxuan-chi-portrait.webp
 portrait_small: guoxuan-chi-portrait-480.webp
 avatar: guoxuan-chi-avatar.webp
 summary_en: >-
-  <p>I am an Assistant Professor in the School of Artificial Intelligence at Beijing
-  University of Posts and Telecommunications (BUPT). I received my Ph.D. from Tsinghua
+  <p>I received my Ph.D. from Tsinghua
   University in 2024 under the supervision of Prof.
   <a href="https://tns.thss.tsinghua.edu.cn/~yangzheng/" target="_blank"
   rel="noopener noreferrer">Zheng Yang</a>. Before joining BUPT, I was a postdoctoral
@@ -31,7 +30,7 @@ summary_en: >-
   <p>I received the CCF Natural Science Award, First Prize,
   the ACM MobiCom Best Artifact Award, and the ACM SIGCOMM China Doctoral Dissertation Award.</p>
 summary_zh: >-
-  <p>现任北京邮电大学人工智能学院助理教授、硕士生导师。2024年获清华大学博士学位，导师为<a href="https://tns.thss.tsinghua.edu.cn/~yangzheng/" target="_blank" rel="noopener noreferrer">杨铮</a>教授。加入北邮前，曾在清华大学<a href="https://tns.thss.tsinghua.edu.cn/~yunhao/en.html" target="_blank" rel="noopener noreferrer">刘云浩</a>教授团队从事博士后研究。</p>
+  <p>2024年获清华大学博士学位，导师为<a href="https://tns.thss.tsinghua.edu.cn/~yangzheng/" target="_blank" rel="noopener noreferrer">杨铮</a>教授。加入北邮前，曾在清华大学<a href="https://tns.thss.tsinghua.edu.cn/~yunhao/en.html" target="_blank" rel="noopener noreferrer">刘云浩</a>教授团队从事博士后研究。</p>
   <p>主要研究方向为物联网感知、通信与具身导航系统。相关成果发表于 ACM MobiCom、MobiSys 及 IEEE JSAC 等国际会议与期刊。主持国家自然科学基金青年科学基金项目（C类）和中国博士后科学基金面上项目。</p>
   <p>曾获中国计算机学会（CCF）自然科学一等奖、ACM MobiCom 最佳系统实现奖和 ACM SIGCOMM China 优秀博士论文奖。</p>
 core_question_en: IoT Sensing & Embodied Intelligence

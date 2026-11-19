@@ -1,7 +1,6 @@
 ---
 layout: faculty-page
 title: News
-kicker: Updates
 permalink: /news/
 lang: en
 translation_url: /zh/news/

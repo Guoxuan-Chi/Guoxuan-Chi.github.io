@@ -1,7 +1,6 @@
 ---
 layout: faculty-page
 title: 系统与资源
-kicker: 已并入研究页面
 permalink: /zh/resources/
 lang: zh-CN
 translation_url: /resources/

@@ -1,7 +1,6 @@
 ---
 layout: faculty-page
 title: Research
-kicker: Research areas
 permalink: /research/
 lang: en
 translation_url: /zh/research/

@@ -1,7 +1,6 @@
 ---
 layout: faculty-page
 title: 动态
-kicker: 近期动态
 permalink: /zh/news/
 lang: zh-CN
 translation_url: /news/

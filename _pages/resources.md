@@ -1,7 +1,6 @@
 ---
 layout: faculty-page
 title: Systems & Resources
-kicker: Moved to Research
 permalink: /resources/
 lang: en
 translation_url: /zh/resources/

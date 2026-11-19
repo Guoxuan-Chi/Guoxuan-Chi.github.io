@@ -1,7 +1,6 @@
 ---
 layout: faculty-page
 title: Academic Activities
-kicker: Academic record
 permalink: /activities/
 lang: en
 translation_url: /zh/activities/

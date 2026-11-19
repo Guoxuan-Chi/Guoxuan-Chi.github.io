@@ -5,7 +5,7 @@ en:
     url: /research/
   - label: Publications
     url: /publications/
-  - label: Opportunities
+  - label: Contact
     url: /students/
   - label: Activities
     url: /activities/
@@ -19,7 +19,7 @@ zh:
     url: /zh/research/
   - label: 论文
     url: /zh/publications/
-  - label: 招生与合作
+  - label: 联系与合作
     url: /zh/students/
   - label: 学术活动
     url: /zh/activities/

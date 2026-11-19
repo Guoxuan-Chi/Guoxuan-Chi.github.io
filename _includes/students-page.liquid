@@ -1,31 +1,32 @@
 {% assign is_zh = false %}
-{% if page.lang contains 'zh' %}{% assign is_zh = true %}{% endif %}
-<section class="student-section">
-  <h2>
-    {% if is_zh %}研究方向{% else %}Research areas{% endif %}
-  </h2>
-  <div class="topic-grid">
-    {% for area in site.data.research %}
-      <article>
-        <span>{{ area.number }}</span>
-        <h3>
-          {% if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif %}
-        </h3>
-        <p>
-          {% if is_zh %}{{ area.tagline_zh }}{% else %}{{ area.tagline_en }}{% endif %}
-        </p>
-      </article>
-    {% endfor %}
-  </div>
-</section>
-<section class="student-section contact-guide">
-  <div>
-    <h2>
+{% assign research_path = '/research/' %}
+{% if page.lang contains 'zh' %}
+  {% assign is_zh = true %}
+  {% assign research_path = '/zh/research/' %}
+{% endif %}
+<div class="collaboration-layout">
+  <section class="collaboration-areas" aria-labelledby="collaboration-areas-heading">
+    <p class="collaboration-intro">
+      {% if is_zh %}欢迎围绕以下方向开展科研交流与合作。{% else %}I welcome research discussions and collaboration in the following areas.{% endif %}
+    </p>
+    <h2 id="collaboration-areas-heading">
+      {% if is_zh %}研究方向{% else %}Research areas{% endif %}
+    </h2>
+    <ul>
+      {% for area in site.data.research %}
+        <li>
+          <a href="{{ research_path | relative_url }}#{{ area.id }}">
+            {%- if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif -%}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  <aside class="contact-panel" aria-labelledby="contact-heading">
+    <h2 id="contact-heading">
       {% if is_zh %}联系方式{% else %}Contact{% endif %}
     </h2>
-  </div>
-  <div>
-    <span class="primary-text-link">{{ site.data.profile.email_bupt }}</span>
+    <p class="contact-email">{{ site.data.profile.email_bupt }}</p>
     <p>
       {% if is_zh %}
         {{ site.data.profile.university_zh }} · {{ site.data.profile.school_zh -}}
@@ -39,5 +40,5 @@
         {{ site.data.profile.office_en }}
       {% endif %}
     </p>
-  </div>
-</section>
+  </aside>
+</div>

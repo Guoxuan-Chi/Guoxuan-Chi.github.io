@@ -4,21 +4,18 @@ layout: default
 {% assign is_zh = false %}
 {% assign research_path = '/research/' %}
 {% assign publications_path = '/publications/' %}
-{% assign students_path = '/students/' %}
 {% assign news_path = '/news/' %}
 {% assign activities_path = '/activities/' %}
 {% if page.lang contains 'zh' %}
   {% assign is_zh = true %}
   {% assign research_path = '/zh/research/' %}
   {% assign publications_path = '/zh/publications/' %}
-  {% assign students_path = '/zh/students/' %}
   {% assign news_path = '/zh/news/' %}
   {% assign activities_path = '/zh/activities/' %}
 {% endif %}
 {% assign profile = site.data.profile %}
 {% assign cv_path = profile.cv_en | default: profile.cv %}
 {% if is_zh %}{% assign cv_path = profile.cv_zh | default: profile.cv %}{% endif %}
-
 <div class="faculty-home">
   <section class="home-hero" aria-labelledby="home-title">
     <div class="hero-copy">
@@ -26,13 +23,13 @@ layout: default
         {% if is_zh %}无线系统 × 人工智能{% else %}Wireless Systems × Artificial Intelligence{% endif %}
       </div>
       <h1 id="home-title">
-        {% if is_zh %}
-          {{ profile.name_zh }}
+        {% if is_zh -%}
+          {{- profile.name_zh }}
           <span>| {{ profile.name_en }}</span>
-        {% else %}
-          {{ profile.name_en }}
+        {%- else -%}
+          {{- profile.name_en }}
           <span>| {{ profile.name_zh }}</span>
-        {% endif %}
+        {%- endif %}
       </h1>
       <div class="hero-role">
         {% if is_zh %}
@@ -45,34 +42,13 @@ layout: default
           <a href="https://www.bupt.edu.cn/" target="_blank" rel="noopener noreferrer">{{ profile.university_en }}</a>
         {% endif %}
       </div>
-      {% assign hero_tagline = profile.tagline_en %}
-      {% if is_zh %}{% assign hero_tagline = profile.tagline_zh %}{% endif %}
-      {% if hero_tagline and hero_tagline != blank %}
-        <p class="hero-tagline">{{ hero_tagline }}</p>
-      {% endif %}
       <div class="hero-summary">
         {% if is_zh %}{{ profile.summary_zh }}{% else %}{{ profile.summary_en }}{% endif %}
       </div>
-      <div class="hero-education hero-research-focus">
-        <p class="hero-core-question">
-          <i class="ti ti-sparkles" aria-hidden="true"></i>
-          <strong>
-            {%- if is_zh %}{{ profile.core_question_zh }}{% else %}{{ profile.core_question_en }}{% endif -%}
-          </strong>
-        </p>
-        <p class="hero-application-line" aria-label="{% if is_zh %}应用方向{% else %}Application domains{% endif %}">
-          {% for area in profile.application_areas %}
-            <span>
-              {%- if is_zh %}{{ area.zh }}{% else %}{{ area.en }}{% endif -%}
-            </span>
-          {% endfor %}
-        </p>
-      </div>
-      <div class="hero-links">
-        <span class="hero-email-links">
-          <i class="fa-regular fa-envelope" aria-hidden="true"></i>
-          <span>{{ profile.email_bupt }}</span>
-        </span>
+      <div class="hero-links" aria-label="{% if is_zh %}联系方式与学术主页{% else %}Contact and academic profiles{% endif %}">
+        <span class="hero-email-links"
+          ><i class="fa-regular fa-envelope" aria-hidden="true"></i><span>{{ profile.email_bupt }}</span></span
+        >
         <span class="hero-profile-links">
           <a href="{{ profile.scholar }}" target="_blank" rel="noopener noreferrer"
             ><i class="ai ai-google-scholar" aria-hidden="true"></i> Scholar</a
@@ -106,49 +82,17 @@ layout: default
             {% if is_zh %}{{ profile.office_zh }}{% else %}{{ profile.office_en }}{% endif %}
           </dd>
         </div>
-        <div>
-          <dt>
-            {% if is_zh %}单位{% else %}Location{% endif %}
-          </dt>
-          <dd>
-            {% if is_zh %}{{ profile.university_zh }}{% else %}BUPT · {{ profile.location_en }}{% endif %}
-          </dd>
-        </div>
       </dl>
     </div>
   </section>
-
-  <aside class="conversation-strip">
-    <div class="strip-label">
-      {% if is_zh %}学术交流与合作{% else %}Research & collaboration{% endif %}
-    </div>
-    <p>
-      {% if is_zh %}
-        欢迎对相关研究方向感兴趣的同学联系交流，也欢迎开展学术合作。
-      {% else %}
-        Students and researchers interested in these areas are welcome to get in touch to discuss research and collaboration.
-      {% endif %}
-    </p>
-    <a href="{{ students_path | relative_url }}">
-      {%- if is_zh %}了解详情{% else %}Opportunities & contact{% endif %}
-      <span aria-hidden="true">→</span></a
-    >
-  </aside>
-
   <section class="home-section home-news" aria-labelledby="news-heading">
-    <div class="section-heading compact">
-      <div>
-        <div class="section-kicker">
-          {% if is_zh %}动态{% else %}News{% endif %}
-        </div>
-        <h2 id="news-heading">
-          {% if is_zh %}近期进展{% else %}Recent updates{% endif %}
-        </h2>
-      </div>
+    <div class="section-heading">
+      <h2 id="news-heading">
+        {% if is_zh %}近期动态{% else %}Recent news{% endif %}
+      </h2>
       <a class="section-link" href="{{ news_path | relative_url }}">
-        {%- if is_zh %}全部动态{% else %}News archive{% endif %}
-        <span aria-hidden="true">→</span></a
-      >
+        {%- if is_zh %}全部动态{% else %}All news{% endif -%}
+      </a>
     </div>
     <ol class="news-list home-news-list">
       {% assign home_news = site.data.news | where: 'home', true | sort: 'date' | reverse %}
@@ -158,7 +102,7 @@ layout: default
             {%- if is_zh %}{{ item.date | date: '%Y.%m' }}{% else %}{{ item.date | date: '%b %Y' }}{% endif -%}
           </time>
           <span>
-            {%- if is_zh %}{{ item.zh }}{% else %}{{ item.en }}{% endif -%}
+            {% if is_zh %}{{ item.zh }}{% else %}{{ item.en }}{% endif %}
             {% if item.conference_id %}
               <a class="news-detail-link" href="{{ activities_path | relative_url }}#conference-{{ item.conference_id }}">
                 {%- if is_zh %}照片与详情{% else %}Photos & details{% endif -%}
@@ -173,21 +117,14 @@ layout: default
       {% endfor %}
     </ol>
   </section>
-
   <section class="home-section research-overview" aria-labelledby="research-heading">
     <div class="section-heading">
-      <div>
-        <div class="section-kicker">
-          {% if is_zh %}研究{% else %}Research{% endif %}
-        </div>
-        <h2 id="research-heading">
-          {% if is_zh %}智能感知、无线通信与具身智能{% else %}Intelligent sensing, wireless communications & embodied intelligence{% endif %}
-        </h2>
-      </div>
+      <h2 id="research-heading">
+        {% if is_zh %}研究方向{% else %}Research areas{% endif %}
+      </h2>
       <a class="section-link" href="{{ research_path | relative_url }}">
-        {%- if is_zh %}完整研究介绍{% else %}Research overview{% endif %}
-        <span aria-hidden="true">→</span></a
-      >
+        {%- if is_zh %}研究详情{% else %}Research details{% endif -%}
+      </a>
     </div>
     <div class="research-grid">
       {% for area in site.data.research %}
@@ -203,10 +140,6 @@ layout: default
               >
             </figure>
           {% endif %}
-          <div class="pillar-number">{{ area.number }}</div>
-          <div class="pillar-short">
-            {% if is_zh %}{{ area.short_zh }}{% else %}{{ area.short_en }}{% endif %}
-          </div>
           <h3>
             <a href="{{ research_path | relative_url }}#{{ area.id }}">
               {%- if is_zh %}{{ area.title_zh }}{% else %}{{ area.title_en }}{% endif -%}
@@ -222,21 +155,14 @@ layout: default
       {% endfor %}
     </div>
   </section>
-
   <section class="home-section selected-work" aria-labelledby="work-heading">
     <div class="section-heading">
-      <div>
-        <div class="section-kicker">
-          {% if is_zh %}论文{% else %}Publications{% endif %}
-        </div>
-        <h2 id="work-heading">
-          {% if is_zh %}代表性工作{% else %}Selected work{% endif %}
-        </h2>
-      </div>
+      <h2 id="work-heading">
+        {% if is_zh %}代表性论文{% else %}Selected publications{% endif %}
+      </h2>
       <a class="section-link" href="{{ publications_path | relative_url }}">
-        {%- if is_zh %}全部论文{% else %}All publications{% endif %}
-        <span aria-hidden="true">→</span></a
-      >
+        {%- if is_zh %}全部论文{% else %}All publications{% endif -%}
+      </a>
     </div>
     <div class="featured-publications">
       {% for publication in site.data.featured_publications %}
@@ -252,158 +178,40 @@ layout: default
               >
             </a>
           {% endif %}
-          <div class="publication-meta">
-            <span>{{ publication.venue }}</span>
-            <span>{{ publication.year }}</span>
-            {% if publication.authorship_en %}
-              <span class="publication-authorship">
-                {%- if is_zh %}{{ publication.authorship_zh }}{% else %}{{ publication.authorship_en }}{% endif -%}
-              </span>
-            {% endif %}
-            {% if publication.award -%}
-              <span class="publication-award">{{ publication.award }}</span>
-            {%- endif %}
-          </div>
           <div class="publication-main">
+            <div class="publication-meta">
+              <span>{{ publication.venue }}</span><span>{{ publication.year }}</span>
+              {% if publication.authorship_en -%}
+                <span class="publication-authorship">
+                  {%- if is_zh %}{{ publication.authorship_zh }}{% else %}{{ publication.authorship_en }}{% endif -%}
+                </span>
+              {%- endif %}
+              {% if publication.award -%}
+                <span class="publication-award">{{ publication.award }}</span>
+              {%- endif %}
+            </div>
             <h3>{{ publication.title }}</h3>
             <p>
               {% if is_zh %}{{ publication.tldr_zh }}{% else %}{{ publication.tldr_en }}{% endif %}
             </p>
-          </div>
-          <div class="publication-actions">
-            {% if publication.html -%}
-              <a href="{{ publication.html }}" target="_blank" rel="noopener noreferrer">HTML</a>
-            {%- endif %}
-            {% if publication.paper -%}
-              <a href="{{ publication.paper | relative_url }}" target="_blank" rel="noopener noreferrer">PDF</a>
-            {%- endif %}
-            {% if publication.code -%}
-              <a href="{{ publication.code }}" target="_blank" rel="noopener noreferrer">Code</a>
-            {%- endif %}
+            <div class="publication-actions">
+              {% if publication.html -%}
+                <a href="{{ publication.html }}" target="_blank" rel="noopener noreferrer">
+                  {%- if is_zh %}论文主页{% else %}Paper{% endif -%}
+                </a>
+              {%- endif %}
+              {% if publication.paper -%}
+                <a href="{{ publication.paper | relative_url }}" target="_blank" rel="noopener noreferrer">PDF</a>
+              {%- endif %}
+              {% if publication.code -%}
+                <a href="{{ publication.code }}" target="_blank" rel="noopener noreferrer">
+                  {%- if is_zh %}代码{% else %}Code{% endif -%}
+                </a>
+              {%- endif %}
+            </div>
           </div>
         </article>
       {% endfor %}
-    </div>
-  </section>
-
-  {% if site.data.talks and site.data.talks.size > 0 %}
-    <section class="home-section invited-talks" aria-labelledby="talks-heading">
-      <div class="section-heading">
-        <div>
-          <div class="section-kicker">
-            {% if is_zh %}学术交流{% else %}Academic exchange{% endif %}
-          </div>
-          <h2 id="talks-heading">
-            {% if is_zh %}邀请报告{% else %}Invited talks{% endif %}
-          </h2>
-        </div>
-        <a class="section-link" href="{{ activities_path | relative_url }}#academic-exchange">
-          {%- if is_zh %}学术活动{% else %}Academic activities{% endif %}
-          <span aria-hidden="true">→</span></a
-        >
-      </div>
-      <div class="talk-grid">
-        {% for talk in site.data.talks limit: 2 %}
-          <article class="talk-card talk-card--text">
-            <div class="talk-body">
-              <div class="talk-meta">
-                {% if talk.date -%}
-                  <time datetime="{{ talk.date }}">
-                    {%- if is_zh %}{{ talk.date | date: '%Y.%m.%d' }}{% else %}{{ talk.date | date: '%b %-d, %Y' }}{% endif -%}
-                  </time>
-                {%- endif %}
-                <span>
-                  {%- if is_zh %}{{ talk.event_zh }}{% else %}{{ talk.event_en }}{% endif -%}
-                </span>
-              </div>
-              <h3>
-                {% if is_zh %}{{ talk.title_zh }}{% else %}{{ talk.title_en }}{% endif %}
-              </h3>
-              <p>
-                {% if is_zh %}{{ talk.description_zh }}{% else %}{{ talk.description_en }}{% endif %}
-              </p>
-              <div class="talk-actions">
-                {% if talk.images and talk.images.size > 0 and talk.id -%}
-                  <a href="{{ activities_path | relative_url }}#talk-{{ talk.id }}">
-                    {%- if is_zh %}查看照片{% else %}Photos{% endif -%}
-                  </a>
-                {%- endif %}
-                {% if talk.event_url -%}
-                  <a href="{{ talk.event_url }}" target="_blank" rel="noopener noreferrer">
-                    {%- if is_zh %}活动页面{% else %}Event{% endif -%}
-                  </a>
-                {%- endif %}
-                {% if talk.paper_url -%}
-                  <a href="{{ talk.paper_url }}" target="_blank" rel="noopener noreferrer">
-                    {%- if is_zh %}论文{% else %}Paper{% endif -%}
-                  </a>
-                {%- endif %}
-                {% if talk.slides_url -%}
-                  <a href="{{ talk.slides_url | relative_url }}" target="_blank" rel="noopener noreferrer">
-                    {%- if is_zh %}幻灯片{% else %}Slides{% endif -%}
-                  </a>
-                {%- endif %}
-              </div>
-            </div>
-          </article>
-        {% endfor %}
-      </div>
-    </section>
-  {% endif %}
-
-  <section
-    class="home-section home-evidence"
-    aria-label="{% if is_zh %}科研资助与代表性荣誉{% else %}Research funding and selected honors{% endif %}"
-  >
-    <div class="evidence-column">
-      <div class="section-heading compact">
-        <div>
-          <div class="section-kicker">
-            {% if is_zh %}科研资助{% else %}Funding{% endif %}
-          </div>
-          <h2>
-            {% if is_zh %}代表性主持项目{% else %}Selected grants{% endif %}
-          </h2>
-        </div>
-        <a class="section-link" href="{{ activities_path | relative_url }}">
-          {%- if is_zh %}完整履历{% else %}Full record{% endif -%}
-        </a>
-      </div>
-      <ul class="highlight-list">
-        {% for item in site.data.activities.funding limit: 3 %}
-          <li>
-            <strong>
-              {%- if is_zh %}{{ item.role_zh }}{% else %}{{ item.role_en | replace: 'Principal Investigator', 'PI' }}{% endif -%}
-            </strong>
-            <span>
-              {%- if is_zh %}{{ item.title_zh }}{% else %}{{ item.title_en }}{% endif -%}
-            </span>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="evidence-column highlights-column">
-      <div class="section-heading compact">
-        <div>
-          <div class="section-kicker">
-            {% if is_zh %}外部认可{% else %}Recognition{% endif %}
-          </div>
-          <h2>
-            {% if is_zh %}代表性荣誉{% else %}Selected honors{% endif %}
-          </h2>
-        </div>
-      </div>
-      <ul class="highlight-list">
-        {% assign homepage_honors = site.data.activities.honors | where: 'homepage', true %}
-        {% for item in homepage_honors %}
-          <li>
-            <strong>{{ item.year }}</strong>
-            <span>
-              {%- if is_zh %}{{ item.title_zh }}{% else %}{{ item.title_en }}{% endif -%}
-            </span>
-          </li>
-        {% endfor %}
-      </ul>
     </div>
   </section>
 </div>

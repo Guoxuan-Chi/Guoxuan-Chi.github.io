@@ -1,7 +1,6 @@
 ---
 layout: faculty-page
-title: Opportunities
-kicker: Prospective students and collaborators
+title: Contact & Collaboration
 permalink: /students/
 lang: en
 translation_url: /zh/students/
